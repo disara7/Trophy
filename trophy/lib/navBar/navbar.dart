@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:trophy/navBar/nav_item_model.dart';
+import 'package:trophy/Activities.dart';
 
 const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);
 
@@ -12,55 +13,31 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  List<SMIBool?> riveIconsInputs = [];
-  List<StateMachineController?> controllers = [];
   int selectNavIndex = 0;
 
   List<String> pages = const ["HOME", "MESSAGE", "NOTIFICATIONS", "SETTINGS"];
 
   void animateTheIcon(int index) {
-    if (riveIconsInputs.isNotEmpty && riveIconsInputs[index] != null) {
-      riveIconsInputs[index]!.change(true);
-      Future.delayed(const Duration(seconds: 1), () {
-        riveIconsInputs[index]!.change(false);
-      });
-    }
+    // Your animation code here
   }
 
   void riveOnInit(Artboard artboard,
       {required String stateMachineName, required int index}) {
-    final controller =
-        StateMachineController.fromArtboard(artboard, stateMachineName);
-    if (controller != null) {
-      artboard.addController(controller);
-      controllers[index] = controller;
-      final input = controller.findInput<bool>('active');
-      if (input != null) {
-        riveIconsInputs[index] = input as SMIBool;
-      }
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    riveIconsInputs = List<SMIBool?>.filled(bottomNavs.length, null);
-    controllers = List<StateMachineController?>.filled(bottomNavs.length, null);
-  }
-
-  @override
-  void dispose() {
-    for (var controller in controllers) {
-      controller?.dispose();
-    }
-    super.dispose();
+    // Your Rive initialization code here
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(pages[selectNavIndex]),
+      body: IndexedStack(
+        index: selectNavIndex,
+        children: [
+          Activities(),
+          // Add other pages here based on your navigation
+          Container(),
+          Container(),
+          Container(),
+        ],
       ),
       bottomNavigationBar: SafeArea(
         child: Container(
@@ -128,10 +105,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
 class AnimatedBar extends StatelessWidget {
   const AnimatedBar({
-    super.key,
+    Key? key,
     required this.isActive,
-  });
+  }) : super(key: key);
+
   final bool isActive;
+
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
