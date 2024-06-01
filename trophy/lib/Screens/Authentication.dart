@@ -50,24 +50,24 @@ class _AuthPageState extends State<AuthPage> {
                 TextField(
                   decoration: InputDecoration(
                     labelText: 'Enter your email',
-                    labelStyle: TextStyle(color: Colors.white),
+                    labelStyle: const TextStyle(color: Colors.white),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: const Color(0xFFF09C46)),
+                      borderSide: const BorderSide(color: Color(0xFFF09C46)),
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     prefixIcon: const Icon(Icons.email, color: Colors.white),
                   ),
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: const Text(
+                    child: Text(
                       'Continue',
                       style: TextStyle(color: Colors.black),
                     ),
@@ -117,29 +117,37 @@ class _AuthPageState extends State<AuthPage> {
                     TextField(
                       decoration: InputDecoration(
                         labelText: 'Username',
+                        labelStyle: const TextStyle(color: Colors.grey),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: const Color(0xFFF09C46),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFF09C46),
                           ),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         prefixIcon: const Icon(Icons.person),
                       ),
+                      style: const TextStyle(color: Colors.black),
+                      onChanged: (text) {
+                        setState(() {
+                          // Trigger a rebuild when the text changes
+                        });
+                      },
                     ),
                     const SizedBox(height: 8),
                     TextField(
                       obscureText: _obscurePassword,
                       decoration: InputDecoration(
                         labelText: 'Password',
+                        labelStyle: const TextStyle(color: Colors.grey),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: const Color(0xFFF09C46),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFF09C46),
                           ),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
@@ -153,6 +161,10 @@ class _AuthPageState extends State<AuthPage> {
                           onPressed: _togglePasswordVisibility,
                         ),
                       ),
+                      style: const TextStyle(color: Colors.black),
+                      onChanged: (text) {
+                        setState(() {});
+                      },
                     ),
                     const SizedBox(height: 0),
                     Row(
@@ -171,9 +183,9 @@ class _AuthPageState extends State<AuthPage> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: const Text(
+                        child: Text(
                           'Login',
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                         ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFF09C46),
