@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:your_app_name/login.dart'; // Uncomment and update with your actual import
 import 'package:flutter_page_view_indicator/flutter_page_view_indicator.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
+import 'package:trophy/Screens/Authentication.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -42,8 +43,10 @@ class _IntroScreenState extends State<IntroScreen> {
   }
 
   void _navigateToLogin() {
-    // Replace this with your navigation to the Login screen
-    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => AuthPage()),
+    );
   }
 
   void _goToPreviousPage() {
