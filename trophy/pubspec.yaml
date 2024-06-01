@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_page_view_indicator: ^0.0.5
+  page_view_indicators: ^2.0.0
   rive: ^0.13.5
 
 dev_dependencies:
