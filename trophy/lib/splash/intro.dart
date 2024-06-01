@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:your_app_name/login.dart'; // Uncomment and update with your actual import
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class IntroScreen extends StatefulWidget {
 
 class _IntroScreenState extends State<IntroScreen> {
   late PageController _pageController;
+  int _currentPage = 0;
 
   @override
   void initState() {
@@ -20,12 +22,21 @@ class _IntroScreenState extends State<IntroScreen> {
     super.dispose();
   }
 
-  void _goToPage(int pageIndex) {
-    _pageController.animateToPage(
-      pageIndex,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
+  void _goToNextPage() {
+    if (_currentPage < 3) {
+      _pageController.animateToPage(
+        ++_currentPage,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      _navigateToLogin();
+    }
+  }
+
+  void _navigateToLogin() {
+    // Replace this with your navigation to the Login screen
+    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 
   @override
@@ -39,22 +50,31 @@ class _IntroScreenState extends State<IntroScreen> {
             Expanded(
               child: PageView(
                 controller: _pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentPage = index;
+                  });
+                },
                 children: [
                   _buildPage(
                     'assets/intro1.png',
-                    'Welcome to Your App',
+                    'Relax for a Change',
+                    'Experience the ultimate relaxation and rejuvenation with our app. Unwind and take a break from the hustle and bustle.',
                   ),
                   _buildPage(
                     'assets/intro2.png',
                     'Learn More About Our App',
+                    'Our app provides a variety of features to enhance your lifestyle and well-being. Dive in to discover more.',
                   ),
                   _buildPage(
                     'assets/intro3.png',
-                    'Learn More About Our App',
+                    'Discover New Features',
+                    'Stay updated with the latest features and improvements we have made to help you get the best experience.',
                   ),
                   _buildPage(
                     'assets/intro4.png',
-                    'Learn More About Our App',
+                    'Get Started Now',
+                    'Ready to take the next step? Get started now and explore all the benefits our app has to offer.',
                   ),
                 ],
               ),
@@ -64,16 +84,12 @@ class _IntroScreenState extends State<IntroScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    _goToPage(0);
-                  },
-                  child: Text('Get Started'),
+                  onPressed: _navigateToLogin,
+                  child: Text('Skip'),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    _goToPage(1);
-                  },
-                  child: Text('Learn More'),
+                  onPressed: _goToNextPage,
+                  child: Text('Next'),
                 ),
               ],
             ),
@@ -84,7 +100,7 @@ class _IntroScreenState extends State<IntroScreen> {
     );
   }
 
-  Widget _buildPage(String imagePath, String text) {
+  Widget _buildPage(String imagePath, String title, String description) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -95,11 +111,23 @@ class _IntroScreenState extends State<IntroScreen> {
         ),
         SizedBox(height: 20),
         Text(
-          text,
+          title,
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.black,
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Text(
+            description,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.black54,
+            ),
+            textAlign: TextAlign.center,
           ),
         ),
       ],
