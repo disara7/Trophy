@@ -70,6 +70,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  flutter_page_view_indicator:
+    dependency: "direct main"
+    description:
+      name: flutter_page_view_indicator
+      sha256: "4f7bb81f58a35abe67f2710d2d15d6d1f2d4750d120dc6e4ece5d9a91225e3bb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -160,6 +168,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  page_view_indicators:
+    dependency: "direct main"
+    description:
+      name: page_view_indicators
+      sha256: d2ebf6c26d1b065f137e88a2b88181dea6b96d7a34abe9a237fbf214888d0f3f
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   path:
     dependency: transitive
     description:

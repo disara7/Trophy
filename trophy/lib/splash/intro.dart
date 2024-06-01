@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:your_app_name/login.dart'; // Uncomment and update with your actual import
+import 'package:flutter_page_view_indicator/flutter_page_view_indicator.dart';
+import 'package:page_view_indicators/page_view_indicators.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -9,11 +11,16 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreenState extends State<IntroScreen> {
   late PageController _pageController;
   int _currentPage = 0;
+  final _currentPageNotifier =
+      ValueNotifier<int>(0); // Track current page for dots
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: 0);
+    _pageController.addListener(() {
+      _currentPageNotifier.value = _pageController.page!.round();
+    });
   }
 
   @override
@@ -39,10 +46,34 @@ class _IntroScreenState extends State<IntroScreen> {
     // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 
+  void _goToPreviousPage() {
+    if (_currentPage > 0) {
+      _pageController.animateToPage(
+        --_currentPage,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(15.0), // Increase padding
+          child: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.brown, // Change icon color to brown
+            ),
+            onPressed: _goToPreviousPage,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0, // Remove app bar elevation
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +111,32 @@ class _IntroScreenState extends State<IntroScreen> {
               ),
             ),
             SizedBox(
-              height: 2,
+              height: 10,
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: PageViewIndicator(
+            //     pageIndexNotifier: _currentPageNotifier,
+            //     length: 4, // Number of pages in the PageView
+            //     normalBuilder: (animationController, index) => Circle(
+            //       size: 8.0,
+            //       color: Colors.grey,
+            //     ),
+            //     highlightedBuilder: (animationController, index) =>
+            //         ScaleTransition(
+            //       scale: CurvedAnimation(
+            //         parent: animationController,
+            //         curve: Curves.ease,
+            //       ),
+            //       child: Circle(
+            //         size: 10.0,
+            //         color: Colors.black,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            SizedBox(
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -137,7 +193,7 @@ class _IntroScreenState extends State<IntroScreen> {
           width: 200,
           height: 200,
         ),
-        SizedBox(height: 50),
+        SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
