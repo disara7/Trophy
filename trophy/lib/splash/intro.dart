@@ -79,17 +79,46 @@ class _IntroScreenState extends State<IntroScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(
+              height: 20,
+              width: 10,
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: _navigateToLogin,
-                  child: Text('Skip'),
+                SizedBox(
+                  width: 100, // Set the width of the button
+                  child: ElevatedButton(
+                    onPressed: _navigateToLogin,
+                    child: Text(
+                      'SKIP',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                    ),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: _goToNextPage,
-                  child: Text('Next'),
+                SizedBox(width: 20), // Decreased width here
+                SizedBox(
+                  width: 100, // Set the width of the button
+                  child: ElevatedButton(
+                    onPressed: _goToNextPage,
+                    child: Text(
+                      'NEXT',
+                      style: TextStyle(color: Colors.orange),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -119,20 +148,19 @@ class _IntroScreenState extends State<IntroScreen> {
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 117, 46, 5),
             ),
-            textAlign: TextAlign.center, // Ensure the title is centered as well
+            textAlign: TextAlign.center,
           ),
         ),
         SizedBox(height: 20),
         Padding(
-          padding:
-              const EdgeInsets.symmetric(horizontal: 30.0), // Increased padding
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
             description,
             style: TextStyle(
               fontSize: 16,
               color: Colors.black54,
             ),
-            textAlign: TextAlign.center, // Center-align the paragraph
+            textAlign: TextAlign.center,
           ),
         ),
       ],
