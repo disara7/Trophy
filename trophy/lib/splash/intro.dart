@@ -80,8 +80,7 @@ class _IntroScreenState extends State<IntroScreen> {
               ),
             ),
             SizedBox(
-              height: 20,
-              width: 10,
+              height: 2,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -102,7 +101,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     ),
                   ),
                 ),
-                SizedBox(width: 20), // Decreased width here
+                SizedBox(width: 40), // Decreased width here
                 SizedBox(
                   width: 100, // Set the width of the button
                   child: ElevatedButton(
