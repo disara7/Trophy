@@ -59,27 +59,27 @@ class _IntroScreenState extends State<IntroScreen> {
                   _buildPage(
                     'assets/intro1.png',
                     'Relax for a Change',
-                    'Experience the ultimate relaxation and rejuvenation with our app. Unwind and take a break from the hustle and bustle.',
+                    'Participate in diverse workshops, fitness activities, clubs, societies, and volunteering projects alongside your workload.',
                   ),
                   _buildPage(
                     'assets/intro2.png',
-                    'Learn More About Our App',
-                    'Our app provides a variety of features to enhance your lifestyle and well-being. Dive in to discover more.',
+                    'Collect Coins',
+                    'Complete the interesting challenges given to collect bounties and climb the trophy ladder.',
                   ),
                   _buildPage(
                     'assets/intro3.png',
-                    'Discover New Features',
-                    'Stay updated with the latest features and improvements we have made to help you get the best experience.',
+                    'Redeem Coins',
+                    'Redeem your collected bounties at the canteen, parking, EV charging, and reservations at your convenience.',
                   ),
                   _buildPage(
                     'assets/intro4.png',
-                    'Get Started Now',
-                    'Ready to take the next step? Get started now and explore all the benefits our app has to offer.',
+                    'Feeling Lucky?',
+                    'Spin the wheel of fortune to harness your luck and gather bounties on your behalf.',
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -93,7 +93,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 70),
           ],
         ),
       ),
@@ -109,25 +109,30 @@ class _IntroScreenState extends State<IntroScreen> {
           width: 200,
           height: 200,
         ),
-        SizedBox(height: 20),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+        SizedBox(height: 50),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 117, 46, 5),
+            ),
+            textAlign: TextAlign.center, // Ensure the title is centered as well
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 20),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding:
+              const EdgeInsets.symmetric(horizontal: 30.0), // Increased padding
           child: Text(
             description,
             style: TextStyle(
               fontSize: 16,
               color: Colors.black54,
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.center, // Center-align the paragraph
           ),
         ),
       ],
