@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/splash/splash.dart';
 import 'package:trophy/Screens/Authentication.dart';
+
 
 void main() {
   runApp(const MainApp());
@@ -15,7 +18,8 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFFDFEFF),
       ),
-      home: const AuthPage(),
+
+      home: SplashScreen(),
     );
   }
 }
