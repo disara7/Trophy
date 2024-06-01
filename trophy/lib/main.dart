@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/Screens/Authentication.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,9 +13,9 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xFFFDFEFF),
+        scaffoldBackgroundColor: const Color(0xFFFDFEFF),
       ),
-      home: BottomNavBar(),
+      home: const AuthPage(),
     );
   }
 }
