@@ -6,12 +6,26 @@ class CoinBank extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CoinBank'),
+        leading: Padding(
+          padding: const EdgeInsets.all(15.0), // Increase padding
+          child: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.brown, // Change icon color to brown
+            ),
+            onPressed: () {
+              Navigator.pop(context); // Navigate back to the previous screen
+            },
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text('COIN BANK'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.count(
-          crossAxisCount: 2, // Two cards per row
+          crossAxisCount: 2,
           crossAxisSpacing: 8.0,
           mainAxisSpacing: 8.0,
           children: [
@@ -56,8 +70,11 @@ class CoinCard extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
 
-  CoinCard(
-      {required this.imagePath, required this.title, required this.onPressed});
+  CoinCard({
+    required this.imagePath,
+    required this.title,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
