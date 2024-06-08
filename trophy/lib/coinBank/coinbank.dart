@@ -1,73 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/navBar/navbar.dart';
 
-class Activities extends StatelessWidget {
+class CoinBank extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('CoinBank'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.count(
+          crossAxisCount: 2, // Two cards per row
+          crossAxisSpacing: 8.0,
+          mainAxisSpacing: 8.0,
+          children: [
+            CoinCard(
+              imagePath: 'assets/intro1.png',
+              title: 'Coin 1',
               onPressed: () {
-                Navigator.of(context).pop();
+                print('Coin 1 button pressed');
               },
             ),
-            centerTitle: true,
-            title: const Text(
-              'ACTIVITIES',
-              style: TextStyle(fontSize: 20, color: Colors.black),
+            CoinCard(
+              imagePath: 'assets/coin2.png',
+              title: 'Coin 2',
+              onPressed: () {
+                print('Coin 2 button pressed');
+              },
             ),
-            actions: <Widget>[
-              // Margin to the right of the AppBar
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200], // Gray background color
-                  borderRadius: BorderRadius.circular(100.0), // Rounded corners
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      'assets/Coin.png', // Path to the coin image
-                      width: 40.0, // Width of the coin image
-                      height: 40.0, // Height of the coin image
-                    ),
-                    SizedBox(width: 4.0), // Space between the coin and the text
-                    const Text(
-                      '500', // Number of coins
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16.0,
+            CoinCard(
+              imagePath: 'assets/coin3.png',
+              title: 'Coin 3',
+              onPressed: () {
+                print('Coin 3 button pressed');
+              },
+            ),
+            CoinCard(
+              imagePath: 'assets/coin4.png',
+              title: 'Coin 4',
+              onPressed: () {
+                print('Coin 4 button pressed');
+              },
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavBar(),
+    );
+  }
+}
 
-                        color: Color(0xFFF09C46), // Text color
-                      ),
-                    ),
-                    SizedBox(
-                        width:
-                            4.0), // Space between the text and the profile icon
-                    Icon(
-                      Icons.account_circle,
-                      size: 40.0, // Size of the icon
-                      color: Colors.black, // Icon color
-                    ),
-                  ],
-                ),
+class CoinCard extends StatelessWidget {
+  final String imagePath;
+  final String title;
+  final VoidCallback onPressed;
+
+  CoinCard(
+      {required this.imagePath, required this.title, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
               ),
-            ],
-          ),
-          body: Container(
-            margin: EdgeInsets.only(top: 20),
-            child: Column(
-              children: [
-                Text(
-                  'Engage in the following extracurricular activities to earn coins and climb the Trophy ladder like a champ!',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ],
             ),
-          )),
+            SizedBox(height: 10),
+            Text(
+              title,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: onPressed,
+              child: Text('Press me'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
