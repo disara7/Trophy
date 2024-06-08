@@ -41,25 +41,27 @@ class CoinBank extends StatelessWidget {
               },
             ),
             CoinCard(
-              imagePath: 'assets/coin2.png',
-              title: 'Coin 2',
-              buttonText: 'Press Coin 2',
+              imagePath: 'assets/intro2.png',
+              title:
+                  'Redeem the coins you’ve earned in the form of cash at checkouts. ',
+              buttonText: 'REDEEM',
               onPressed: () {
                 print('Coin 2 button pressed');
               },
             ),
             CoinCard(
               imagePath: 'assets/coin3.png',
-              title: 'Coin 3',
-              buttonText: 'Press Coin 3',
+              title:
+                  'Use coins as a form of gift to your colleagues to appreciate and support them.',
+              buttonText: 'GIFT',
               onPressed: () {
                 print('Coin 3 button pressed');
               },
             ),
             CoinCard(
               imagePath: 'assets/coin4.png',
-              title: 'Coin 4',
-              buttonText: 'Press Coin 4',
+              title: 'Let the lucky spinning wheel bring you more coins.',
+              buttonText: 'SPIN',
               onPressed: () {
                 print('Coin 4 button pressed');
               },
