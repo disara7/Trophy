@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
-//Coin Bank
 class ButtonStyles {
   static final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
     backgroundColor: Colors.black, // Background color
     foregroundColor: Colors.orange, // Text color
-    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-    textStyle: TextStyle(fontSize: 16),
+    padding:
+        EdgeInsets.symmetric(horizontal: 14, vertical: 8), // Adjust padding
+    minimumSize: Size(0, 40), // Set minimum height
+    textStyle: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold, // Make text bold
+    ),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),
     ),
