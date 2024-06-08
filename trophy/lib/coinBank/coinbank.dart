@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/themes/button_styles.dart'; // Import the new styles
 
 class CoinBank extends StatelessWidget {
   @override
@@ -20,7 +21,7 @@ class CoinBank extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('COIN BANK'),
+        title: Text('COIN BANK', style: TextStyle(color: Colors.brown)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -60,7 +61,7 @@ class CoinBank extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      // bottomNavigationBar: BottomNavBar(),
     );
   }
 }
@@ -98,6 +99,7 @@ class CoinCard extends StatelessWidget {
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: onPressed,
+              style: ButtonStyles.elevatedButtonStyle, // Apply the custom style
               child: Text('Press me'),
             ),
           ],
