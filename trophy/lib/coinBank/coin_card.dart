@@ -5,58 +5,65 @@ class CoinCard extends StatelessWidget {
   final String title;
   final String buttonText;
   final VoidCallback onPressed;
-  final String backgroundImage; // New parameter for background image
+  final String backgroundImage;
 
   CoinCard({
     required this.title,
     required this.buttonText,
     required this.onPressed,
-    required this.backgroundImage, // Initialize background image
+    required this.backgroundImage,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0, // Set elevation to 0 to remove shadow
-      color: Colors.transparent, // Make card background transparent
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(backgroundImage), // Use provided background image
-            fit: BoxFit.fitWidth, // Use fitWidth to fill the container width
-          ),
-        ),
-        child: Padding(
-          padding:
-              const EdgeInsets.fromLTRB(20, 80, 20, 20), // Increased padding
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 12, // Increased font size
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.transparent, // Make container background transparent
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(backgroundImage),
+                fit: BoxFit.fitWidth,
               ),
-              SizedBox(height: 10), // Increased sized box height
-              ElevatedButton(
-                onPressed: onPressed,
-                style: ButtonStyles.elevatedButtonStyle.copyWith(
-                  padding: MaterialStateProperty.all<EdgeInsets>(
-                    EdgeInsets.symmetric(
-                        vertical: 15), // Increased button padding
+            ),
+            padding: EdgeInsets.symmetric(vertical: 130, horizontal: 12),
+            child: SizedBox.shrink(), // Empty widget to hold background image
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.fromLTRB(12, 0, 12, 0), // Adjusted padding
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 5),
+                ElevatedButton(
+                  onPressed: onPressed,
+                  style: ButtonStyles.elevatedButtonStyle.copyWith(
+                    padding: MaterialStateProperty.all<EdgeInsets>(
+                      EdgeInsets.symmetric(vertical: 10),
+                    ),
+                  ),
+                  child: Text(
+                    buttonText,
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
-                child: Text(
-                  buttonText,
-                  style: TextStyle(fontSize: 16), // Increased button text size
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
