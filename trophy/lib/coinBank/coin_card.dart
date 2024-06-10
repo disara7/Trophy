@@ -18,41 +18,42 @@ class CoinCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.transparent, // Make container background transparent
+        color: Colors.transparent,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(backgroundImage),
-                fit: BoxFit.fitWidth,
-              ),
+          AspectRatio(
+            aspectRatio: 1, // Adjust aspect ratio as needed
+            child: Image.asset(
+              backgroundImage,
+              fit: BoxFit.cover,
             ),
-            padding: EdgeInsets.symmetric(vertical: 130, horizontal: 12),
-            child: SizedBox.shrink(), // Empty widget to hold background image
           ),
           Padding(
-            padding:
-                const EdgeInsets.fromLTRB(12, 0, 12, 0), // Adjusted padding
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.black,
-                  ),
-                  textAlign: TextAlign.center,
+                SizedBox(
+                  height: 55,
                 ),
-                SizedBox(height: 5),
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
                 ElevatedButton(
                   onPressed: onPressed,
                   style: ButtonStyles.elevatedButtonStyle.copyWith(
                     padding: MaterialStateProperty.all<EdgeInsets>(
-                      EdgeInsets.symmetric(vertical: 10),
+                      EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                   child: Text(
