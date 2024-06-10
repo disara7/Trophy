@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/coinBank/coin_card.dart'; // Import CoinCard widget
 import 'package:trophy/themes/button_styles.dart'; // Import the new styles
+import 'package:trophy/coinBank/counter.dart'; // Import the Counter widget
 
 class CoinBank extends StatelessWidget {
   @override
@@ -25,49 +26,19 @@ class CoinBank extends StatelessWidget {
         title: Text('COIN BANK', style: TextStyle(color: Colors.brown)),
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 50, 20, 5),
+        padding: const EdgeInsets.fromLTRB(30, 50, 30, 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 76,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/countbg.png'), // Background image
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/Coin.png', // Coin icon
-                    width: 32,
-                    height: 32,
-                    // You can adjust width and height as needed
-                  ),
-                  SizedBox(
-                      width: 13), // Add some space between coin icon and text
-                  Text(
-                    '520', // You can replace it with your text
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            Counter(count: 520), // Use the Counter widget
 
             SizedBox(
-                height:
-                    30), // Add some space between the black box and the grid
+                height: 30), // Add some space between the counter and the grid
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
-                crossAxisSpacing: 20.0,
-                mainAxisSpacing: 80.0,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 90.0,
                 children: [
                   SizedBox(
                     height: MediaQuery.of(context).size.height *
@@ -90,7 +61,7 @@ class CoinBank extends StatelessWidget {
                           'Redeem the coins you’ve earned in the form of cash at checkouts. ',
                       buttonText: 'REDEEM',
                       onPressed: () {
-                        print('Coin 1 button pressed');
+                        print('Coin 2 button pressed');
                       },
                       backgroundImage: 'assets/bg2.png',
                     ),
@@ -103,7 +74,7 @@ class CoinBank extends StatelessWidget {
                           'Use coins as a form of gift to your colleagues to appreciate and support them.',
                       buttonText: 'GIFT',
                       onPressed: () {
-                        print('Coin 1 button pressed');
+                        print('Coin 3 button pressed');
                       },
                       backgroundImage: 'assets/bg3.png',
                     ),
@@ -116,7 +87,7 @@ class CoinBank extends StatelessWidget {
                           'Let the lucky spinning wheel bring you more coins.',
                       buttonText: 'SPIN',
                       onPressed: () {
-                        print('Coin 1 button pressed');
+                        print('Coin 4 button pressed');
                       },
                       backgroundImage: 'assets/bg4.png',
                     ),
