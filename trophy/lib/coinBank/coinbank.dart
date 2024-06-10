@@ -25,7 +25,7 @@ class CoinBank extends StatelessWidget {
         title: Text('COIN BANK', style: TextStyle(color: Colors.brown)),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20.0),
         child: GridView.count(
           crossAxisCount: 2,
           crossAxisSpacing: 8.0,
@@ -50,7 +50,7 @@ class CoinBank extends StatelessWidget {
               },
             ),
             CoinCard(
-              imagePath: 'assets/coin3.png',
+              imagePath: 'assets/coinbank/cb3.png',
               title:
                   'Use coins as a form of gift to your colleagues to appreciate and support them.',
               buttonText: 'GIFT',
@@ -59,7 +59,7 @@ class CoinBank extends StatelessWidget {
               },
             ),
             CoinCard(
-              imagePath: 'assets/coin4.png',
+              imagePath: 'assets/coinbank/cb4.png',
               title: 'Let the lucky spinning wheel bring you more coins.',
               buttonText: 'SPIN',
               onPressed: () {

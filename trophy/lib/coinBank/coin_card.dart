@@ -18,31 +18,32 @@ class CoinCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
+            Align(
+              alignment: Alignment.topCenter,
               child: Image.asset(
                 imagePath,
                 fit: BoxFit.contain,
+                height: 60,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
             Text(
               title,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 10,
                 color: Colors.black,
               ),
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: 10),
-            Expanded(
-              child: ElevatedButton(
-                onPressed: onPressed,
-                style: ButtonStyles.elevatedButtonStyle,
-                child: Text(buttonText),
-              ),
+            ElevatedButton(
+              onPressed: onPressed,
+              style: ButtonStyles.elevatedButtonStyle,
+              child: Text(buttonText),
             ),
           ],
         ),

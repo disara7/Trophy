@@ -24,4 +24,6 @@ flutter:
   assets:
     - assets/animated_icon_set_-_1_color.riv
     - assets/
+    - assets/coinbank/
+    - assets/coinbank/cb4.png
 
