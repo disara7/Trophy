@@ -23,29 +23,35 @@ class CoinCard extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(backgroundImage), // Use provided background image
-            fit: BoxFit.contain,
+            fit: BoxFit.fitWidth, // Use fitWidth to fill the container width
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(40, 100, 40, 20),
+          padding:
+              const EdgeInsets.fromLTRB(20, 80, 20, 20), // Increased padding
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 9,
+                  fontSize: 12, // Increased font size
                   color: Colors.black,
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 10),
-              Align(
-                alignment: Alignment.bottomCenter, // Align button to the bottom
-                child: ElevatedButton(
-                  onPressed: onPressed,
-                  style: ButtonStyles.elevatedButtonStyle,
-                  child: Text(buttonText),
+              SizedBox(height: 10), // Increased sized box height
+              ElevatedButton(
+                onPressed: onPressed,
+                style: ButtonStyles.elevatedButtonStyle.copyWith(
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                    EdgeInsets.symmetric(
+                        vertical: 15), // Increased button padding
+                  ),
+                ),
+                child: Text(
+                  buttonText,
+                  style: TextStyle(fontSize: 16), // Increased button text size
                 ),
               ),
             ],
