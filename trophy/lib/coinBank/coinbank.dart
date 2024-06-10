@@ -32,7 +32,6 @@ class CoinBank extends StatelessWidget {
           mainAxisSpacing: 8.0,
           children: [
             CoinCard(
-              imagePath: 'assets/intro1.png',
               title:
                   'Take your mind off the workload and engage in different tasks to earn coins. ',
               buttonText: 'COINS',
@@ -41,7 +40,6 @@ class CoinBank extends StatelessWidget {
               },
             ),
             CoinCard(
-              imagePath: 'assets/intro2.png',
               title:
                   'Redeem the coins you’ve earned in the form of cash at checkouts. ',
               buttonText: 'REDEEM',
@@ -50,7 +48,6 @@ class CoinBank extends StatelessWidget {
               },
             ),
             CoinCard(
-              imagePath: 'assets/coinbank/cb3.png',
               title:
                   'Use coins as a form of gift to your colleagues to appreciate and support them.',
               buttonText: 'GIFT',
@@ -59,7 +56,6 @@ class CoinBank extends StatelessWidget {
               },
             ),
             CoinCard(
-              imagePath: 'assets/coinbank/cb4.png',
               title: 'Let the lucky spinning wheel bring you more coins.',
               buttonText: 'SPIN',
               onPressed: () {
