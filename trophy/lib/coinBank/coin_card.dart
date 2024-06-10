@@ -5,35 +5,36 @@ class CoinCard extends StatelessWidget {
   final String title;
   final String buttonText;
   final VoidCallback onPressed;
+  final String backgroundImage; // New parameter for background image
 
   CoinCard({
     required this.title,
     required this.buttonText,
     required this.onPressed,
+    required this.backgroundImage, // Initialize background image
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0,
-      color: Colors.transparent,
+      elevation: 0, // Set elevation to 0 to remove shadow
+      color: Colors.transparent, // Make card background transparent
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/bg1.png'),
+            image: AssetImage(backgroundImage), // Use provided background image
             fit: BoxFit.contain,
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(40, 90, 40, 10),
+          padding: const EdgeInsets.fromLTRB(40, 100, 40, 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height: 10),
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 8,
+                  fontSize: 9,
                   color: Colors.black,
                 ),
                 textAlign: TextAlign.center,

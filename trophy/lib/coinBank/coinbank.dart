@@ -25,7 +25,7 @@ class CoinBank extends StatelessWidget {
         title: Text('COIN BANK', style: TextStyle(color: Colors.brown)),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
         child: GridView.count(
           crossAxisCount: 2,
           crossAxisSpacing: 8.0,
@@ -38,6 +38,7 @@ class CoinBank extends StatelessWidget {
               onPressed: () {
                 print('Coin 1 button pressed');
               },
+              backgroundImage: 'assets/bg1.png', // Background image for card 1
             ),
             CoinCard(
               title:
@@ -46,6 +47,7 @@ class CoinBank extends StatelessWidget {
               onPressed: () {
                 print('Coin 2 button pressed');
               },
+              backgroundImage: 'assets/bg2.png', // Background image for card 2
             ),
             CoinCard(
               title:
@@ -54,6 +56,7 @@ class CoinBank extends StatelessWidget {
               onPressed: () {
                 print('Coin 3 button pressed');
               },
+              backgroundImage: 'assets/bg3.png', // Background image for card 3
             ),
             CoinCard(
               title: 'Let the lucky spinning wheel bring you more coins.',
@@ -61,6 +64,7 @@ class CoinBank extends StatelessWidget {
               onPressed: () {
                 print('Coin 4 button pressed');
               },
+              backgroundImage: 'assets/bg4.png', // Background image for card 4
             ),
           ],
         ),
