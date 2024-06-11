@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_page_view_indicator/flutter_page_view_indicator.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 import 'package:trophy/Screens/Authentication.dart';
+import 'package:trophy/themes/color_palette.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -62,14 +63,13 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(15.0), // Increase padding
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
-              color: Colors.brown, // Change icon color to brown
+              color: Palette.appBrown, // Change icon color to brown
             ),
             onPressed: _goToPreviousPage,
           ),
@@ -150,7 +150,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     onPressed: _navigateToLogin,
                     child: Text(
                       'SKIP',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Palette.appBlack),
                     ),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -167,10 +167,10 @@ class _IntroScreenState extends State<IntroScreen> {
                     onPressed: _goToNextPage,
                     child: Text(
                       'NEXT',
-                      style: TextStyle(color: Colors.orange),
+                      style: TextStyle(color: Palette.appOrange),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: Palette.appBlack,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -204,7 +204,7 @@ class _IntroScreenState extends State<IntroScreen> {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 117, 46, 5),
+              color: Palette.appBrown,
             ),
             textAlign: TextAlign.center,
           ),
@@ -216,7 +216,7 @@ class _IntroScreenState extends State<IntroScreen> {
             description,
             style: TextStyle(
               fontSize: 16,
-              color: Colors.black54,
+              color: Palette.appBlack,
             ),
             textAlign: TextAlign.center,
           ),

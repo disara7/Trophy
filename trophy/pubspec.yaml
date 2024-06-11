@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_page_view_indicator: ^0.0.5
+  google_fonts: ^6.2.1
   page_view_indicators: ^2.0.0
   rive: ^0.13.5
 
