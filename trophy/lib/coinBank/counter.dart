@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+
+class Counter extends StatelessWidget {
+  final int count;
+
+  Counter({required this.count});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/countbg.png'), // Background image
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/Coin.png', // Coin icon
+            width: 32,
+            height: 32,
+          ),
+          SizedBox(width: 13), // Add some space between coin icon and text
+          Text(
+            '$count', // Display the count
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
