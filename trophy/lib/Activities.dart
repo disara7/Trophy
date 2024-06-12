@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/themes/color_palette.dart';
 
 class Activities extends StatelessWidget {
   @override
@@ -7,9 +8,9 @@ class Activities extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Palette.appWhite,
             leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+              icon: Icon(Icons.arrow_back_ios, color: Palette.appBlack),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -17,7 +18,7 @@ class Activities extends StatelessWidget {
             centerTitle: true,
             title: const Text(
               'ACTIVITIES',
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: TextStyle(fontSize: 20, color: Palette.appBlack),
             ),
             actions: <Widget>[
               // Margin to the right of the AppBar
@@ -41,7 +42,7 @@ class Activities extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         fontSize: 16.0,
 
-                        color: Color(0xFFF09C46), // Text color
+                        color: Palette.appOrange, // Text color
                       ),
                     ),
                     SizedBox(
@@ -50,7 +51,7 @@ class Activities extends StatelessWidget {
                     Icon(
                       Icons.account_circle,
                       size: 40.0, // Size of the icon
-                      color: Colors.black, // Icon color
+                      color: Palette.appBlack, // Icon color
                     ),
                   ],
                 ),

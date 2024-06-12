@@ -123,7 +123,7 @@ class _IntroScreenState extends State<IntroScreen> {
             //     length: 4, // Number of pages in the PageView
             //     normalBuilder: (animationController, index) => Circle(
             //       size: 8.0,
-            //       color: Colors.grey,
+            //       color: Palette.appGray,
             //     ),
             //     highlightedBuilder: (animationController, index) =>
             //         ScaleTransition(
@@ -133,7 +133,7 @@ class _IntroScreenState extends State<IntroScreen> {
             //       ),
             //       child: Circle(
             //         size: 10.0,
-            //         color: Colors.black,
+            //         color: Palette.appBlack,
             //       ),
             //     ),
             //   ),

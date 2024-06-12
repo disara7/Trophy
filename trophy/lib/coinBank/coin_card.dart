@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/themes/button_styles.dart';
 
+import '../themes/color_palette.dart';
+
 class CoinCard extends StatelessWidget {
   final String title;
   final String buttonText;
@@ -43,7 +45,7 @@ class CoinCard extends StatelessWidget {
                       title,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.black,
+                        color: Palette.appBlack,
                       ),
                       textAlign: TextAlign.center,
                     ),

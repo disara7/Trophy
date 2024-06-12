@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/themes/color_palette.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _AuthPageState extends State<AuthPage> {
   void _showForgotPasswordBottomSheet() {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.black,
+      backgroundColor: Palette.appBlack,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(0.0)),
@@ -37,30 +38,30 @@ class _AuthPageState extends State<AuthPage> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const Text(
+                Text(
                   'Reset Password',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline2
+                      ?.copyWith(color: Palette.appWhite),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
                 TextField(
                   decoration: InputDecoration(
                     labelText: 'Enter your email',
-                    labelStyle: const TextStyle(color: Colors.white),
+                    labelStyle: const TextStyle(color: Palette.appWhite),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Color(0xFFF09C46)),
+                      borderSide: const BorderSide(color: Palette.appOrange),
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    prefixIcon: const Icon(Icons.email, color: Colors.white),
+                    prefixIcon:
+                        const Icon(Icons.email, color: Palette.appWhite),
                   ),
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Palette.appWhite),
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
@@ -69,10 +70,10 @@ class _AuthPageState extends State<AuthPage> {
                     onPressed: () {},
                     child: Text(
                       'Continue',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Palette.appBlack),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFF09C46),
+                      backgroundColor: Palette.appOrange,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
@@ -119,19 +120,19 @@ class _AuthPageState extends State<AuthPage> {
                       TextField(
                         decoration: InputDecoration(
                           labelText: 'Username',
-                          labelStyle: const TextStyle(color: Colors.grey),
+                          labelStyle: const TextStyle(color: Palette.appGray),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: Color(0xFFF09C46),
+                              color: Palette.appOrange,
                             ),
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           prefixIcon: const Icon(Icons.person),
                         ),
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Palette.appBlack),
                         onChanged: (text) {
                           setState(() {
                             // Trigger a rebuild when the text changes
@@ -143,13 +144,13 @@ class _AuthPageState extends State<AuthPage> {
                         obscureText: _obscurePassword,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          labelStyle: const TextStyle(color: Colors.grey),
+                          labelStyle: const TextStyle(color: Palette.appGray),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                              color: Color(0xFFF09C46),
+                              color: Palette.appOrange,
                             ),
                             borderRadius: BorderRadius.circular(12.0),
                           ),
@@ -163,7 +164,7 @@ class _AuthPageState extends State<AuthPage> {
                             onPressed: _togglePasswordVisibility,
                           ),
                         ),
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Palette.appBlack),
                         onChanged: (text) {
                           setState(() {});
                         },
@@ -176,7 +177,7 @@ class _AuthPageState extends State<AuthPage> {
                             onPressed: _showForgotPasswordBottomSheet,
                             child: const Text(
                               'Forgot password?',
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(color: Palette.appBlack),
                             ),
                           ),
                         ],
@@ -187,10 +188,10 @@ class _AuthPageState extends State<AuthPage> {
                           onPressed: () {},
                           child: Text(
                             'Login',
-                            style: const TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Palette.appBlack),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFF09C46),
+                            backgroundColor: Palette.appOrange,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),

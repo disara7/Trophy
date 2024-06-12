@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/splash/intro.dart';
 
+import '../themes/color_palette.dart';
+
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -26,7 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Background color of the splash screen
+      backgroundColor:
+          Palette.appWhite, // Background color of the splash screen
       body: Center(
         child: Image.asset(
           'assets/logo.png', // Path to the logo image

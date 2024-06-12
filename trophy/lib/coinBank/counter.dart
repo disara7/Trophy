@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../themes/color_palette.dart';
+
 class Counter extends StatelessWidget {
   final int count;
 
@@ -27,7 +29,7 @@ class Counter extends StatelessWidget {
           Text(
             '$count', // Display the count
             style: TextStyle(
-              color: Colors.white,
+              color: Palette.appWhite,
               fontSize: 32,
               fontWeight: FontWeight.bold,
             ),

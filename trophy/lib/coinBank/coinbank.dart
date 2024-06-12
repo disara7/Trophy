@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/coinBank/coin_card.dart'; // Import CoinCard widget
 import 'package:trophy/themes/button_styles.dart'; // Import the new styles
-import 'package:trophy/coinBank/counter.dart'; // Import the Counter widget
+import 'package:trophy/coinBank/counter.dart';
+
+import '../themes/color_palette.dart'; // Import the Counter widget
 
 class CoinBank extends StatelessWidget {
   @override
@@ -14,7 +16,7 @@ class CoinBank extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
-              color: Colors.brown,
+              color: Palette.appBrown,
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -23,7 +25,7 @@ class CoinBank extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('COIN BANK', style: TextStyle(color: Colors.brown)),
+        title: Text('COIN BANK', style: TextStyle(color: Palette.appBrown)),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 50, 30, 5),

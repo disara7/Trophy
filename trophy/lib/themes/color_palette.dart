@@ -46,6 +46,21 @@ class Palette {
       900: const Color(0xFFded9d9), //100%
     },
   );
+  static const MaterialColor appWhite = const MaterialColor(
+    0xFFffffff, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
+    const <int, Color>{
+      50: const Color(0xFFffffff), //10%
+      100: const Color(0xFFffffff), //20%
+      200: const Color(0xFFffffff), //30%
+      300: const Color(0xFFffffff), //40%
+      400: const Color(0xFFffffff), //50%
+      500: const Color(0xFFffffff), //60%
+      600: const Color(0xFFffffff), //70%
+      700: const Color(0xFFffffff), //80%
+      800: const Color(0xFFffffff), //90%
+      900: const Color(0xFFffffff), //100%
+    },
+  );
   static const MaterialColor appBrown = const MaterialColor(
     0xFF933433, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
     const <int, Color>{
