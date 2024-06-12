@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ResetPassword.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -68,7 +69,7 @@ class _AuthPageState extends State<AuthPage> {
                   child: ElevatedButton(
                     onPressed: () {},
                     child: Text(
-                      'Continue',
+                      'Login',
                       style: TextStyle(color: Colors.black),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -182,7 +183,12 @@ class _AuthPageState extends State<AuthPage> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResetPassword()));
+                        },
                         child: Text(
                           'Login',
                           style: const TextStyle(color: Colors.black),
