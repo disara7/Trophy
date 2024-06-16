@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trophy/navBar/navbar.dart';
+// import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/coinBank/coin_card.dart'; // Import CoinCard widget
-import 'package:trophy/themes/button_styles.dart'; // Import the new styles
+// import 'package:trophy/themes/button_styles.dart'; // Import the new styles
 import 'package:trophy/coinBank/counter.dart';
 
 import '../themes/color_palette.dart'; // Import the Counter widget
@@ -14,7 +14,7 @@ class CoinBank extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.all(10.0),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               color: Palette.appBrown,
             ),
@@ -25,7 +25,7 @@ class CoinBank extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('COIN BANK', style: TextStyle(color: Palette.appBrown)),
+        title: const Text('COIN BANK', style: TextStyle(color: Palette.appBrown)),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 50, 30, 5),
@@ -34,7 +34,7 @@ class CoinBank extends StatelessWidget {
           children: [
             Counter(count: 520), // Use the Counter widget
 
-            SizedBox(
+            const SizedBox(
                 height: 30), // Add some space between the counter and the grid
             Expanded(
               child: GridView.count(

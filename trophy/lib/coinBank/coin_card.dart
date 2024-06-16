@@ -19,7 +19,7 @@ class CoinCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.transparent,
       ),
       child: Stack(
@@ -36,14 +36,14 @@ class CoinCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 55,
                 ),
                 Expanded(
                   child: Center(
                     child: Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Palette.appBlack,
                       ),
@@ -54,13 +54,13 @@ class CoinCard extends StatelessWidget {
                 ElevatedButton(
                   onPressed: onPressed,
                   style: ButtonStyles.elevatedButtonStyle.copyWith(
-                    padding: MaterialStateProperty.all<EdgeInsets>(
-                      EdgeInsets.symmetric(vertical: 12),
+                    padding: WidgetStateProperty.all<EdgeInsets>(
+                      const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                   child: Text(
                     buttonText,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
               ],

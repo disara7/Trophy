@@ -11,7 +11,7 @@ class Counter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/countbg.png'), // Background image
           fit: BoxFit.cover,
@@ -25,10 +25,10 @@ class Counter extends StatelessWidget {
             width: 32,
             height: 32,
           ),
-          SizedBox(width: 13), // Add some space between coin icon and text
+          const SizedBox(width: 13), // Add some space between coin icon and text
           Text(
             '$count', // Display the count
-            style: TextStyle(
+            style: const TextStyle(
               color: Palette.appWhite,
               fontSize: 32,
               fontWeight: FontWeight.bold,

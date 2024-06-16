@@ -42,7 +42,7 @@ class _AuthPageState extends State<AuthPage> {
                   'Reset Password',
                   style: Theme.of(context)
                       .textTheme
-                      .headline2
+                      .displayMedium
                       ?.copyWith(color: Palette.appWhite),
                   textAlign: TextAlign.center,
                 ),
@@ -68,15 +68,15 @@ class _AuthPageState extends State<AuthPage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text(
-                      'Continue',
-                      style: TextStyle(color: Palette.appBlack),
-                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Palette.appOrange,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
+                    ),
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(color: Palette.appBlack),
                     ),
                   ),
                 ),
@@ -100,7 +100,7 @@ class _AuthPageState extends State<AuthPage> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: size.width,
                   height: size.height / 1.8,
                   child: FittedBox(
@@ -186,19 +186,19 @@ class _AuthPageState extends State<AuthPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {},
-                          child: Text(
-                            'Login',
-                            style: const TextStyle(color: Palette.appBlack),
-                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Palette.appOrange,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(color: Palette.appBlack),
+                          ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       )
                     ],
