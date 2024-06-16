@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_page_view_indicator: ^0.0.5
+  google_fonts: ^6.2.1
+  page_view_dot_indicator: ^2.3.0
+  page_view_indicators: ^2.0.0
   rive: ^0.13.5
 
 dev_dependencies:
@@ -22,3 +26,6 @@ flutter:
   assets:
     - assets/animated_icon_set_-_1_color.riv
     - assets/
+    - assets/coinbank/
+    - assets/coinbank/cb4.png
+
