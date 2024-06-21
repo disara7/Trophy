@@ -49,7 +49,7 @@ class _ResetPasswordState extends State<ResetPassword> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('Success'),
+              title: const Text('Successful'),
               content: const Text('Your password has been reset successfully.'),
               actions: [
                 TextButton(

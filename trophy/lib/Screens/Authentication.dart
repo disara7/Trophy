@@ -126,7 +126,7 @@ class _AuthPageState extends State<AuthPage> {
           ),
         );
       } else if (response.statusCode == 202) {
-        _showErrorDialog(context,'Successfull', 'You are successfully logged');
+        _showErrorDialog(context,'Successful', 'You are successfully logged');
       } else {
         // Handle failed login
         print('Failed to login (status code: ${response.statusCode})');
