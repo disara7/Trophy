@@ -119,31 +119,35 @@ class _AuthPageState extends State<AuthPage> {
         // Handle successful login
         Navigator.push(
           context,
-            MaterialPageRoute(
-              builder: (context) => ResetPassword(username: _usernameController.text), // Pass username here
-            ),
+          MaterialPageRoute(
+            builder: (context) =>
+                ResetPassword(
+                    username: _usernameController.text),
+          ),
         );
+      } else if (response.statusCode == 202) {
+        _showErrorDialog(context,'Successfull', 'You are successfully logged');
       } else {
         // Handle failed login
         print('Failed to login (status code: ${response.statusCode})');
-        _showErrorDialog(context, 'Login failed. Please check your credentials or try again later.');
+        _showErrorDialog(context, 'Error', 'Login failed. Please check your credentials or try again later.');
       }
     } on SocketException catch (e) {
       // Handle network errors
       print('Network error: $e');
-      _showErrorDialog(context, 'Connection error. Please check your network connection and try again.');
+      _showErrorDialog(context, 'Error', 'Connection error. Please check your network connection and try again.');
     } catch (e) {
       // Handle other exceptions
       print('Unexpected error: $e');
-      _showErrorDialog(context, 'An error occurred during login. Please try again later.');
+      _showErrorDialog(context, 'Error', 'An error occurred during login. Please try again later.');
     }
   }
-  void _showErrorDialog(BuildContext context, String message) {
+  void _showErrorDialog(BuildContext context,String title , String message) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Error'),
+          title: Text(title),
           content: Text(message),
           actions: [
             TextButton(
