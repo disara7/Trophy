@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:trophy/navBar/nav_item_model.dart';
-import 'package:trophy/Activities.dart';
+import 'package:trophy/Screens/activities.dart';
+import 'dart:async';
 
 const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);
 
@@ -18,12 +19,33 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<String> pages = const ["HOME", "MESSAGE", "NOTIFICATIONS", "SETTINGS"];
 
   void animateTheIcon(int index) {
-    // Your animation code here
+    for (var i = 0; i < bottomNavs.length; i++) {
+      if (bottomNavs[i].input != null) {
+        bottomNavs[i].input!.value = i == index;
+      }
+    }
+
+    // Stop the animation after 2 seconds (or any desired duration)
+    if (bottomNavs[index].input != null) {
+      Timer(const Duration(seconds: 2), () {
+        if (mounted) {
+          setState(() {
+            bottomNavs[index].input!.value = false;
+          });
+        }
+      });
+    }
   }
 
   void riveOnInit(Artboard artboard,
       {required String stateMachineName, required int index}) {
-    // Your Rive initialization code here
+    final controller =
+        StateMachineController.fromArtboard(artboard, stateMachineName);
+    if (controller != null) {
+      artboard.addController(controller);
+      bottomNavs[index].setInput =
+          controller.findInput<bool>('active') as SMIBool;
+    }
   }
 
   @override
