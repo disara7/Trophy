@@ -3,6 +3,7 @@ import 'package:rive/rive.dart';
 import 'package:trophy/navBar/nav_item_model.dart';
 import 'package:trophy/Screens/activities.dart';
 import 'package:trophy/Screens/hackathon.dart';
+import 'package:trophy/Screens/sports.dart';
 import 'dart:async';
 
 const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);
@@ -58,7 +59,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           Activities(),
           // Add other pages here based on your navigation
           Hackathon(),
-          Container(),
+          Sports(),
           Container(),
         ],
       ),
