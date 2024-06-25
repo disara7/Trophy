@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'ResetPassword.dart';
 import 'package:trophy/themes/color_palette.dart';
 
 class AuthPage extends StatefulWidget {
-  const AuthPage({Key? key}) : super(key: key);
+  const AuthPage({super.key});
 
   @override
   _AuthPageState createState() => _AuthPageState();

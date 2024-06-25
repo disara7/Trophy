@@ -8,12 +8,14 @@ class CoinCard extends StatelessWidget {
   final String title;
   final String buttonText;
   final String backgroundImage;
+  final VoidCallback onPressed;
 
-  CoinCard({
+  const CoinCard({
+    super.key,
     required this.title,
     required this.buttonText,
     required this.backgroundImage,
-    required Null Function() onPressed,
+    required this.onPressed,
   });
 
   @override
@@ -52,14 +54,9 @@ class CoinCard extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CoinsPage()),
-                    );
-                  },
+                  onPressed: onPressed,
                   style: ButtonStyles.elevatedButtonStyle.copyWith(
-                    padding: WidgetStateProperty.all<EdgeInsets>(
+                    padding: MaterialStateProperty.all<EdgeInsets>(
                       const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),

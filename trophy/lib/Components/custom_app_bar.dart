@@ -6,11 +6,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onBackPressed;
 
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.title,
     required this.coinCount,
     required this.onBackPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +19,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: onBackPressed,
         ),
         centerTitle: true,
         title: Center(
           child: Text(
             title,
-            style: TextStyle(fontSize: 20, color: Colors.black),
+            style: const TextStyle(fontSize: 20, color: Colors.black),
             textAlign: TextAlign.center,
           ),
         ),
@@ -44,17 +44,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   width: 40.0,
                   height: 40.0,
                 ),
-                SizedBox(width: 4.0),
+                const SizedBox(width: 4.0),
                 Text(
                   '$coinCount',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 16.0,
                     color: Color(0xFFF09C46),
                   ),
                 ),
-                SizedBox(width: 4.0),
-                Icon(
+                const SizedBox(width: 4.0),
+                const Icon(
                   Icons.account_circle,
                   size: 40.0,
                   color: Colors.black,
@@ -68,5 +68,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/coinBank/coin_card.dart'; // Import CoinCard widget
-import 'package:trophy/themes/button_styles.dart'; // Import the new styles
+// Import the new styles
 import 'package:trophy/coinBank/counter.dart'; // Import the Counter widget
 import 'package:trophy/coinBank/coins.dart'; // Import CoinsPage
 import 'package:trophy/coinBank/redeem.dart'; // Import RedeemPage
@@ -9,6 +8,8 @@ import 'package:trophy/coinBank/gift.dart'; // Import GiftPage
 import 'package:trophy/coinBank/spin.dart'; // Import SpinPage
 
 class CoinBank extends StatelessWidget {
+  const CoinBank({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +17,7 @@ class CoinBank extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.all(10.0),
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.brown,
             ),
@@ -27,15 +28,15 @@ class CoinBank extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('COIN BANK', style: TextStyle(color: Colors.brown)),
+        title: const Text('COIN BANK', style: TextStyle(color: Colors.brown)),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 50, 30, 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Counter(count: 520), // Use the Counter widget
-            SizedBox(
+            const Counter(count: 520), // Use the Counter widget
+            const SizedBox(
                 height: 30), // Add some space between the counter and the grid
             Expanded(
               child: GridView.count(
@@ -53,7 +54,7 @@ class CoinBank extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => CoinsPage()),
+                          MaterialPageRoute(builder: (context) => const CoinsPage()),
                         );
                       },
                       backgroundImage: 'assets/bg1.png',
@@ -69,7 +70,7 @@ class CoinBank extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => RedeemPage()),
+                          MaterialPageRoute(builder: (context) => const RedeemPage()),
                         );
                       },
                       backgroundImage: 'assets/bg2.png',
@@ -85,7 +86,7 @@ class CoinBank extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => GiftPage()),
+                          MaterialPageRoute(builder: (context) => const GiftPage()),
                         );
                       },
                       backgroundImage: 'assets/bg3.png',
@@ -101,7 +102,7 @@ class CoinBank extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SpinPage()),
+                          MaterialPageRoute(builder: (context) => const SpinPage()),
                         );
                       },
                       backgroundImage: 'assets/bg4.png',
