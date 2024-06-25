@@ -3,6 +3,10 @@ import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/coinBank/coin_card.dart'; // Import CoinCard widget
 import 'package:trophy/themes/button_styles.dart'; // Import the new styles
 import 'package:trophy/coinBank/counter.dart'; // Import the Counter widget
+import 'package:trophy/coinBank/coins.dart'; // Import CoinsPage
+import 'package:trophy/coinBank/redeem.dart'; // Import RedeemPage
+import 'package:trophy/coinBank/gift.dart'; // Import GiftPage
+import 'package:trophy/coinBank/spin.dart'; // Import SpinPage
 
 class CoinBank extends StatelessWidget {
   @override
@@ -31,7 +35,6 @@ class CoinBank extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Counter(count: 520), // Use the Counter widget
-
             SizedBox(
                 height: 30), // Add some space between the counter and the grid
             Expanded(
@@ -45,10 +48,13 @@ class CoinBank extends StatelessWidget {
                         0.8, // Adjust as needed
                     child: CoinCard(
                       title:
-                          'Take your mind off the workload and engage in different tasks to earn coins. ',
+                          'Take your mind off the workload and engage in different tasks to earn coins.',
                       buttonText: 'COINS',
                       onPressed: () {
-                        print('Coin 1 button pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CoinsPage()),
+                        );
                       },
                       backgroundImage: 'assets/bg1.png',
                     ),
@@ -58,10 +64,13 @@ class CoinBank extends StatelessWidget {
                         0.4, // Adjust as needed
                     child: CoinCard(
                       title:
-                          'Redeem the coins you’ve earned in the form of cash at checkouts. ',
+                          'Redeem the coins you’ve earned in the form of cash at checkouts.',
                       buttonText: 'REDEEM',
                       onPressed: () {
-                        print('Coin 2 button pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RedeemPage()),
+                        );
                       },
                       backgroundImage: 'assets/bg2.png',
                     ),
@@ -74,7 +83,10 @@ class CoinBank extends StatelessWidget {
                           'Use coins as a form of gift to your colleagues to appreciate and support them.',
                       buttonText: 'GIFT',
                       onPressed: () {
-                        print('Coin 3 button pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => GiftPage()),
+                        );
                       },
                       backgroundImage: 'assets/bg3.png',
                     ),
@@ -87,7 +99,10 @@ class CoinBank extends StatelessWidget {
                           'Let the lucky spinning wheel bring you more coins.',
                       buttonText: 'SPIN',
                       onPressed: () {
-                        print('Coin 4 button pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SpinPage()),
+                        );
                       },
                       backgroundImage: 'assets/bg4.png',
                     ),
