@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
       theme: TrophyTheme.lightTheme,
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: const RedeemPage(),
+      home: const IntroScreen(),
     );
   }
 }
