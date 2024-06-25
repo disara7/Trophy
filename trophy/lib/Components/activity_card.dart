@@ -6,7 +6,7 @@ class CustomCard extends StatelessWidget {
   final String imageUrl;
   final int coinCount;
 
-  CustomCard({
+  const CustomCard({super.key, 
     required this.title,
     required this.description,
     required this.imageUrl,
@@ -23,7 +23,7 @@ class CustomCard extends StatelessWidget {
           Container(
             width: 160,
             decoration: BoxDecoration(
-              color: Color.fromARGB(248, 245, 225, 210),
+              color: const Color.fromARGB(248, 245, 225, 210),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
@@ -36,21 +36,21 @@ class CustomCard extends StatelessWidget {
                     width: 80,
                     height: 80,
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: Color(0xFFFF09C46),
+                      color: Color(0xffff09c46),
                     ),
                   ),
                   Text(
                     description,
                     textAlign: TextAlign.center,
-                    style: TextStyle(height: 1.1, fontSize: 12),
+                    style: const TextStyle(height: 1.1, fontSize: 12),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Container(
                     width: 120,
                     height: 30,
@@ -58,11 +58,11 @@ class CustomCard extends StatelessWidget {
                       color: const Color(0xFF222222),
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'GOING',
                         style: TextStyle(
-                          color: Color(0xFFFF09C46),
+                          color: Color(0xffff09c46),
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
@@ -83,7 +83,7 @@ class CustomCard extends StatelessWidget {
                 color: const Color(0xFF222222),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Color(0xFFFFFFFF),
+                  color: const Color(0xFFFFFFFF),
                   width: 4,
                   strokeAlign: 1,
                 ),
@@ -99,8 +99,8 @@ class CustomCard extends StatelessWidget {
                   ),
                   Text(
                     '$coinCount',
-                    style: TextStyle(
-                      color: Color(0xFFFF09C46),
+                    style: const TextStyle(
+                      color: Color(0xffff09c46),
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),

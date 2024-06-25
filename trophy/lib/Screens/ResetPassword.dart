@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ResetPassword extends StatelessWidget {
+  const ResetPassword({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,12 +18,12 @@ class ResetPassword extends StatelessWidget {
                     'assets/catlap.png',
                     width: 300,
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   TextField(
                     obscureText: true, 
                     decoration: InputDecoration(
                       labelText: 'New Password',
-                      labelStyle: TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
@@ -32,12 +34,12 @@ class ResetPassword extends StatelessWidget {
                     ),
                     style: const TextStyle(color: Colors.black),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextField(
                     obscureText: true, 
                     decoration: InputDecoration(
                       labelText: 'Confirm Password',
-                      labelStyle: TextStyle(color: Colors.black),
+                      labelStyle: const TextStyle(color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
@@ -57,15 +59,15 @@ class ResetPassword extends StatelessWidget {
                         onPressed: () {
                        
                         },
-                        child: Text(
-                          'Continue',
-                          style: TextStyle(color: Colors.black),
-                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFF09C46),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
+                        ),
+                        child: const Text(
+                          'Continue',
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                     ),
