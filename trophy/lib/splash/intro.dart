@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:your_app_name/login.dart'; // Uncomment and update with your actual import
-import 'package:flutter_page_view_indicator/flutter_page_view_indicator.dart';
-import 'package:page_view_indicators/page_view_indicators.dart';
+// import 'package:flutter_page_view_indicator/flutter_page_view_indicator.dart';
+// import 'package:page_view_indicators/page_view_indicators.dart';
 import 'package:trophy/Screens/Authentication.dart';
+import 'package:trophy/themes/color_palette.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -34,7 +35,7 @@ class _IntroScreenState extends State<IntroScreen> {
     if (_currentPage < 3) {
       _pageController.animateToPage(
         ++_currentPage,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     } else {
@@ -45,7 +46,7 @@ class _IntroScreenState extends State<IntroScreen> {
   void _navigateToLogin() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => AuthPage()),
+      MaterialPageRoute(builder: (context) => const AuthPage()),
     );
   }
 
@@ -53,7 +54,7 @@ class _IntroScreenState extends State<IntroScreen> {
     if (_currentPage > 0) {
       _pageController.animateToPage(
         --_currentPage,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
@@ -62,14 +63,13 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(15.0), // Increase padding
           child: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
-              color: Colors.brown, // Change icon color to brown
+              color: Palette.appBrown, // Change icon color to brown
             ),
             onPressed: _goToPreviousPage,
           ),
@@ -113,7 +113,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             // Padding(
@@ -123,7 +123,7 @@ class _IntroScreenState extends State<IntroScreen> {
             //     length: 4, // Number of pages in the PageView
             //     normalBuilder: (animationController, index) => Circle(
             //       size: 8.0,
-            //       color: Colors.grey,
+            //       color: Palette.appGray,
             //     ),
             //     highlightedBuilder: (animationController, index) =>
             //         ScaleTransition(
@@ -133,12 +133,12 @@ class _IntroScreenState extends State<IntroScreen> {
             //       ),
             //       child: Circle(
             //         size: 10.0,
-            //         color: Colors.black,
+            //         color: Palette.appBlack,
             //       ),
             //     ),
             //   ),
             // ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -148,39 +148,39 @@ class _IntroScreenState extends State<IntroScreen> {
                   width: 100, // Set the width of the button
                   child: ElevatedButton(
                     onPressed: _navigateToLogin,
-                    child: Text(
-                      'SKIP',
-                      style: TextStyle(color: Colors.black),
-                    ),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                    ),
+                    child: const Text(
+                      'SKIP',
+                      style:  TextStyle(color: Palette.appBlack),
                     ),
                   ),
                 ),
-                SizedBox(width: 40), // Decreased width here
+                const SizedBox(width: 40), // Decreased width here
                 SizedBox(
                   width: 100, // Set the width of the button
                   child: ElevatedButton(
                     onPressed: _goToNextPage,
-                    child: Text(
-                      'NEXT',
-                      style: TextStyle(color: Colors.orange),
-                    ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: Palette.appBlack,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                    ),
+                    child: const Text(
+                      'NEXT',
+                      style: TextStyle(color: Palette.appOrange),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 70),
+            const SizedBox(height: 70),
           ],
         ),
       ),
@@ -196,27 +196,27 @@ class _IntroScreenState extends State<IntroScreen> {
           width: 200,
           height: 200,
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 117, 46, 5),
+              color: Palette.appBrown,
             ),
             textAlign: TextAlign.center,
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
             description,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
-              color: Colors.black54,
+              color: Palette.appBlack,
             ),
             textAlign: TextAlign.center,
           ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trophy/themes/button_styles.dart';
 import 'coins.dart'; // Import the CoinsPage widget
 
+import '../themes/color_palette.dart';
+
 class CoinCard extends StatelessWidget {
   final String title;
   final String buttonText;
@@ -17,7 +19,7 @@ class CoinCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.transparent,
       ),
       child: Stack(
@@ -34,16 +36,16 @@ class CoinCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 55,
                 ),
                 Expanded(
                   child: Center(
                     child: Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
-                        color: Colors.black,
+                        color: Palette.appBlack,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -57,13 +59,13 @@ class CoinCard extends StatelessWidget {
                     );
                   },
                   style: ButtonStyles.elevatedButtonStyle.copyWith(
-                    padding: MaterialStateProperty.all<EdgeInsets>(
-                      EdgeInsets.symmetric(vertical: 12),
+                    padding: WidgetStateProperty.all<EdgeInsets>(
+                      const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                   child: Text(
                     buttonText,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
               ],
