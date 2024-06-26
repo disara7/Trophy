@@ -6,6 +6,8 @@ import 'package:trophy/Screens/Authentication.dart';
 import 'package:trophy/themes/color_palette.dart';
 
 class IntroScreen extends StatefulWidget {
+  const IntroScreen({super.key});
+
   @override
   _IntroScreenState createState() => _IntroScreenState();
 }

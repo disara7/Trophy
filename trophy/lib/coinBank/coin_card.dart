@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/themes/button_styles.dart';
+import 'coins.dart'; // Import the CoinsPage widget
 
 import '../themes/color_palette.dart';
 
 class CoinCard extends StatelessWidget {
   final String title;
   final String buttonText;
-  final VoidCallback onPressed;
   final String backgroundImage;
+  final VoidCallback onPressed;
 
-  CoinCard({
+  const CoinCard({
+    super.key,
     required this.title,
     required this.buttonText,
-    required this.onPressed,
     required this.backgroundImage,
+    required this.onPressed,
   });
 
   @override
@@ -54,7 +56,7 @@ class CoinCard extends StatelessWidget {
                 ElevatedButton(
                   onPressed: onPressed,
                   style: ButtonStyles.elevatedButtonStyle.copyWith(
-                    padding: WidgetStateProperty.all<EdgeInsets>(
+                    padding: MaterialStateProperty.all<EdgeInsets>(
                       const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),

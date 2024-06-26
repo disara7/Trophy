@@ -4,6 +4,8 @@ import 'package:trophy/splash/intro.dart';
 import '../themes/color_palette.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -21,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-          builder: (context) => IntroScreen()), // Replace with your main screen
+          builder: (context) => const IntroScreen()), // Replace with your main screen
     );
   }
 

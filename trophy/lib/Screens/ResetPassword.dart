@@ -67,6 +67,10 @@ class _ResetPasswordState extends State<ResetPassword> {
     }
   }
 
+class ResetPassword extends StatelessWidget {
+  const ResetPassword({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +78,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         child: Padding(
           padding: const EdgeInsets.all(40.0),
           child: SingleChildScrollView(
+
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -94,8 +99,13 @@ class _ResetPasswordState extends State<ResetPassword> {
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Color(0xFFF09C46)),
                       borderRadius: BorderRadius.circular(12.0),
+
+            
+                      ),
+
                     ),
                   ),
+
                   style: const TextStyle(color: Colors.black),
                 ),
                 const SizedBox(height: 20),
@@ -111,8 +121,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Color(0xFFF09C46)),
                       borderRadius: BorderRadius.circular(12.0),
+
                     ),
                   ),
+
                   style: const TextStyle(color: Colors.black),
                 ),
                 const SizedBox(height: 60),
@@ -128,6 +140,11 @@ class _ResetPasswordState extends State<ResetPassword> {
                         backgroundColor: const Color(0xFFF09C46),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
+
+                        ),
+                        child: const Text(
+                          'Continue',
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       child: const Text(
