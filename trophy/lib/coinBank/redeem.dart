@@ -81,6 +81,32 @@ class _RedeemPageState extends State<RedeemPage> {
                       ),
                     ),
                     SizedBox(height: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 350,
+                          child: Counter(count: 520),
+                        ),
+                        SizedBox(height: 20), // Adjust space as needed
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Select Amount to Redeem',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        AmountSelector(
+                          initialAmount: amount,
+                          onAmountChanged: _onAmountChanged,
+                          onRedeem: _onRedeem,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
