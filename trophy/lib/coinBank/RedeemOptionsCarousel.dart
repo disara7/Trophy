@@ -9,19 +9,19 @@ class RedeemOptionsCarousel extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: CarouselSlider(
         options: CarouselOptions(
-          height: 160.0, // Adjusted height of the CarouselSlider
+          height: 120.0, // Adjusted height of the CarouselSlider
           autoPlay: false,
           enlargeCenterPage: true,
         ),
         items: [
           {
             'image': 'assets/canteen.png',
-            'title': 'Canteen',
+            'title': 'CANTEEN',
             'description': 'Enjoy a meal at the cafeteria.',
           },
           {
             'image': 'assets/parking.png',
-            'title': 'Parking',
+            'title': 'PARKING',
             'description': 'Redeem for a parking spot.',
           },
           {
@@ -50,33 +50,36 @@ class RedeemOptionsCarousel extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.0),
                   image: DecorationImage(
                     image: AssetImage(item['image']!),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item['title']!,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    width: 100,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item['description']!,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        item['description']!,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                        SizedBox(height: 8),
+                        Text(
+                          item['title']!,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.orange,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );
