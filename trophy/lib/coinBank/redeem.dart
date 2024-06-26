@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
+import 'package:trophy/coinBank/counter.dart';
 
 class RedeemPage extends StatelessWidget {
-  const RedeemPage({super.key});
+  const RedeemPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +23,18 @@ class RedeemPage extends StatelessWidget {
                 top: 40,
                 child: Image.asset(
                   'assets/redeemcat.png',
-                  width: 350,
+                  width: 360,
                   // height: 250, // Adjust image height
                 ),
               ),
               Positioned(
-                left: 120,
+                left: 115,
                 top: 60,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 220, // Set the desired width
+                      width: 230, // Set the desired width
                       child: RichText(
                         text: TextSpan(
                           style: TextStyle(
@@ -58,8 +61,25 @@ class RedeemPage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
                   ],
                 ),
+              ),
+              // Positioned(
+              //   left: 0,
+              //   top: 140,
+              //   child:
+              //       RedeemOptionsCarousel(), // Adjust carousel position as needed
+              // ),
+              Positioned(
+                left: 0,
+                top: 350,
+                child: Container(
+                  width: 350,
+                  child: Counter(count: 520),
+                ), // Adjust carousel position as needed
               ),
             ],
           ),
