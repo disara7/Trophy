@@ -66,10 +66,6 @@ class _ResetPasswordState extends State<ResetPassword> {
     }
   }
 
-class ResetPassword extends StatelessWidget {
-  const ResetPassword({super.key});
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +73,6 @@ class ResetPassword extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(40.0),
           child: SingleChildScrollView(
-
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -98,13 +93,8 @@ class ResetPassword extends StatelessWidget {
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Color(0xFFF09C46)),
                       borderRadius: BorderRadius.circular(12.0),
-
-            
-                      ),
-
                     ),
                   ),
-
                   style: const TextStyle(color: Colors.black),
                 ),
                 const SizedBox(height: 20),
@@ -120,36 +110,27 @@ class ResetPassword extends StatelessWidget {
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Color(0xFFF09C46)),
                       borderRadius: BorderRadius.circular(12.0),
-
                     ),
                   ),
-
                   style: const TextStyle(color: Colors.black),
                 ),
                 const SizedBox(height: 60),
                 SizedBox(
                   width: double.infinity,
-                  child: SizedBox(
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _verifyPasswords();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFF09C46),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-
-                        ),
-                        child: const Text(
-                          'Continue',
-                          style: TextStyle(color: Colors.black),
-                        ),
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _verifyPasswords();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFF09C46),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: const Text(
-                        'Continue',
-                        style: TextStyle(color: Colors.black),
-                      ),
+                    ),
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),

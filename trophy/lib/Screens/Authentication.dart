@@ -5,6 +5,8 @@ import 'package:trophy/themes/color_palette.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'ResetPassword.dart';
+
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
