@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
+import 'package:trophy/coinBank/amount_selector.dart';
 import 'package:trophy/coinBank/counter.dart';
 
-class RedeemPage extends StatelessWidget {
+class RedeemPage extends StatefulWidget {
   const RedeemPage({Key? key}) : super(key: key);
+
+  @override
+  _RedeemPageState createState() => _RedeemPageState();
+}
+
+class _RedeemPageState extends State<RedeemPage> {
+  int amount = 0;
+
+  void _onAmountChanged(int newAmount) {
+    setState(() {
+      amount = newAmount;
+    });
+  }
+
+  void _onRedeem() {
+    // Add your redeem action here
+    print('Redeem $amount coins');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +80,7 @@ class RedeemPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),
@@ -76,10 +93,32 @@ class RedeemPage extends StatelessWidget {
               Positioned(
                 left: 0,
                 top: 350,
-                child: Container(
-                  width: 350,
-                  child: Counter(count: 520),
-                ), // Adjust carousel position as needed
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 350,
+                      child: Counter(count: 520),
+                    ),
+                    SizedBox(height: 20), // Adjust space as needed
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Select Amount to Redeem',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    AmountSelector(
+                      initialAmount: amount,
+                      onAmountChanged: _onAmountChanged,
+                      onRedeem: _onRedeem,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
