@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Screens/activitiesdetailspage.dart';
 
 class CustomCard extends StatelessWidget {
   final String title;
   final String description;
   final String imageUrl;
   final int coinCount;
+  final String activitiesdetails;
+  final String activitiesmainimgUrl;
+  final String activitydate;
+  final String activitytime;
+  final String activityvenue;
 
   const CustomCard({super.key, 
     required this.title,
     required this.description,
     required this.imageUrl,
     required this.coinCount,
+    required this.activitiesdetails,
+    required this.activitiesmainimgUrl,
+    required this.activitydate,
+    required this.activitytime,
+    required this.activityvenue,
   });
 
   @override
@@ -50,21 +61,42 @@ class CustomCard extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(height: 1.1, fontSize: 12),
                   ),
-                  const SizedBox(height: 10),
-                  Container(
-                    width: 120,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF222222),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'GOING',
-                        style: TextStyle(
-                          color: Color(0xffff09c46),
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Activitiesdetailspage(
+                            title: title,
+                            description: description,
+                            coinCount: coinCount,
+                            activitiesdetails: activitiesdetails,
+                            activitiesmainimgUrl: activitiesmainimgUrl,
+                            activitydate: activitydate,
+                            activitytime: activitytime,
+                            activityvenue: activityvenue,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 120,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF222222),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'GOING',
+                          style: TextStyle(
+                            color: Color(0xFFFF09C46),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+
                         ),
                       ),
                     ),
