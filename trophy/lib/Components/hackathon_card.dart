@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Screens/hackathondetailspage.dart';
 
 class CustomHackCard extends StatelessWidget {
   final String hacktitle;
   final String hackdescription;
   final String hackimageUrl;
   final int hackcoinCount;
+  final String hackathondetails;
+  final String hackathonmainimgUrl;
 
   CustomHackCard({
     required this.hacktitle,
     required this.hackdescription,
     required this.hackimageUrl,
     required this.hackcoinCount,
+    required this.hackathondetails,
+    required this.hackathonmainimgUrl,
   });
 
   @override
@@ -28,7 +33,11 @@ class CustomHackCard extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 40, bottom: 20, left: 12, right: 12),
+                top: 40,
+                bottom: 20,
+                left: 12,
+                right: 12,
+              ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -67,20 +76,37 @@ class CustomHackCard extends StatelessWidget {
                         SizedBox(height: 10),
                         Row(
                           children: [
-                            Container(
-                              width: 90,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFFF09C46),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'DETAILS',
-                                  style: TextStyle(
-                                    color: const Color(0xFF222222),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                            GestureDetector(
+                              onTap: () {
+                                // Navigate to Hackathon Details page
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Hackathondetailspage(
+                                      hacktitle: hacktitle,
+                                      hackcoinCount: hackcoinCount,
+                                      hackdescription: hackdescription,
+                                      hackathondetails: hackathondetails,
+                                      hackathonmainimgUrl: hackathonmainimgUrl,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                width: 90,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFFF09C46),
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'DETAILS',
+                                    style: TextStyle(
+                                      color: const Color(0xFF222222),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),

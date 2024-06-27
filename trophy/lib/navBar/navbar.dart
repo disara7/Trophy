@@ -4,6 +4,7 @@ import 'package:trophy/navBar/nav_item_model.dart';
 import 'package:trophy/Screens/activities.dart';
 import 'package:trophy/Screens/hackathon.dart';
 import 'package:trophy/Screens/sports.dart';
+import 'package:trophy/Screens/community.dart';
 import 'dart:async';
 
 const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);
@@ -56,11 +57,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: IndexedStack(
         index: selectNavIndex,
         children: [
-          Activities(),
-          // Add other pages here based on your navigation
-          Hackathon(),
-          Sports(),
+        
           Container(),
+           Container(),
+            Container(),
+             Container(),
+          
         ],
       ),
       bottomNavigationBar: SafeArea(

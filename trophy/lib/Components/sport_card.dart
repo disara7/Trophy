@@ -5,16 +5,23 @@ class CustomCard extends StatelessWidget {
   final String sportdescription;
   final String sportimageUrl;
   final int sportcoinCount;
+  final String type;
 
   CustomCard({
     required this.sporttitle,
     required this.sportdescription,
     required this.sportimageUrl,
     required this.sportcoinCount,
+    required this.type,
   });
 
   @override
   Widget build(BuildContext context) {
+    // Set background color based on type
+    final cardColor = type == 'club'
+        ? Color(0xFFF3B679) // Color for clubs
+        : Color.fromARGB(248, 245, 225, 210); // Default color for other types
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Stack(
@@ -23,7 +30,7 @@ class CustomCard extends StatelessWidget {
           Container(
             width: 160,
             decoration: BoxDecoration(
-              color: Color.fromARGB(248, 245, 225, 210),
+              color: cardColor, // Use the conditional color
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
@@ -33,15 +40,16 @@ class CustomCard extends StatelessWidget {
                 children: [
                   Image.asset(
                     sportimageUrl,
-                    width: 40,
-                    height: 40,
+                    width: 30,
+                    height: 30,
                   ),
                   SizedBox(height: 4),
                   Text(
                     sporttitle,
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontWeight: FontWeight.w800,
+                      height: -4,
+                      fontSize: 14,
                       color: Color(0xFF222222),
                     ),
                   ),

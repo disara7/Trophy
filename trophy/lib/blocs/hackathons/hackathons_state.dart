@@ -5,12 +5,16 @@ class Hackathon {
   final String hackdescription;
   final String hackimageUrl;
   final int hackcoinCount;
+  final String hackathondetails;
+  final String hackathonmainimgUrl;
 
   Hackathon({
     required this.hacktitle,
     required this.hackdescription,
     required this.hackimageUrl,
     required this.hackcoinCount,
+    required this.hackathondetails,
+    required this.hackathonmainimgUrl,
   });
 }
 

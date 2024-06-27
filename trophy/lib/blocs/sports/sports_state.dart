@@ -5,13 +5,18 @@ class Sport {
   final String sportdescription;
   final String sportimageUrl;
   final int sportcoinCount;
+  final String type;
+  final String sportdetails;
+  final String sportmainimgUrl;
 
-  Sport({
-    required this.sporttitle,
-    required this.sportdescription,
-    required this.sportimageUrl,
-    required this.sportcoinCount,
-  });
+  Sport(
+      {required this.sporttitle,
+      required this.sportdescription,
+      required this.sportimageUrl,
+      required this.sportcoinCount,
+      required this.type,
+      required this.sportdetails,
+      required this.sportmainimgUrl});
 }
 
 abstract class SportsState extends Equatable {

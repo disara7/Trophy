@@ -33,7 +33,7 @@ class Hackathon extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Participate in Hackathons to earn coins. You are free to choose hackathons that interest  you out of the variety given below.',
+                        'Participate in Hackathons to earn coins. You are free to choose hackathons that interest you out of the variety given below.',
                         style: TextStyle(fontSize: 16.0),
                         textAlign: TextAlign.justify,
                       ),
@@ -41,13 +41,17 @@ class Hackathon extends StatelessWidget {
                     SizedBox(height: 20),
                     Wrap(
                       alignment: WrapAlignment.spaceEvenly,
-                      children: state.hackathons.map((activity) {
-                        print('Hackathon: ${activity.hacktitle}');
-                        return CustomHackCard(
-                          hacktitle: activity.hacktitle,
-                          hackdescription: activity.hackdescription,
-                          hackimageUrl: activity.hackimageUrl,
-                          hackcoinCount: activity.hackcoinCount,
+                      children: state.hackathons.map((hackathon) {
+                        print('Hackathon: ${hackathon.hacktitle}');
+                        return GestureDetector(
+                          child: CustomHackCard(
+                            hacktitle: hackathon.hacktitle,
+                            hackdescription: hackathon.hackdescription,
+                            hackimageUrl: hackathon.hackimageUrl,
+                            hackcoinCount: hackathon.hackcoinCount,
+                            hackathondetails: hackathon.hackathondetails,
+                            hackathonmainimgUrl: hackathon.hackathonmainimgUrl,
+                          ),
                         );
                       }).toList(),
                     ),
