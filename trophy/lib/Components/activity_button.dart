@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget customIconButton(String text, IconData iconData, {double iconSize = 40.0, VoidCallback? onPressed}) {
+Widget customIconButton(String text, String iconData, {double iconSize = 30.0, VoidCallback? onPressed}) {
   return Expanded(
     child: ElevatedButton(
       onPressed: onPressed,
@@ -15,12 +15,11 @@ Widget customIconButton(String text, IconData iconData, {double iconSize = 40.0,
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
+          Image.asset(
             iconData,
-            color: const Color(0xb3f09c46),
-            size: iconSize,
+            width: iconSize
           ),
-          const SizedBox(height: 2.0),
+          const SizedBox(height: 5.0),
           Text(
             text,
             style: const TextStyle(color: Color(0xffF09C46)),

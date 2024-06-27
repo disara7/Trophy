@@ -169,7 +169,7 @@ class _HomeState extends State<Home> {
                     children: [
                       customIconButton(
                         'Carpool',
-                        Icons.directions_car_rounded,
+                        'assets/activity1.png',
                         onPressed: () {
 
                         },
@@ -177,7 +177,7 @@ class _HomeState extends State<Home> {
                       const SizedBox(width: 5.0),
                       customIconButton(
                         'Activities',
-                        Icons.theater_comedy_sharp,
+                        'assets/activity2.png',
                         onPressed: () {
 
                         },
@@ -185,7 +185,7 @@ class _HomeState extends State<Home> {
                       const SizedBox(width: 5.0),
                       customIconButton(
                         'Hackathons',
-                        Icons.laptop,
+                        'assets/activity3.png',
                         onPressed: () {
 
                         },
@@ -198,7 +198,8 @@ class _HomeState extends State<Home> {
                     children: [
                       customIconButton(
                         'Blog',
-                        Icons.library_books,
+                        'assets/activity4.png',
+                        iconSize: 27.0,
                         onPressed: () {
 
                         },
@@ -206,7 +207,7 @@ class _HomeState extends State<Home> {
                       const SizedBox(width: 5.0),
                       customIconButton(
                         'Sports',
-                        Icons.sports_football,
+                        'assets/activity5.png',
                         onPressed: () {
 
                         },
@@ -214,7 +215,7 @@ class _HomeState extends State<Home> {
                       const SizedBox(width: 5.0),
                       customIconButton(
                         'Therapy',
-                        Icons.healing,
+                        'assets/activity6.png',
                         onPressed: () {
 
                         },
@@ -229,7 +230,7 @@ class _HomeState extends State<Home> {
 
           // Coin bank and Trophy ladder Buttons
           Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0, top: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -241,12 +242,12 @@ class _HomeState extends State<Home> {
 
                   },
                 ),
-                const SizedBox(width: 10.0),
-                customButton(
+                const SizedBox(width: 20.0),
+                trophyButton(
                   const Color(0xff131212),
                   const Color(0xffE28C43),
                   'TROPHY LADDER',
-                     () {
+                      () {
 
                   },
                 ),
