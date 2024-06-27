@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/themes/button_styles.dart';
-import 'coins.dart'; // Import the CoinsPage widget
+// Import the CoinsPage widget
 
 import '../themes/color_palette.dart';
 
@@ -16,6 +16,7 @@ class CoinCard extends StatelessWidget {
     required this.buttonText,
     required this.backgroundImage,
     required this.onPressed,
+    required BoxFit fit,
   });
 
   @override
