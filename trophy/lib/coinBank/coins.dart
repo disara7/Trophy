@@ -1,32 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:trophy/navBar/navbar.dart';
 import 'earn_coins_section.dart'; // Import the new Dart file
-import 'package:trophy/navBar/navbar.dart'; // Import the navbar.dart file
-// import 'activities.dart'; // Import your other screens here
 
-class CoinsPage extends StatefulWidget {
+class CoinsPage extends StatelessWidget {
   const CoinsPage({super.key});
-
-  @override
-  State<CoinsPage> createState() => _CoinsPageState();
-}
-
-class _CoinsPageState extends State<CoinsPage> {
-  int selectedIndex = 0;
-
-  final List<Widget> pages = [
-    const CoinsPageContent(), // Define this content separately
-    // const Activities(),
-    // Add other pages here
-    Container(color: Colors.blue), // Placeholder for other pages
-    Container(color: Colors.green), // Placeholder for other pages
-  ];
-
-  void onItemSelected(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +10,7 @@ class _CoinsPageState extends State<CoinsPage> {
       appBar: AppBar(
         title: const Text('COINS'),
       ),
-      body: IndexedStack(
-        index: selectedIndex,
-        children: pages,
-      ),
-      bottomNavigationBar: BottomNavBar(onItemSelected: onItemSelected),
+      body: const CoinsPageContent(),
     );
   }
 }
@@ -65,7 +37,7 @@ class CoinsPageContent extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 alignment: Alignment.centerLeft,
                 child: const Text(
-                  'Collect coins as you engage in extra curricular activities, and climb the trophy ladder to become the coolest employee of the bunch!',
+                  'Collect coins as you engage in extracurricular activities, and climb the trophy ladder to become the coolest employee of the bunch!',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 12, // Adjust the font size here
@@ -101,7 +73,7 @@ class CoinsPageContent extends StatelessWidget {
                     ),
                     SizedBox(height: 8), // Add space between texts
                     Text(
-                      'Take your mind off the workload and engage in different tasks to earn coins. ',
+                      'Take your mind off the workload and engage in different tasks to earn coins.',
                       style: TextStyle(
                         color: Colors.black, // Set the text color to black
                       ),

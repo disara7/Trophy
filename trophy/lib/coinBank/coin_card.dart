@@ -16,6 +16,7 @@ class CoinCard extends StatelessWidget {
     required this.buttonText,
     required this.backgroundImage,
     required this.onPressed,
+    required BoxFit fit,
   });
 
   @override
