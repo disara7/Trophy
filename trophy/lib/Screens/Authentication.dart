@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:trophy/Screens/home.dart';
 import 'package:trophy/themes/color_palette.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'ResetPassword.dart';
+
 
 
 class AuthPage extends StatefulWidget {
@@ -126,7 +128,12 @@ class _AuthPageState extends State<AuthPage> {
           ),
         );
       } else if (response.statusCode == 202) {
-        _showErrorDialog(context,'Successful', 'You are successfully logged');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Home(),
+          )
+        );
       } else {
         // Handle failed login
         print('Failed to login (status code: ${response.statusCode})');
