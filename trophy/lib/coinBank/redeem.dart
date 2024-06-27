@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
 import 'package:trophy/coinBank/amount_selector.dart';
 import 'package:trophy/coinBank/counter.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class RedeemPage extends StatefulWidget {
   const RedeemPage({super.key});
