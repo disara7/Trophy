@@ -48,6 +48,11 @@ class Activities extends StatelessWidget {
                           description: activity.description,
                           imageUrl: activity.imageUrl,
                           coinCount: activity.coinCount,
+                          activitiesdetails: activity.activitiesdetails,
+                          activitiesmainimgUrl: activity.activitiesmainimgUrl,
+                          activitydate: activity.activitydate,
+                          activitytime: activity.activitytime,
+                          activityvenue: activity.activityvenue,
                         );
                       }).toList(),
                     ),
