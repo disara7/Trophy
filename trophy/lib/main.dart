@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Screens/activities.dart';
+import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
 import 'package:trophy/coinBank/coinbank.dart';
+import 'package:trophy/coinBank/coins.dart';
+import 'package:trophy/coinBank/gift.dart';
 import 'package:trophy/coinBank/redeem.dart';
 // import 'package:trophy/coinBank/coinbank.dart';
 // import 'package:trophy/navBar/navbar.dart';
@@ -23,7 +26,9 @@ class MainApp extends StatelessWidget {
       theme: TrophyTheme.lightTheme,
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
+
       home: IntroScreen(),
+
     );
   }
 }
