@@ -5,7 +5,7 @@ import '../themes/color_palette.dart';
 class Counter extends StatelessWidget {
   final int count;
 
-  Counter({required this.count});
+  const Counter({super.key, required this.count});
 
   @override
   Widget build(BuildContext context) {

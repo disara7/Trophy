@@ -10,7 +10,7 @@ import 'dart:async';
 const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({super.key});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -57,7 +57,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: IndexedStack(
         index: selectNavIndex,
         children: [
-        
+
           Container(),
            Container(),
             Container(),
@@ -131,9 +131,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
 class AnimatedBar extends StatelessWidget {
   const AnimatedBar({
-    Key? key,
+    super.key,
     required this.isActive,
-  }) : super(key: key);
+  });
 
   final bool isActive;
 
