@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'earn_coins_section.dart'; // Import the new Dart file
 
 class CoinsPage extends StatelessWidget {
-  const CoinsPage({Key? key}) : super(key: key);
+  const CoinsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class CoinsPage extends StatelessWidget {
                 const SizedBox(height: 15),
 
                 // Use the new widget here
-                EarnCoinsSection(),
+                const EarnCoinsSection(),
 
                 const SizedBox(height: 10), // Add some space between sections
 
@@ -49,10 +49,10 @@ class CoinsPage extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(
                       16.0), // Add padding inside the container
-                  child: Column(
+                  child: const Column(
                     crossAxisAlignment:
                         CrossAxisAlignment.start, // Align text to the left
-                    children: const [
+                    children: [
                       Text(
                         'Redeeming Coins',
                         style: TextStyle(

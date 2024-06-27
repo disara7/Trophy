@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/themes/button_styles.dart';
-import 'coins.dart'; // Import the CoinsPage widget
+// Import the CoinsPage widget
 
 import '../themes/color_palette.dart';
 

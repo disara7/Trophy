@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
 import 'package:trophy/coinBank/amount_selector.dart';
 import 'package:trophy/coinBank/counter.dart';
 
 class RedeemPage extends StatefulWidget {
-  const RedeemPage({Key? key}) : super(key: key);
+  const RedeemPage({super.key});
 
   @override
   _RedeemPageState createState() => _RedeemPageState();
@@ -34,7 +33,8 @@ class _RedeemPageState extends State<RedeemPage> {
       body: Center(
         child: Container(
           width: 350, // Set width as needed
-          padding: EdgeInsets.all(0.0), // Add padding inside the container
+          padding:
+              const EdgeInsets.all(0.0), // Add padding inside the container
           child: Stack(
             children: [
               Positioned(
@@ -52,10 +52,10 @@ class _RedeemPageState extends State<RedeemPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 230, // Set the desired width
                       child: RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
@@ -80,54 +80,28 @@ class _RedeemPageState extends State<RedeemPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 350,
-                          child: Counter(count: 520),
-                        ),
-                        SizedBox(height: 20), // Adjust space as needed
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Select Amount to Redeem',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        AmountSelector(
-                          initialAmount: amount,
-                          onAmountChanged: _onAmountChanged,
-                          onRedeem: _onRedeem,
-                        ),
-                      ],
-                    ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
-              // Positioned(
-              //   left: 0,
-              //   top: 140,
-              //   child:
-              //       RedeemOptionsCarousel(), // Adjust carousel position as needed
-              // ),
+              Positioned(
+                left: 0,
+                top: 140,
+                child:
+                    RedeemOptionsCarousel(), // Adjust carousel position as needed
+              ),
               Positioned(
                 left: 0,
                 top: 350,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
+                    const SizedBox(
                       width: 350,
                       child: Counter(count: 520),
                     ),
-                    SizedBox(height: 20), // Adjust space as needed
-                    Align(
+                    const SizedBox(height: 20), // Adjust space as needed
+                    const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Select Amount to Redeem',
@@ -137,13 +111,58 @@ class _RedeemPageState extends State<RedeemPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     AmountSelector(
                       initialAmount: amount,
                       onAmountChanged: _onAmountChanged,
                       onRedeem: _onRedeem,
                     ),
                   ],
+                ),
+              ),
+              // Add the new black box here
+              Positioned(
+                left: 0,
+                top: 500, // Adjust the position as needed
+                child: Container(
+                  width: 350,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'First Orange Text',
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'Second Orange Text',
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/cb1.png', // Replace with your image path
+                        width: 50, // Adjust width as needed
+                        height: 50, // Adjust height as needed
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

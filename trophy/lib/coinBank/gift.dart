@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trophy/coinBank/amount_selector.dart';
 
 class GiftPage extends StatelessWidget {
-  const GiftPage({Key? key}) : super(key: key);
+  const GiftPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class GiftPage extends StatelessWidget {
           children: [
             // Your background image or decoration
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/sendbg.png'),
                   fit: BoxFit.contain,
@@ -29,7 +29,7 @@ class GiftPage extends StatelessWidget {
               left: 20,
               right: 20,
               child: RichText(
-                text: TextSpan(
+                text: const TextSpan(
                   text:
                       'Use coins as a form of gift to your colleagues to appreciate and support them.',
                   style: TextStyle(

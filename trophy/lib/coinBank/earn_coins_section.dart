@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EarnCoinsSection extends StatelessWidget {
-  const EarnCoinsSection({Key? key}) : super(key: key);
+  const EarnCoinsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class EarnCoinsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
         children: [
-          Text(
+          const Text(
             'How to Earn Coins',
             style: TextStyle(
               color: Colors.black, // Set the text color to black
@@ -23,7 +23,7 @@ class EarnCoinsSection extends StatelessWidget {
               fontSize: 13, // Increase font size
             ),
           ),
-          SizedBox(height: 8), // Add space below the title
+          const SizedBox(height: 8), // Add space below the title
 
           // Grid of cards
           GridView.count(
@@ -31,7 +31,7 @@ class EarnCoinsSection extends StatelessWidget {
             crossAxisSpacing: 10.0, // Spacing between columns
             mainAxisSpacing: 10.0, // Spacing between rows
             shrinkWrap: true, // To wrap content inside the grid
-            physics: NeverScrollableScrollPhysics(), // Disable grid scrolling
+            physics: const NeverScrollableScrollPhysics(), // Disable grid scrolling
             children: [
               _buildCard('assets/activity1.png', 'Carpool'),
               _buildCard('assets/activity2.png', 'Activities'),
@@ -62,10 +62,10 @@ Widget _buildCard(String imagePath, String title) {
           imagePath,
           height: 80, // Adjust image height as needed
         ),
-        SizedBox(height: 8), // Space between image and text
+        const SizedBox(height: 8), // Space between image and text
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.orange, // Set the text color to orange
             fontWeight: FontWeight.bold,
             fontSize: 12,

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class RedeemOptionsCarousel extends StatelessWidget {
+  const RedeemOptionsCarousel({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 180.0, // Adjusted height of the Container
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: CarouselSlider(
         options: CarouselOptions(
           height: 120.0, // Adjusted height of the CarouselSlider
@@ -45,7 +47,7 @@ class RedeemOptionsCarousel extends StatelessWidget {
               return Container(
                 width:
                     MediaQuery.of(context).size.width * 0.8, // Adjusted width
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                margin: const EdgeInsets.symmetric(horizontal: 5.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0),
                   image: DecorationImage(
@@ -63,16 +65,16 @@ class RedeemOptionsCarousel extends StatelessWidget {
                       children: [
                         Text(
                           item['description']!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(
                           item['title']!,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange,
