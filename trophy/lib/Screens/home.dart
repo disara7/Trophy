@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Components/activity_button.dart';
 import 'package:trophy/Components/button.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -255,8 +256,8 @@ class _HomeState extends State<Home> {
             ),
           ),
         ],
-      )
-      ,backgroundColor: const Color(0xffFDFEFF),
+      ),
+      backgroundColor: const Color(0xffFDFEFF),
     );
   }
 }

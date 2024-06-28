@@ -10,7 +10,7 @@ import 'dart:async';
 const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({super.key, required void Function(int index) onItemSelected});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -62,7 +62,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
            Container(),
             Container(),
              Container(),
-          
+
         ],
       ),
       bottomNavigationBar: SafeArea(
