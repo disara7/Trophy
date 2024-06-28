@@ -85,12 +85,12 @@ class _RedeemPageState extends State<RedeemPage> {
                   ],
                 ),
               ),
-              Positioned(
-                left: 0,
-                top: 140,
-                child:
-                    RedeemOptionsCarousel(), // Adjust carousel position as needed
-              ),
+              // Positioned(
+              //   left: 0,
+              //   top: 140,
+              //   child:
+              //       RedeemOptionsCarousel(), // Adjust carousel position as needed
+              // ),
               Positioned(
                 left: 0,
                 top: 350,

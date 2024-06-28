@@ -3,6 +3,8 @@ import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'dart:math';
 import 'dart:async';
 
+import 'package:trophy/themes/color_palette.dart';
+
 class SpinPage extends StatefulWidget {
   const SpinPage({Key? key}) : super(key: key);
 
@@ -146,7 +148,15 @@ class _SpinPageState extends State<SpinPage> {
                   const SizedBox(height: 70),
                   ElevatedButton(
                     onPressed: _spinWheel,
-                    child: const Text('Spin the Wheel'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Palette.appOrange,
+                      backgroundColor: Palette.appBlack,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            10.0), // Adjust the radius as needed
+                      ),
+                    ),
+                    child: const Text('SPIN THE WHEEL'),
                   ),
                 ],
               ),

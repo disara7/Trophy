@@ -62,7 +62,7 @@ class CoinBank extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const RedeemPage()),
+                                builder: (context) => RedeemPage()),
                           );
                         },
                       ),
