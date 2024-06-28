@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../themes/color_palette.dart';
 
 class AmountSelector extends StatefulWidget {
   final int initialAmount;
@@ -7,11 +6,11 @@ class AmountSelector extends StatefulWidget {
   final VoidCallback onRedeem;
 
   const AmountSelector({
-    Key? key,
+    super.key,
     required this.initialAmount,
     required this.onAmountChanged,
     required this.onRedeem,
-  }) : super(key: key);
+  });
 
   @override
   _AmountSelectorState createState() => _AmountSelectorState();
@@ -47,7 +46,7 @@ class _AmountSelectorState extends State<AmountSelector> {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black),
             borderRadius: BorderRadius.circular(10),
@@ -59,15 +58,15 @@ class _AmountSelectorState extends State<AmountSelector> {
                 width: 30, // Adjust the size of the coin image as needed
                 height: 30,
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text(
                 '$amount',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                   width:
                       10), // Add some spacing between the amount and the arrows
               Stack(
@@ -75,7 +74,7 @@ class _AmountSelectorState extends State<AmountSelector> {
                   Positioned(
                     left: 0,
                     child: IconButton(
-                      icon: Icon(Icons.arrow_drop_up, size: 40),
+                      icon: const Icon(Icons.arrow_drop_up, size: 40),
                       onPressed: _increaseAmount,
                     ),
                   ),
@@ -83,7 +82,7 @@ class _AmountSelectorState extends State<AmountSelector> {
                     left: 0,
                     top: 40, // Adjust top position to overlap
                     child: IconButton(
-                      icon: Icon(Icons.arrow_drop_down, size: 40),
+                      icon: const Icon(Icons.arrow_drop_down, size: 40),
                       onPressed: _decreaseAmount,
                     ),
                   ),
@@ -92,7 +91,7 @@ class _AmountSelectorState extends State<AmountSelector> {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
             width:
                 10), // Add some spacing between the amount selector and the button
         ElevatedButton(
@@ -105,7 +104,7 @@ class _AmountSelectorState extends State<AmountSelector> {
                   8), // Adjust the corner radius as needed
             ),
           ),
-          child: Text(
+          child: const Text(
             'REDEEM',
             style: TextStyle(
               fontSize: 18,
