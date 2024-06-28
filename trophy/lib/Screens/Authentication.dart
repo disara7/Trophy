@@ -1,5 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:trophy/themes/color_palette.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'ResetPassword.dart';
+
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -10,6 +17,8 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   bool _obscurePassword = true;
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -89,6 +98,68 @@ class _AuthPageState extends State<AuthPage> {
     );
   }
 
+  Future<void> _login() async {
+    try {
+      final response = await http.post(
+        Uri.parse('http://13.60.28.40/auth/login'), // Replace with your actual server URL
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'username': _usernameController.text,
+          'password': _passwordController.text,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        // Successful login
+        var data = jsonDecode(response.body);
+        print('Login successful: $data');
+
+        // Handle successful login
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                ResetPassword(
+                    username: _usernameController.text),
+          ),
+        );
+      } else if (response.statusCode == 202) {
+        _showErrorDialog(context,'Successful', 'You are successfully logged');
+      } else {
+        // Handle failed login
+        print('Failed to login (status code: ${response.statusCode})');
+        _showErrorDialog(context, 'Error', 'Login failed. Please check your credentials or try again later.');
+      }
+    } on SocketException catch (e) {
+      // Handle network errors
+      print('Network error: $e');
+      _showErrorDialog(context, 'Error', 'Connection error. Please check your network connection and try again.');
+    } catch (e) {
+      // Handle other exceptions
+      print('Unexpected error: $e');
+      _showErrorDialog(context, 'Error', 'An error occurred during login. Please try again later.');
+    }
+  }
+  void _showErrorDialog(BuildContext context,String title , String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -118,6 +189,7 @@ class _AuthPageState extends State<AuthPage> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       TextField(
+                        controller: _usernameController,
                         decoration: InputDecoration(
                           labelText: 'Username',
                           labelStyle: const TextStyle(color: Palette.appGray),
@@ -141,6 +213,7 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                       const SizedBox(height: 8),
                       TextField(
+                        controller: _passwordController,
                         obscureText: _obscurePassword,
                         decoration: InputDecoration(
                           labelText: 'Password',
@@ -185,7 +258,7 @@ class _AuthPageState extends State<AuthPage> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: _login,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Palette.appOrange,
                             shape: RoundedRectangleBorder(

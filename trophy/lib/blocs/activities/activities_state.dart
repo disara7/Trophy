@@ -5,12 +5,22 @@ class Activity {
   final String description;
   final String imageUrl;
   final int coinCount;
+  final String activitiesdetails;
+  final String activitiesmainimgUrl;
+  final String activitydate;
+  final String activitytime;
+  final String activityvenue;
 
   Activity({
     required this.title,
     required this.description,
     required this.imageUrl,
     required this.coinCount,
+    required this.activitiesdetails,
+    required this.activitiesmainimgUrl,
+    required this.activitydate,
+    required this.activitytime,
+    required this.activityvenue,
   });
 }
 
