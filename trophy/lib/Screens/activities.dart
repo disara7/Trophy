@@ -54,7 +54,7 @@ class Activities extends StatelessWidget {
                           activitiesmainimgUrl: activity.activitiesmainimgUrl,
                           activitydate: activity.activitydate,
                           activitytime: activity.activitytime,
-                          activityvenue: activity.activityvenue,
+                          activityvenue: activity.activityvenue
                         );
                       }).toList(),
                     ),
