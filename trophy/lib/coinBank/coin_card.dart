@@ -57,7 +57,7 @@ class CoinCard extends StatelessWidget {
                 ElevatedButton(
                   onPressed: onPressed,
                   style: ButtonStyles.elevatedButtonStyle.copyWith(
-                    padding: MaterialStateProperty.all<EdgeInsets>(
+                    padding: WidgetStateProperty.all<EdgeInsets>(
                       const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
