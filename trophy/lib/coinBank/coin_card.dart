@@ -57,10 +57,10 @@ class CoinCard extends StatelessWidget {
                 ElevatedButton(
                   onPressed: onPressed,
                   style: ButtonStyles.elevatedButtonStyle.copyWith(
-                    padding: WidgetStateProperty.all<EdgeInsets>(
-                      const EdgeInsets.symmetric(vertical: 12),
-                    ),
-                  ),
+                      // padding: WidgetStateProperty.all<EdgeInsets>(
+                      //   const EdgeInsets.symmetric(vertical: 12),
+                      // ),
+                      ),
                   child: Text(
                     buttonText,
                     style: const TextStyle(fontSize: 16),
