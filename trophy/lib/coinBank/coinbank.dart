@@ -4,6 +4,7 @@ import 'package:trophy/coinBank/coins.dart'; // Import CoinsPage
 import 'package:trophy/coinBank/gift.dart'; // Import GiftPage
 import 'package:trophy/coinBank/redeem.dart'; // Import RedeemPage
 import 'package:trophy/coinBank/spin.dart';
+import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/themes/color_palette.dart'; // Import SpinPage
 
 class CoinBank extends StatelessWidget {
@@ -103,6 +104,9 @@ class CoinBank extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        // Handle navigation item selection
+      }),
     );
   }
 
