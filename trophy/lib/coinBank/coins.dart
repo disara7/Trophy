@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/navBar/navbar.dart';
 import 'earn_coins_section.dart'; // Import the new Dart file
 
 class CoinsPage extends StatelessWidget {
@@ -11,6 +12,9 @@ class CoinsPage extends StatelessWidget {
         title: const Text('COINS'),
       ),
       body: const CoinsPageContent(),
+      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        // Handle navigation item selection
+      }),
     );
   }
 }

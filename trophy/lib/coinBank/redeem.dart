@@ -85,12 +85,12 @@ class _RedeemPageState extends State<RedeemPage> {
                   ],
                 ),
               ),
-              // Positioned(
-              //   left: 0,
-              //   top: 140,
-              //   child:
-              //       RedeemOptionsCarousel(), // Adjust carousel position as needed
-              // ),
+              Positioned(
+                left: 0,
+                top: 140,
+                child:
+                    RedeemOptionsCarousel(), // Adjust carousel position as needed
+              ),
               Positioned(
                 left: 0,
                 top: 350,
@@ -113,11 +113,11 @@ class _RedeemPageState extends State<RedeemPage> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    AmountSelector(
-                      initialAmount: amount,
-                      onAmountChanged: _onAmountChanged,
-                      onRedeem: _onRedeem,
-                    ),
+                    // AmountSelector(
+                    //   initialAmount: amount,
+                    //   onAmountChanged: _onAmountChanged,
+                    //   onRedeem: _onRedeem,
+                    // ),
                   ],
                 ),
               ),
