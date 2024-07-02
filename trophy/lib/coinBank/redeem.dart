@@ -113,11 +113,11 @@ class _RedeemPageState extends State<RedeemPage> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    AmountSelector(
-                      initialAmount: amount,
-                      onAmountChanged: _onAmountChanged,
-                      onRedeem: _onRedeem,
-                    ),
+                    // AmountSelector(
+                    //   initialAmount: amount,
+                    //   onAmountChanged: _onAmountChanged,
+                    //   onRedeem: _onRedeem,
+                    // ),
                   ],
                 ),
               ),
