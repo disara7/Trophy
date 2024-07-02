@@ -7,6 +7,7 @@ import '../../blocs/therapy/category/category_bloc.dart';
 import '../../blocs/therapy/category/category_event.dart';
 import '../../blocs/therapy/category/category_state.dart';
 import '../../themes/color_palette.dart';
+import 'Chat.dart';
 
 class CategoryPage extends StatelessWidget {
   @override
@@ -53,7 +54,12 @@ class CategoryPage extends StatelessWidget {
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Chat()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Palette.appOrange,
                       shape: RoundedRectangleBorder(
