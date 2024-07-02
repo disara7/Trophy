@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
       theme: TrophyTheme.lightTheme,
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: CoinBank(),
+      home: const RedeemPage(),
     );
   }
 }
