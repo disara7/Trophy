@@ -6,6 +6,7 @@ import 'package:trophy/navBar/mainscreen.dart';
 import 'package:trophy/themes/color_palette.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ResetPassword.dart';
 
@@ -118,6 +119,10 @@ class _AuthPageState extends State<AuthPage> {
         // Successful login
         var data = jsonDecode(response.body);
         print('Login successful: $data');
+
+        // Store the token in SharedPreferences
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('authToken', data['token']);
 
         // Handle successful login
         Navigator.push(

@@ -1,11 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'event.dart';
+import 'fetchdata.dart';
 import 'state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(const HomeState()) {
-    on<LoadHomeData>((event, emit) {
-      // Load initial data here if needed
+    on<LoadHomeData>((event, emit) async {
+      try {
+        final homeState = await fetchHomeState();
+        emit(homeState);
+      } catch (e) {
+        print('Failed to load home data: $e');
+      }
     });
 
     on<UpdateCoins>((event, emit) {
@@ -17,7 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
 
     on<UpdateCompletedChallenges>((event, emit) {
-      emit(state.copyWith(dailyChallenge: event.completedChallenges));
+      emit(state.copyWith(completedChallenges: event.completedChallenges));
     });
 
     on<UpdateLevel>((event, emit) {
