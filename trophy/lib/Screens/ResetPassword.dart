@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:trophy/navBar/mainscreen.dart';
 
 class ResetPassword extends StatefulWidget {
   final String username;
@@ -52,7 +53,14 @@ class _ResetPasswordState extends State<ResetPassword> {
               content: const Text('Your password has been reset successfully.'),
               actions: [
                 TextButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    // Navigate to MainScreen after dialog dismissal
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MainScreen()),
+                    );
+                  },
                   child: const Text('OK'),
                 ),
               ],

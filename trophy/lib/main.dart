@@ -7,12 +7,14 @@ import 'package:trophy/coinBank/coinbank.dart';
 import 'package:trophy/coinBank/coins.dart';
 import 'package:trophy/coinBank/spin.dart';
 import 'package:trophy/coinBank/redeem.dart';
+import 'package:trophy/navBar/mainscreen.dart';
 import 'package:trophy/splash/intro.dart';
 // import 'package:trophy/coinBank/coinbank.dart';
 // import 'package:trophy/navBar/navbar.dart';
 // import 'package:trophy/splash/splash.dart';
 // import 'package:trophy/Screens/Authentication.dart';
 import 'package:trophy/themes/theme.dart';
+import 'package:trophy/Screens/home.dart';
 
 import 'Screens/Therapy/therapy_home.dart';
 import 'blocs/therapy/category/category_bloc.dart';
@@ -31,7 +33,7 @@ class MainApp extends StatelessWidget {
       theme: TrophyTheme.lightTheme,
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: CoinBank(),
+      home: const IntroScreen(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:trophy/Screens/home.dart';
+import 'package:trophy/navBar/mainscreen.dart';
 import 'package:trophy/themes/color_palette.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -131,7 +132,7 @@ class _AuthPageState extends State<AuthPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const Home(),
+            builder: (context) => const MainScreen(),
           )
         );
       } else {
