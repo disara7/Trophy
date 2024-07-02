@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import '../models/chat_model.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:google_generative_ai/google_generative_ai.dart';
 
@@ -10,10 +9,9 @@ class ChatRepo {
   static Future<String> chatTextGenerationRepo(
       List<ChatModel> previousMessage) async {
     try {
-      var API_KEY = dotenv.env['API_Key'];
       Dio dio = Dio();
       final response = await dio.post(
-          "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}",
+          "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDHXT5IvvEHTYq0p-LYpWfVlCe8e6OXrOU",
           data: {
             "contents": [
               {
@@ -181,6 +179,21 @@ class ChatRepo {
                   {
                     "text":
                         "That's an interesting question, but it's a bit outside my area of expertise. 😉 I'm here to focus on you and your well-being at work.  \n\nWant to try a quick relaxation technique or chat about strategies for managing your workload? 😄 \n"
+                  },
+                ],
+              },
+              {
+                "role": "user",
+                "parts": [
+                  {"text": "what is the capital of USA"},
+                ],
+              },
+              {
+                "role": "model",
+                "parts": [
+                  {
+                    "text":
+                        "While knowing your capitals is great, I'm here to help with workplace matters.  😊  Anything you'd like to chat about related to work?  💼 \n"
                   },
                 ],
               },

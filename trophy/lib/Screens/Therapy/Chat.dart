@@ -37,7 +37,7 @@ class _ChatState extends State<Chat> {
                     child: Column(
                       children: [
                         Container(
-                          height: 100,
+                          height: 95,
                           color: Colors.white,
                           child: Stack(
                             alignment: Alignment.topLeft,
