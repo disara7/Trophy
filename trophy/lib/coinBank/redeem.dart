@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
-// Import your AmountSelector widget here
-
 import 'package:trophy/coinBank/counter.dart';
 import 'package:trophy/navBar/navbar.dart'; // Adjust the path as per your project structure
 
 class RedeemPage extends StatefulWidget {
-  const RedeemPage({super.key});
+  const RedeemPage({Key? key}) : super(key: key);
 
   @override
   _RedeemPageState createState() => _RedeemPageState();
@@ -94,7 +91,7 @@ class _RedeemPageState extends State<RedeemPage> {
                 const SizedBox(height: 20),
 
                 // Your existing Counter widget
-                const Counter(count: 520),
+                Counter(count: 520),
 
                 const SizedBox(height: 20),
 
@@ -269,11 +266,11 @@ class AmountSelector extends StatefulWidget {
   final VoidCallback onRedeem;
 
   const AmountSelector({
-    super.key,
+    Key? key,
     required this.initialAmount,
     required this.onAmountChanged,
     required this.onRedeem,
-  });
+  }) : super(key: key);
 
   @override
   _AmountSelectorState createState() => _AmountSelectorState();
@@ -337,24 +334,9 @@ class _AmountSelectorState extends State<AmountSelector> {
               const SizedBox(
                   width:
                       10), // Add some spacing between the amount and the arrows
-              Row(
-                children: [
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Column(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.arrow_drop_up, size: 40),
-                        onPressed: _increaseAmount,
-                      ),
-
-                      const SizedBox(
-                          height:
-                              10), // Adjust the spacing between icons if needed
-                    ],
-                  ),
-                ],
+              IconButton(
+                icon: const Icon(Icons.arrow_drop_up, size: 40),
+                onPressed: _increaseAmount,
               ),
             ],
           ),
