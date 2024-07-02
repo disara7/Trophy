@@ -36,7 +36,7 @@ class CoinBank extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Counter(count: 520),
-            const SizedBox(height: 20),
+            const SizedBox(height: 5),
             Expanded(
               child: ListView(
                 children: [
