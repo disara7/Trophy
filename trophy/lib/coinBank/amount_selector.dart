@@ -46,7 +46,7 @@ class _AmountSelectorState extends State<AmountSelector> {
     return Row(
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 6),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black),
             borderRadius: BorderRadius.circular(10),
@@ -58,7 +58,12 @@ class _AmountSelectorState extends State<AmountSelector> {
                 width: 30, // Adjust the size of the coin image as needed
                 height: 30,
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 5),
+              IconButton(
+                icon: const Icon(Icons.arrow_drop_down, size: 40),
+                onPressed: _decreaseAmount,
+              ),
+              const SizedBox(width: 5),
               Text(
                 '$amount',
                 style: const TextStyle(
@@ -69,24 +74,9 @@ class _AmountSelectorState extends State<AmountSelector> {
               const SizedBox(
                   width:
                       10), // Add some spacing between the amount and the arrows
-              Stack(
-                children: [
-                  Positioned(
-                    left: 0,
-                    child: IconButton(
-                      icon: const Icon(Icons.arrow_drop_up, size: 40),
-                      onPressed: _increaseAmount,
-                    ),
-                  ),
-                  Positioned(
-                    left: 0,
-                    top: 40, // Adjust top position to overlap
-                    child: IconButton(
-                      icon: const Icon(Icons.arrow_drop_down, size: 40),
-                      onPressed: _decreaseAmount,
-                    ),
-                  ),
-                ],
+              IconButton(
+                icon: const Icon(Icons.arrow_drop_up, size: 40),
+                onPressed: _increaseAmount,
               ),
             ],
           ),
