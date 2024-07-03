@@ -4,7 +4,7 @@ import '../blocs/coinbank/counter_bloc.dart';
 import '../blocs/coinbank/counter_state.dart'; // Ensure this import is correct
 
 class Counter extends StatelessWidget {
-  const Counter({Key? key, required int count}) : super(key: key);
+  const Counter({super.key, required int count});
 
   @override
   Widget build(BuildContext context) {

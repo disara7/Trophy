@@ -3,10 +3,9 @@ import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'dart:math';
 import 'dart:async';
 import 'package:trophy/themes/color_palette.dart';
-import 'package:trophy/themes/button_styles.dart';
 
 class SpinPage extends StatefulWidget {
-  const SpinPage({Key? key}) : super(key: key);
+  const SpinPage({super.key});
 
   @override
   _SpinPageState createState() => _SpinPageState();
@@ -53,12 +52,12 @@ class _SpinPageState extends State<SpinPage> {
     });
 
     final randomIndex = Random().nextInt(items.length);
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       controller.add(randomIndex);
       setState(() {
         spinning = false;
       });
-      Future.delayed(Duration(milliseconds: 500), () {
+      Future.delayed(const Duration(milliseconds: 500), () {
         _showCongratulations(randomIndex);
       });
     });
@@ -85,12 +84,12 @@ class _SpinPageState extends State<SpinPage> {
               width: double.infinity,
               fit: BoxFit.cover,
             ),
-            SizedBox(height: 16), // Adjust spacing as needed
+            const SizedBox(height: 16), // Adjust spacing as needed
             Text(
               items[index] == 'TRY AGAIN' ? 'Oops!' : 'Congratulations!',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8), // Adjust spacing as needed
+            const SizedBox(height: 8), // Adjust spacing as needed
             Text(message),
           ],
         ),
@@ -214,7 +213,7 @@ class _SpinPageState extends State<SpinPage> {
                                                   mainAxisSize:
                                                       MainAxisSize.min,
                                                   children: [
-                                                    Text(
+                                                    const Text(
                                                       '2x ',
                                                       style: TextStyle(
                                                         fontSize: 18,
@@ -238,7 +237,7 @@ class _SpinPageState extends State<SpinPage> {
                                                     )
                                                   : Text(
                                                       items[i],
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         fontSize: 18,
                                                         color: Colors.white,
                                                         fontWeight:
