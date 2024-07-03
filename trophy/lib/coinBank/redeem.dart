@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/coinBank/amount_selector.dart';
+import 'package:trophy/coinBank/coinbank.dart';
 import 'package:trophy/coinBank/counter.dart';
 import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
 import 'package:trophy/navBar/navbar.dart'; // Adjust the path as per your project structure
@@ -29,8 +31,12 @@ class _RedeemPageState extends State<RedeemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('REDEEM COINS'),
+      appBar: CustomAppBar(
+        title: 'REDEEM COINS',
+        coinCount: 520,
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: Center(
         child: SingleChildScrollView(
