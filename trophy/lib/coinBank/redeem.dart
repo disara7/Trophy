@@ -4,7 +4,7 @@ import 'package:trophy/coinBank/counter.dart';
 import 'package:trophy/navBar/navbar.dart'; // Adjust the path as per your project structure
 
 class RedeemPage extends StatefulWidget {
-  const RedeemPage({Key? key}) : super(key: key);
+  const RedeemPage({super.key});
 
   @override
   _RedeemPageState createState() => _RedeemPageState();
@@ -40,7 +40,7 @@ class _RedeemPageState extends State<RedeemPage> {
                 // Your existing Stack with image and text
                 Stack(
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       height: 100.0,
                       child: Image.asset(
                         'assets/redeemcat.png',
@@ -86,12 +86,12 @@ class _RedeemPageState extends State<RedeemPage> {
                 ),
 
                 // Your existing RedeemOptionsCarousel widget
-                RedeemOptionsCarousel(),
+                const RedeemOptionsCarousel(),
 
                 const SizedBox(height: 20),
 
                 // Your existing Counter widget
-                Counter(count: 520),
+                const Counter(count: 520),
 
                 const SizedBox(height: 20),
 
@@ -125,10 +125,10 @@ class _RedeemPageState extends State<RedeemPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               'First Orange Text',
                               style: TextStyle(
@@ -169,6 +169,8 @@ class _RedeemPageState extends State<RedeemPage> {
 }
 
 class RedeemOptionsCarousel extends StatelessWidget {
+  const RedeemOptionsCarousel({super.key});
+
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> items = [
@@ -266,11 +268,11 @@ class AmountSelector extends StatefulWidget {
   final VoidCallback onRedeem;
 
   const AmountSelector({
-    Key? key,
+    super.key,
     required this.initialAmount,
     required this.onAmountChanged,
     required this.onRedeem,
-  }) : super(key: key);
+  });
 
   @override
   _AmountSelectorState createState() => _AmountSelectorState();

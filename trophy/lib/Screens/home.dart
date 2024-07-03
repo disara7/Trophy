@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Components/activity_button.dart';
 import 'package:trophy/Components/button.dart';
-import 'package:trophy/navBar/navbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

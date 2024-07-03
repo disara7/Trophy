@@ -9,7 +9,7 @@ class CustomHackCard extends StatelessWidget {
   final String hackathondetails;
   final String hackathonmainimgUrl;
 
-  CustomHackCard({
+  const CustomHackCard({super.key, 
     required this.hacktitle,
     required this.hackdescription,
     required this.hackimageUrl,
@@ -28,7 +28,7 @@ class CustomHackCard extends StatelessWidget {
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Color.fromARGB(248, 245, 225, 210),
+              color: const Color.fromARGB(248, 245, 225, 210),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
@@ -48,7 +48,7 @@ class CustomHackCard extends StatelessWidget {
                       height: 80,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Expanded(
@@ -58,22 +58,22 @@ class CustomHackCard extends StatelessWidget {
                         Text(
                           hacktitle,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: Color(0xFFFF09C46),
+                            color: Color(0xffff09c46),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(
                           hackdescription,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                             height: 1.5,
                             fontSize: 14,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                           children: [
                             GestureDetector(
@@ -96,14 +96,14 @@ class CustomHackCard extends StatelessWidget {
                                 width: 90,
                                 height: 30,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFFF09C46),
+                                  color: const Color(0xffff09c46),
                                   borderRadius: BorderRadius.circular(6),
                                 ),
-                                child: Center(
+                                child: const Center(
                                   child: Text(
                                     'DETAILS',
                                     style: TextStyle(
-                                      color: const Color(0xFF222222),
+                                      color: Color(0xFF222222),
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -111,7 +111,7 @@ class CustomHackCard extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Container(
                               width: 90,
                               height: 30,
@@ -119,11 +119,11 @@ class CustomHackCard extends StatelessWidget {
                                 color: const Color(0xFF222222),
                                 borderRadius: BorderRadius.circular(6),
                               ),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   'REGISTER',
                                   style: TextStyle(
-                                    color: Color(0xFFFF09C46),
+                                    color: Color(0xffff09c46),
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -149,7 +149,7 @@ class CustomHackCard extends StatelessWidget {
                 color: const Color(0xFF222222),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Color(0xFFFFFFFF),
+                  color: const Color(0xFFFFFFFF),
                   width: 5,
                   strokeAlign: 1,
                 ),
@@ -164,8 +164,8 @@ class CustomHackCard extends StatelessWidget {
                   ),
                   Text(
                     '$hackcoinCount',
-                    style: TextStyle(
-                      color: Color(0xFFFF09C46),
+                    style: const TextStyle(
+                      color: Color(0xffff09c46),
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),

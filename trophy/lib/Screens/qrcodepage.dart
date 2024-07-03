@@ -11,7 +11,7 @@ class Qrcodepage extends StatelessWidget {
   final String activitytime;
   final String activityvenue;
 
-  const Qrcodepage({
+  const Qrcodepage({super.key, 
     required this.title,
     required this.description,
     required this.coinCount,
@@ -36,7 +36,7 @@ class Qrcodepage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
             Container(
               height: MediaQuery.of(context).size.height * 0.6,
               decoration: BoxDecoration(
@@ -69,15 +69,15 @@ class Qrcodepage extends StatelessWidget {
                           ),
                           Text(
                             activitydate,
-                            style: TextStyle(fontSize: 16, color: Colors.black),
+                            style: const TextStyle(fontSize: 16, color: Colors.black),
                           ),
                           Text(
                             activitytime,
-                            style: TextStyle(fontSize: 16, color: Colors.black),
+                            style: const TextStyle(fontSize: 16, color: Colors.black),
                           ),
                           Text(
                             activityvenue,
-                            style: TextStyle(fontSize: 16, color: Colors.black),
+                            style: const TextStyle(fontSize: 16, color: Colors.black),
                           ),
                         ],
                       ),
@@ -86,7 +86,7 @@ class Qrcodepage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Container(
               width: 200,
               height: MediaQuery.of(context).size.height * 0.05,
@@ -94,11 +94,11 @@ class Qrcodepage extends StatelessWidget {
                 color: const Color(0xFF222222),
                 borderRadius: BorderRadius.circular(6),
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   'SAVE',
                   style: TextStyle(
-                    color: Color(0xFFFF09C46),
+                    color: Color(0xffff09c46),
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),

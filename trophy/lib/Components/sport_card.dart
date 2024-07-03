@@ -7,7 +7,7 @@ class CustomCard extends StatelessWidget {
   final int sportcoinCount;
   final String type;
 
-  CustomCard({
+  const CustomCard({super.key, 
     required this.sporttitle,
     required this.sportdescription,
     required this.sportimageUrl,
@@ -19,8 +19,8 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // Set background color based on type
     final cardColor = type == 'club'
-        ? Color(0xFFF3B679) // Color for clubs
-        : Color.fromARGB(248, 245, 225, 210); // Default color for other types
+        ? const Color(0xFFF3B679) // Color for clubs
+        : const Color.fromARGB(248, 245, 225, 210); // Default color for other types
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -43,10 +43,10 @@ class CustomCard extends StatelessWidget {
                     width: 30,
                     height: 30,
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     sporttitle,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w800,
                       height: -4,
                       fontSize: 14,
@@ -56,9 +56,9 @@ class CustomCard extends StatelessWidget {
                   Text(
                     sportdescription,
                     textAlign: TextAlign.left,
-                    style: TextStyle(height: 1.1, fontSize: 12),
+                    style: const TextStyle(height: 1.1, fontSize: 12),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
@@ -73,7 +73,7 @@ class CustomCard extends StatelessWidget {
                 color: const Color(0xFF222222),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Color(0xFFFFFFFF),
+                  color: const Color(0xFFFFFFFF),
                   width: 4,
                   strokeAlign: 1,
                 ),
@@ -89,8 +89,8 @@ class CustomCard extends StatelessWidget {
                   ),
                   Text(
                     '$sportcoinCount',
-                    style: TextStyle(
-                      color: Color(0xFFFF09C46),
+                    style: const TextStyle(
+                      color: Color(0xffff09c46),
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),

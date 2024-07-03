@@ -7,6 +7,8 @@ import 'package:trophy/blocs/hackathons/hackathons_state.dart';
 import 'package:trophy/Components/hackathon_card.dart';
 
 class Hackathon extends StatelessWidget {
+  const Hackathon({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -24,21 +26,21 @@ class Hackathon extends StatelessWidget {
           child: BlocBuilder<HackathonsBloc, HackathonState>(
             builder: (context, state) {
               if (state is HackathonsLoading) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is HackathonsLoaded) {
                 print(
                     'Hackathons Loaded: ${state.hackathons.length} hackathons');
                 return ListView(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Participate in Hackathons to earn coins. You are free to choose hackathons that interest you out of the variety given below.',
                         style: TextStyle(fontSize: 16.0),
                         textAlign: TextAlign.justify,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Wrap(
                       alignment: WrapAlignment.spaceEvenly,
                       children: state.hackathons.map((hackathon) {
@@ -58,7 +60,7 @@ class Hackathon extends StatelessWidget {
                   ],
                 );
               } else if (state is HackathonsError) {
-                return Center(child: Text('Failed to load hackathons'));
+                return const Center(child: Text('Failed to load hackathons'));
               }
               return Container(); // This handles any unexpected states
             },
