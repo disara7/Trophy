@@ -6,48 +6,50 @@ class RedeemOptionsCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, String>> items = [
+      {
+        'image': 'assets/canteen.png',
+        'title': 'CANTEEN',
+        'description': 'Enjoy a meal at the cafeteria.',
+      },
+      {
+        'image': 'assets/parking.png',
+        'title': 'PARKING',
+        'description': 'Redeem for a parking spot.',
+      },
+      {
+        'image': 'assets/play.png',
+        'title': 'PLAY AREA',
+        'description': 'Access to recreational facilities.',
+      },
+      {
+        'image': 'assets/Sport.png',
+        'title': 'SPORTS',
+        'description': 'Redeem for sports activities.',
+      },
+      {
+        'image': 'assets/charging.png',
+        'title': 'EV CHARGING',
+        'description': 'Access to charging facilities.',
+      },
+    ];
+
     return Container(
-      height: 180.0, // Adjusted height of the Container
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      height: 170.0,
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: CarouselSlider(
         options: CarouselOptions(
-          height: 120.0, // Adjusted height of the CarouselSlider
+          height: 190.0,
           autoPlay: false,
           enlargeCenterPage: true,
         ),
-        items: [
-          {
-            'image': 'assets/canteen.png',
-            'title': 'CANTEEN',
-            'description': 'Enjoy a meal at the cafeteria.',
-          },
-          {
-            'image': 'assets/parking.png',
-            'title': 'PARKING',
-            'description': 'Redeem for a parking spot.',
-          },
-          {
-            'image': 'assets/play.png',
-            'title': 'Play Area',
-            'description': 'Access to recreational facilities.',
-          },
-          {
-            'image': 'assets/sport.png',
-            'title': 'Sports Facility',
-            'description': 'Redeem for sports activities.',
-          },
-          {
-            'image': 'assets/charging.png',
-            'title': 'Charging Station',
-            'description': 'Access to charging facilities.',
-          },
-        ].map((item) {
+        items: items.map((item) {
           return Builder(
             builder: (BuildContext context) {
               return Container(
-                width:
-                    MediaQuery.of(context).size.width * 0.8, // Adjusted width
-                margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                width: MediaQuery.of(context).size.width * 0.8,
+                margin: const EdgeInsets.symmetric(
+                    horizontal: 18.0, vertical: 10.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.0),
                   image: DecorationImage(
@@ -56,12 +58,12 @@ class RedeemOptionsCarousel extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(25.0),
                   child: SizedBox(
-                    width: 100,
+                    width: 150,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           item['description']!,
@@ -75,7 +77,7 @@ class RedeemOptionsCarousel extends StatelessWidget {
                         Text(
                           item['title']!,
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange,
                           ),

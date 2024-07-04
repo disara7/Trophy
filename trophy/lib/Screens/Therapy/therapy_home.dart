@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +9,8 @@ import '../../themes/color_palette.dart';
 import 'Chat.dart';
 
 class CategoryPage extends StatelessWidget {
+  const CategoryPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +27,11 @@ class CategoryPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Choose your Therapist",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 GestureDetector(
@@ -43,14 +44,14 @@ class CategoryPage extends StatelessWidget {
                     child: Image.asset(state.image),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Text(state.description,
                       textAlign: TextAlign.justify,
-                      style: TextStyle(fontSize: 16)),
+                      style: const TextStyle(fontSize: 16)),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:trophy/navBar/nav_item_model.dart';
-import 'package:trophy/Screens/activities.dart';
-import 'package:trophy/Screens/hackathon.dart';
-import 'package:trophy/Screens/sports.dart';
-import 'package:trophy/Screens/community.dart';
 import 'dart:async';
 
 const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);

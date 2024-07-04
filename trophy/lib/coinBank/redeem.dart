@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:trophy/coinBank/counter.dart';
+import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
 import 'package:trophy/navBar/navbar.dart'; // Adjust the path as per your project structure
 
 class RedeemPage extends StatefulWidget {
-  const RedeemPage({Key? key}) : super(key: key);
+  const RedeemPage({super.key});
 
   @override
   _RedeemPageState createState() => _RedeemPageState();
@@ -40,7 +41,7 @@ class _RedeemPageState extends State<RedeemPage> {
                 // Your existing Stack with image and text
                 Stack(
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       height: 100.0,
                       child: Image.asset(
                         'assets/redeemcat.png',
@@ -86,12 +87,12 @@ class _RedeemPageState extends State<RedeemPage> {
                 ),
 
                 // Your existing RedeemOptionsCarousel widget
-                RedeemOptionsCarousel(),
+                const RedeemOptionsCarousel(),
 
                 const SizedBox(height: 20),
 
                 // Your existing Counter widget
-                Counter(count: 520),
+                const Counter(count: 520),
 
                 const SizedBox(height: 20),
 
@@ -125,10 +126,10 @@ class _RedeemPageState extends State<RedeemPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               'First Orange Text',
                               style: TextStyle(
@@ -168,109 +169,17 @@ class _RedeemPageState extends State<RedeemPage> {
   }
 }
 
-class RedeemOptionsCarousel extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final List<Map<String, String>> items = [
-      {
-        'image': 'assets/canteen.png',
-        'title': 'CANTEEN',
-        'description': 'Enjoy a meal at the cafeteria.',
-      },
-      {
-        'image': 'assets/parking.png',
-        'title': 'PARKING',
-        'description': 'Redeem for a parking spot.',
-      },
-      {
-        'image': 'assets/play.png',
-        'title': 'PLAY AREA',
-        'description': 'Access to recreational facilities.',
-      },
-      {
-        'image': 'assets/Sport.png',
-        'title': 'SPORTS',
-        'description': 'Redeem for sports activities.',
-      },
-      {
-        'image': 'assets/charging.png',
-        'title': 'EV CHARGING',
-        'description': 'Access to charging facilities.',
-      },
-    ];
-
-    return Container(
-      height: 170.0,
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: CarouselSlider(
-        options: CarouselOptions(
-          height: 190.0,
-          autoPlay: false,
-          enlargeCenterPage: true,
-        ),
-        items: items.map((item) {
-          return Builder(
-            builder: (BuildContext context) {
-              return Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                margin: const EdgeInsets.symmetric(
-                    horizontal: 18.0, vertical: 10.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  image: DecorationImage(
-                    image: AssetImage(item['image']!),
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(25.0),
-                  child: SizedBox(
-                    width: 150,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          item['description']!,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          item['title']!,
-                          style: const TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.orange,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-          );
-        }).toList(),
-      ),
-    );
-  }
-}
-
 class AmountSelector extends StatefulWidget {
   final int initialAmount;
   final Function(int) onAmountChanged;
   final VoidCallback onRedeem;
 
   const AmountSelector({
-    Key? key,
+    super.key,
     required this.initialAmount,
     required this.onAmountChanged,
     required this.onRedeem,
-  }) : super(key: key);
+  });
 
   @override
   _AmountSelectorState createState() => _AmountSelectorState();
