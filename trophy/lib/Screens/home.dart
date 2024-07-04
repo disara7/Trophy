@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trophy/Components/activity_button.dart';
 import 'package:trophy/Components/button.dart';
 import 'package:trophy/blocs/home/bloc.dart';
@@ -14,6 +15,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final _prefs = SharedPreferences.getInstance();
+  Future<void> _deleteToken() async {
+    final prefs = await _prefs;
+    await prefs.remove('authToken');
+    // Optionally: Consider showing a snackbar or dialog to inform the user
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Authentication token deleted'),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -41,7 +53,7 @@ class _HomeState extends State<Home> {
               icon: const Icon(Icons.account_circle),
               iconSize: 32,
               color: Colors.black87,
-              onPressed: () {},
+              onPressed: _deleteToken,
             ),
           ],
           backgroundColor: const Color(0xffFDFEFF),

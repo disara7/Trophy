@@ -7,10 +7,10 @@ class HomeState extends Equatable {
   final int level;
 
   const HomeState({
-    this.coins = 0,
-    this.dailyChallenge = 10,
-    this.completedChallenges = 0,
-    this.level = 1,
+    required this.coins,
+    required this.dailyChallenge,
+    required this.completedChallenges,
+    required this.level,
   });
 
   HomeState copyWith({
