@@ -9,7 +9,6 @@ class ChatRepo {
   static Future<String> chatTextGenerationRepo(
       List<ChatModel> previousMessage) async {
     try {
-      print("APIKEY=" + apikey);
       Dio dio = Dio();
       final response = await dio.post(
           "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apikey}",
