@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/coinBank/amount_selector.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class GiftPage extends StatelessWidget {
   const GiftPage({super.key});
@@ -7,8 +9,12 @@ class GiftPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SEND COINS'),
+      appBar: CustomAppBar(
+        title: 'SEND COINS',
+        coinCount: 520,
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
@@ -54,6 +60,9 @@ class GiftPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        // Handle navigation item selection
+      }),
     );
   }
 
