@@ -20,6 +20,11 @@ class _MyAccountState extends State<MyAccount> {
   TextEditingController _nicController =
       TextEditingController(text: '2000000000');
 
+  String firstname = 'Firstname';
+  String lastname = 'Lastname';
+  String position = 'Position';
+  String since = '2014';
+
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -58,7 +63,7 @@ class _MyAccountState extends State<MyAccount> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Firstname Lastname',
+                  '$firstname $lastname',
                   style: TextStyle(
                     color: Colors.orange,
                     fontSize: 24,
@@ -67,7 +72,7 @@ class _MyAccountState extends State<MyAccount> {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  'Position',
+                  position,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 19,
@@ -76,7 +81,7 @@ class _MyAccountState extends State<MyAccount> {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  'Since 2014',
+                  'Since $since',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
@@ -101,7 +106,7 @@ class _MyAccountState extends State<MyAccount> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 15),
+                      SizedBox(height: 20),
                       TextField(
                         controller: _contactController,
                         decoration: InputDecoration(
