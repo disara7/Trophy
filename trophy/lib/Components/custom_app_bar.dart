@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/myaccount/myaccount.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -54,10 +55,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 const SizedBox(width: 4.0),
-                const Icon(
-                  Icons.account_circle,
-                  size: 40.0,
-                  color: Colors.black,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MyAccount()),
+                    );
+                  },
+                  child: Icon(
+                    Icons.account_circle,
+                    size: 40.0,
+                    color: Colors.black,
+                  ),
                 ),
               ],
             ),
