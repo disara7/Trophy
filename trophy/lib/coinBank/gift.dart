@@ -16,61 +16,33 @@ class GiftPage extends StatelessWidget {
           Navigator.pop(context);
         },
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Stack(
-          children: [
-            // Your background image or decoration
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/sendbg.png'),
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            // Positioned text
-            Positioned(
-              top: 25,
-              left: 20,
-              right: 20,
-              child: RichText(
-                text: const TextSpan(
-                  text:
-                      'Use coins as a form of gift to your colleagues to appreciate and support them.',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Stack(
+            children: [
+              // Your background image or decoration
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/sendbg.png'),
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
-            ),
-            // Positioned AmountSelector
-            Positioned(
-              top: 150,
-              left: 20,
-              right: 20,
-              child: AmountSelector(
-                initialAmount: 0,
-                onAmountChanged: _onAmountChanged,
-                onRedeem: _onRedeem,
-              ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text(
+                  'Use coins as a form of gift to your colleagues to appreciate and support them.',
+                ),
+              )
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
         // Handle navigation item selection
       }),
     );
-  }
-
-  void _onAmountChanged(int newAmount) {
-    // Implement your logic for amount change
-  }
-
-  void _onRedeem() {
-    // Implement your redeem action
   }
 }
