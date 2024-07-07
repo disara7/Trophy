@@ -7,7 +7,6 @@ import 'dart:convert';
 
 import 'ResetPassword.dart';
 
-
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
 
@@ -101,7 +100,8 @@ class _AuthPageState extends State<AuthPage> {
   Future<void> _login() async {
     try {
       final response = await http.post(
-        Uri.parse('http://13.60.28.40/auth/login'), // Replace with your actual server URL
+        Uri.parse(
+            'http://13.60.28.40/auth/login'), // Replace with your actual server URL
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -121,28 +121,31 @@ class _AuthPageState extends State<AuthPage> {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                ResetPassword(
-                    username: _usernameController.text),
+                ResetPassword(username: _usernameController.text),
           ),
         );
       } else if (response.statusCode == 202) {
-        _showErrorDialog(context,'Successful', 'You are successfully logged');
+        _showErrorDialog(context, 'Successful', 'You are successfully logged');
       } else {
         // Handle failed login
         print('Failed to login (status code: ${response.statusCode})');
-        _showErrorDialog(context, 'Error', 'Login failed. Please check your credentials or try again later.');
+        _showErrorDialog(context, 'Error',
+            'Login failed. Please check your credentials or try again later.');
       }
     } on SocketException catch (e) {
       // Handle network errors
       print('Network error: $e');
-      _showErrorDialog(context, 'Error', 'Connection error. Please check your network connection and try again.');
+      _showErrorDialog(context, 'Error',
+          'Connection error. Please check your network connection and try again.');
     } catch (e) {
       // Handle other exceptions
       print('Unexpected error: $e');
-      _showErrorDialog(context, 'Error', 'An error occurred during login. Please try again later.');
+      _showErrorDialog(context, 'Error',
+          'An error occurred during login. Please try again later.');
     }
   }
-  void _showErrorDialog(BuildContext context,String title , String message) {
+
+  void _showErrorDialog(BuildContext context, String title, String message) {
     showDialog(
       context: context,
       builder: (BuildContext context) {

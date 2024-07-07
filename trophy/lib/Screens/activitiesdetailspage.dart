@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/Screens/qrcodepage.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class Activitiesdetailspage extends StatelessWidget {
   final String title;
@@ -13,6 +14,7 @@ class Activitiesdetailspage extends StatelessWidget {
   final String activityvenue;
 
   const Activitiesdetailspage({
+    Key? key,
     required this.title,
     required this.description,
     required this.coinCount,
@@ -21,7 +23,7 @@ class Activitiesdetailspage extends StatelessWidget {
     required this.activitydate,
     required this.activitytime,
     required this.activityvenue,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class Activitiesdetailspage extends StatelessWidget {
                           children: [
                             Text(
                               title,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -60,15 +62,13 @@ class Activitiesdetailspage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
+                      const SizedBox(width: 5),
                       Stack(
                         clipBehavior: Clip.none,
                         alignment: Alignment.center,
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                             decoration: BoxDecoration(
                               color: Colors.black,
@@ -81,13 +81,13 @@ class Activitiesdetailspage extends StatelessWidget {
                                   padding: const EdgeInsets.only(top: 16),
                                   child: Text(
                                     '$coinCount',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                               ],
                             ),
                           ),
@@ -113,21 +113,21 @@ class Activitiesdetailspage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Image.asset(
                   activitiesmainimgUrl,
                   width: double.infinity,
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
                     activitiesdetails,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                     textAlign: TextAlign.justify,
                   ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
@@ -155,11 +155,11 @@ class Activitiesdetailspage extends StatelessWidget {
                         color: const Color(0xFF222222),
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'GOING',
                           style: TextStyle(
-                            color: Color(0xFFFF09C46),
+                            color: Color(0xFFF09C46),
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),

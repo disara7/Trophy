@@ -19,8 +19,6 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int selectNavIndex = 0;
 
-  List<String> pages = const ["HOME", "MESSAGE", "NOTIFICATIONS", "SETTINGS"];
-
   void animateTheIcon(int index) {
     for (var i = 0; i < bottomNavs.length; i++) {
       if (bottomNavs[i].input != null) {
@@ -57,12 +55,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: IndexedStack(
         index: selectNavIndex,
         children: [
-
+          Activities(),
+          Hackathon(),
+          Sports(),
           Container(),
-           Container(),
-            Container(),
-             Container(),
-          
         ],
       ),
       bottomNavigationBar: SafeArea(

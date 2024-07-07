@@ -18,6 +18,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
   carousel_slider: ^4.2.1
+  mongo_dart: ^0.10.3
 
 dev_dependencies:
   flutter_test:
@@ -35,3 +36,5 @@ flutter:
     - assets/coinbank/
     - assets/coinbank/cb4.png
     - assets/Hack.png
+    - assets/Hackathon/
+    - assets/Sport/

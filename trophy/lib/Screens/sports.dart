@@ -6,6 +6,7 @@ import 'package:trophy/blocs/sports/sports_state.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/Components/sport_card.dart';
 import 'sportdetailspage.dart';
+import 'package:trophy/blocs/sports/sport.dart';
 
 class Sports extends StatelessWidget {
   @override
