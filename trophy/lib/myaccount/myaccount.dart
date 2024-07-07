@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class MyAccount extends StatelessWidget {
   const MyAccount({Key? key}) : super(key: key);
@@ -6,12 +8,19 @@ class MyAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Account'),
+      appBar: CustomAppBar(
+        title: 'MY ACCOUNT',
+        coinCount: 520,
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: Center(
         child: const Text('Welcome to My Account Page!'),
       ),
+      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        // Handle navigation item selection
+      }),
     );
   }
 }

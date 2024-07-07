@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trophy/coinBank/coinbank.dart';
 
 import 'package:trophy/coinBank/redeem.dart';
+import 'package:trophy/myaccount/myaccount.dart';
 // import 'package:trophy/coinBank/coinbank.dart';
 // import 'package:trophy/navBar/navbar.dart';
 // import 'package:trophy/splash/splash.dart';
@@ -22,7 +23,7 @@ class MainApp extends StatelessWidget {
       theme: TrophyTheme.lightTheme,
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: CoinBank(),
+      home: MyAccount(),
     );
   }
 }
