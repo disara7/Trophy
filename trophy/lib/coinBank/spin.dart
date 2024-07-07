@@ -60,9 +60,9 @@ class _SpinPageState extends State<SpinPage> {
       controller.add(randomIndex);
       setState(() {
         spinning = false;
-      });
-      Future.delayed(const Duration(milliseconds: 500), () {
-        _showCongratulations(randomIndex);
+        Future.delayed(const Duration(milliseconds: 5500), () {
+          _showCongratulations(randomIndex);
+        });
       });
     });
   }

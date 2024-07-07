@@ -1,5 +1,6 @@
 // dialogs.dart
 import 'package:flutter/material.dart';
+import 'package:trophy/themes/button_styles.dart';
 
 void showCongratulationsDialog(BuildContext context, String message) {
   showDialog(
@@ -30,11 +31,12 @@ void showCongratulationsDialog(BuildContext context, String message) {
           ),
         ),
         actions: <Widget>[
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('Close'),
+            child: Text('COLLECT'),
+            style: ButtonStyles.elevatedButtonStyle,
           ),
         ],
       );
