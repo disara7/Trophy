@@ -17,12 +17,12 @@ class SpinPage extends StatefulWidget {
 
 class _SpinPageState extends State<SpinPage> {
   final items = <String>[
-    'Item 1',
-    'Item 2',
+    '50 Coins Treasure',
+    '10',
     'SPIN x1',
     '2x ',
     'TRY AGAIN',
-    'Item 6',
+    '30',
     'SPIN x1',
     'TRY AGAIN',
   ];
@@ -68,14 +68,20 @@ class _SpinPageState extends State<SpinPage> {
   }
 
   void _showCongratulations(int index) {
-    String message;
+    String message, buttonText;
     if (items[index] == 'TRY AGAIN') {
       message = 'Oops! Try again.';
+      buttonText = 'TRY AGAIN';
+    } else if (items[index] == 'SPIN x1') {
+      message = 'You won a spinning chance.';
+      buttonText = 'SPIN AGAIN';
     } else {
-      message = 'Congratulations! You won ${items[index]} coins.';
+      message = 'You won ${items[index]} coins.';
+      buttonText = 'COLLECT';
     }
+    ;
 
-    showCongratulationsDialog(context, message);
+    showCongratulationsDialog(context, message, buttonText);
   }
 
   @override
