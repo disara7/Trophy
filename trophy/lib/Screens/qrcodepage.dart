@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart'; // for kIsWeb
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
+import 'dart:io'; // Add this import for Platform
 
-class Qrcodepage extends StatelessWidget {
+class Qrcodepage extends StatefulWidget {
   final String title;
   final String description;
   final int coinCount;
@@ -23,6 +26,24 @@ class Qrcodepage extends StatelessWidget {
   });
 
   @override
+  _QrcodepageState createState() => _QrcodepageState();
+}
+
+class _QrcodepageState extends State<Qrcodepage> {
+  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  QRViewController? controller;
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    if (Platform.isAndroid) {
+      controller!.pauseCamera();
+    } else if (Platform.isIOS) {
+      controller!.resumeCamera();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
@@ -32,82 +53,53 @@ class Qrcodepage extends StatelessWidget {
           Navigator.of(context).pop();
         },
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            SizedBox(height: 60),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.6,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
               decoration: BoxDecoration(
-                color: const Color(0xFF222222),
+                color: Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: Image.asset(
-                        'assets/Qrcode.png',
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 180.0, // Adjust this value to move content down
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/Code.png',
-                            width: 230,
-                            height: 230,
-                          ),
-                          Text(
-                            activitydate,
-                            style: TextStyle(fontSize: 16, color: Colors.black),
-                          ),
-                          Text(
-                            activitytime,
-                            style: TextStyle(fontSize: 16, color: Colors.black),
-                          ),
-                          Text(
-                            activityvenue,
-                            style: TextStyle(fontSize: 16, color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              child: _buildQrView(context), // Add the QR scanner view
             ),
-            SizedBox(height: 16),
-            Container(
-              width: 200,
-              height: MediaQuery.of(context).size.height * 0.05,
-              decoration: BoxDecoration(
-                color: const Color(0xFF222222),
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Center(
-                child: Text(
-                  'SAVE',
-                  style: TextStyle(
-                    color: Color(0xFFFF09C46),
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+
+  Widget _buildQrView(BuildContext context) {
+    var scanArea = (MediaQuery.of(context).size.width < 400 ||
+            MediaQuery.of(context).size.height < 400)
+        ? 150.0
+        : 300.0;
+    return QRView(
+      key: qrKey,
+      onQRViewCreated: _onQRViewCreated,
+      overlay: QrScannerOverlayShape(
+        borderColor: Colors.red,
+        borderRadius: 10,
+        borderLength: 30,
+        borderWidth: 10,
+        cutOutSize: scanArea,
+      ),
+    );
+  }
+
+  void _onQRViewCreated(QRViewController controller) {
+    setState(() {
+      this.controller = controller;
+    });
+    controller.scannedDataStream.listen((scanData) {
+      // Handle scanned data here
+    });
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
   }
 }

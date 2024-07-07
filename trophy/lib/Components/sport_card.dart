@@ -48,15 +48,15 @@ class CustomCard extends StatelessWidget {
                     sporttitle,
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
-                      height: -4,
                       fontSize: 14,
                       color: Color(0xFF222222),
                     ),
                   ),
+                  SizedBox(height: 4),
                   Text(
                     sportdescription,
                     textAlign: TextAlign.left,
-                    style: TextStyle(height: 1.1, fontSize: 12),
+                    style: TextStyle(fontSize: 12, height: 1.1),
                   ),
                   SizedBox(height: 10),
                 ],
