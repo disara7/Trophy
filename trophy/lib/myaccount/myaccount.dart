@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/themes/button_styles.dart';
 
 class MyAccount extends StatefulWidget {
   const MyAccount({Key? key}) : super(key: key);
@@ -12,7 +13,8 @@ class MyAccount extends StatefulWidget {
 }
 
 class _MyAccountState extends State<MyAccount> {
-  TextEditingController _dobController = TextEditingController();
+  TextEditingController _dobController =
+      TextEditingController(text: '1999-07-01');
   TextEditingController _contactController =
       TextEditingController(text: '0779449333');
   TextEditingController _addressController =
@@ -25,10 +27,12 @@ class _MyAccountState extends State<MyAccount> {
   String position = 'Position';
   String since = '2014';
 
+  DateTime bday = DateTime.now();
+
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: bday,
       firstDate: DateTime(1900),
       lastDate: DateTime(2101),
     );
@@ -37,6 +41,29 @@ class _MyAccountState extends State<MyAccount> {
         _dobController.text = "${picked.toLocal()}".split(' ')[0];
       });
     }
+  }
+
+  void _saveChanges() {
+    // Implement saving changes logic here
+    // Example: Save updated contact, address, NIC, and DOB
+    String updatedContact = _contactController.text;
+    String updatedAddress = _addressController.text;
+    String updatedNIC = _nicController.text;
+    String updatedDOB = _dobController.text;
+
+    // Print or save these values as per your application's requirements
+    print('Updated Contact Number: $updatedContact');
+    print('Updated Address: $updatedAddress');
+    print('Updated NIC: $updatedNIC');
+    print('Updated Date of Birth: $updatedDOB');
+
+    // Optionally, show a confirmation message
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Changes saved successfully!'),
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
 
   @override
@@ -52,7 +79,7 @@ class _MyAccountState extends State<MyAccount> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(18),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -159,6 +186,14 @@ class _MyAccountState extends State<MyAccount> {
                       ),
                     ],
                   ),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    _saveChanges();
+                  },
+                  style: ButtonStyles.elevatedButtonStyle,
+                  child: Text('Save Changes'),
                 ),
               ],
             ),
