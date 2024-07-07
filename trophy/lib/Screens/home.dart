@@ -6,6 +6,7 @@ import 'package:trophy/Components/button.dart';
 import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
+import 'package:trophy/Components/main_appbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -35,30 +36,13 @@ class _HomeState extends State<Home> {
         ),
       ],
       child: Scaffold(
-        appBar: AppBar(
-          title: const Center(
-            child: Text(
-              'HOME',
-              style: TextStyle(fontSize: 18.0),
-            ),
-          ),
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            iconSize: 30,
-            color: Colors.black87,
-            onPressed: () {},
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.account_circle),
-              iconSize: 32,
-              color: Colors.black87,
-              onPressed: _deleteToken,
-            ),
-          ],
-          backgroundColor: const Color(0xffFDFEFF),
+        appBar: CustomAppBar(
+            title: "HOME",
+            leadingIcon: Icons.menu,
+            onLeadingPressed: (){},
+            actionIcon: Icons.account_circle,
+            onActionPressed: _deleteToken
         ),
-      
         body: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
             return SingleChildScrollView(
@@ -261,10 +245,10 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         customButton(
-                          const Color(0xffE28C43),
-                          const Color(0xff131212),
-                          'COIN BANK',
-                              () {
+                          backgroundColor: const Color(0xffE28C43),
+                          textColor: const Color(0xff131212),
+                          text: 'COIN BANK',
+                          onPressed: () {
 
                           },
                         ),

@@ -30,12 +30,15 @@ Future<HomeState> fetchHomeState() async {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
+      await Future.delayed(const Duration(seconds: 10));
+      fetchHomeState();
       return HomeState(
         coins: data['coins'],
         dailyChallenge: data['dailyChallenge'],
         completedChallenges: data['completedChallenges'],
         level: data['level'],
       );
+
     } else {
       throw Exception('Failed to load home state');
     }
