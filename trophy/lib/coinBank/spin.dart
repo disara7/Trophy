@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:trophy/coinBank/dialogs.dart';
+import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/themes/button_styles.dart';
 import 'dart:math';
 import 'dart:async';
 import 'package:trophy/themes/color_palette.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
 
 class SpinPage extends StatefulWidget {
   const SpinPage({super.key});
@@ -71,204 +75,174 @@ class _SpinPageState extends State<SpinPage> {
       message = 'Congratulations! You won ${items[index]} coins.';
     }
 
-    showDialog(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        titlePadding: EdgeInsets.zero,
-        contentPadding: EdgeInsets.zero,
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/intro3.png', // Adjust the path as per your asset location
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-            const SizedBox(height: 16), // Adjust spacing as needed
-            Text(
-              items[index] == 'TRY AGAIN' ? 'Oops!' : 'Congratulations!',
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8), // Adjust spacing as needed
-            Text(message),
-          ],
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text(items[index] == 'TRY AGAIN'
-                ? 'Spin Again'
-                : 'Tap to collect coins'),
-          ),
-        ],
-      ),
-    );
+    showCongratulationsDialog(context, message);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Spin Page'),
+      appBar: CustomAppBar(
+        title: 'SPIN',
+        coinCount: 520,
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Image.asset(
-                'assets/spincat.png',
-                width: MediaQuery.of(context).size.width,
-                fit: BoxFit.contain,
+      body: Center(
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Image.asset(
+                  'assets/spincat.png',
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 50.0, left: 180.0),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                color: Colors.transparent,
-                width: 200, // Set the desired width here
-                child: const Text(
-                  'FEELING LUCKY?',
-                  style: TextStyle(
-                    color: Colors.orange,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22.0, // Decreased font size
+            Padding(
+              padding: const EdgeInsets.only(top: 50.0, left: 180.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  color: Colors.transparent,
+                  width: 200, // Set the desired width here
+                  child: const Text(
+                    'FEELING LUCKY?',
+                    style: TextStyle(
+                      color: Colors.orange,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22.0, // Decreased font size
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 80.0, left: 180.0),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                color: Colors.transparent,
-                width: 200, // Set the desired width here
-                child: const Text(
-                  'Let the lucky spinning wheel bring you more coins.',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16.0, // Decreased font size
+            Padding(
+              padding: const EdgeInsets.only(top: 80.0, left: 180.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  color: Colors.transparent,
+                  width: 200, // Set the desired width here
+                  child: const Text(
+                    'Let the lucky spinning wheel bring you more coins.',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16.0, // Decreased font size
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 160.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: 350,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        // Background image
-                        Image.asset(
-                          'assets/spinbg.png',
-                          fit: BoxFit.contain,
-                          height: 350,
-                          width: double.infinity,
-                        ),
-                        // Fortune wheel
-                        Padding(
-                          padding: const EdgeInsets.all(28.0),
-                          child: FortuneWheel(
-                            selected: controller.stream,
-                            items: [
-                              for (var i = 0; i < items.length; i++)
-                                FortuneItem(
-                                  style: FortuneItemStyle(
-                                    color: segmentColors[i],
-                                    borderColor: Colors.transparent,
-                                    borderWidth: 1,
-                                  ),
-                                  child: i == 0
-                                      ? Transform.rotate(
-                                          angle: pi / 2,
-                                          child: Image.asset(
-                                            'assets/giftbox.png',
-                                            width: 40,
-                                            height: 40,
-                                          ),
-                                        )
-                                      : i == 1
-                                          ? Image.asset(
-                                              'assets/Coin.png',
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 160.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: 350,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          // Background image
+                          Image.asset(
+                            'assets/spinbg.png',
+                            fit: BoxFit.contain,
+                            height: 350,
+                            width: double.infinity,
+                          ),
+                          // Fortune wheel
+                          Padding(
+                            padding: const EdgeInsets.all(28.0),
+                            child: FortuneWheel(
+                              selected: controller.stream,
+                              items: [
+                                for (var i = 0; i < items.length; i++)
+                                  FortuneItem(
+                                    style: FortuneItemStyle(
+                                      color: segmentColors[i],
+                                      borderColor: Colors.transparent,
+                                      borderWidth: 1,
+                                    ),
+                                    child: i == 0
+                                        ? Transform.rotate(
+                                            angle: pi / 2,
+                                            child: Image.asset(
+                                              'assets/giftbox.png',
                                               width: 40,
                                               height: 40,
-                                            )
-                                          : i == 3
-                                              ? Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    const Text(
-                                                      '2x ',
-                                                      style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold,
+                                            ),
+                                          )
+                                        : i == 1
+                                            ? Image.asset(
+                                                'assets/Coin.png',
+                                                width: 40,
+                                                height: 40,
+                                              )
+                                            : i == 3
+                                                ? Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      const Text(
+                                                        '2x ',
+                                                        style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Image.asset(
-                                                      'assets/Coin.png',
-                                                      width: 40,
-                                                      height: 40,
-                                                    ),
-                                                  ],
-                                                )
-                                              : i == 5
-                                                  ? Image.asset(
-                                                      'assets/coinset.png',
-                                                      width: 40,
-                                                      height: 40,
-                                                    )
-                                                  : Text(
-                                                      items[i],
-                                                      style: const TextStyle(
-                                                        fontSize: 18,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.bold,
+                                                      Image.asset(
+                                                        'assets/Coin.png',
+                                                        width: 40,
+                                                        height: 40,
                                                       ),
-                                                    ),
-                                ),
-                            ],
+                                                    ],
+                                                  )
+                                                : i == 5
+                                                    ? Image.asset(
+                                                        'assets/coinset.png',
+                                                        width: 40,
+                                                        height: 40,
+                                                      )
+                                                    : Text(
+                                                        items[i],
+                                                        style: const TextStyle(
+                                                          fontSize: 18,
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                  ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 70),
-                  ElevatedButton(
-                    onPressed: _spinWheel,
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Palette.appOrange,
-                      backgroundColor: Palette.appBlack,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        ],
                       ),
                     ),
-                    child: const Text('SPIN THE WHEEL'),
-                  ),
-                ],
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _spinWheel,
+                      style: ButtonStyles.elevatedButtonStyle,
+                      child: const Text('SPIN THE WHEEL'),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        // Handle navigation item selection
+      }),
     );
   }
 }
