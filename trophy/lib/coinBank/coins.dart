@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/navBar/navbar.dart';
 import 'earn_coins_section.dart'; // Import the new Dart file
 
@@ -8,8 +9,12 @@ class CoinsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('COINS'),
+      appBar: CustomAppBar(
+        title: 'COINS',
+        coinCount: 520,
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: const CoinsPageContent(),
       bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
