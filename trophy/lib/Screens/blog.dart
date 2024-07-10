@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Components/Blog/discover.dart';
 import 'package:trophy/Components/Blog/popular_post.dart';
 import 'package:trophy/Components/button.dart';
 import 'package:trophy/Components/main_appbar.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:trophy/Screens/my_blog.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:trophy/Screens/write_blog.dart';
 
 class Blog extends StatefulWidget {
   const Blog({super.key});
@@ -35,27 +38,35 @@ class _BlogState extends State<Blog> {
                 "Exhale by writing it away!",
                 style: TextStyle(fontSize: 16, color: Color(0xFF222222)),
             ),
-            const SizedBox(height: 10.0),
+            const SizedBox(height: 20.0),
             const PopularPostCard(),
-            const SizedBox(height: 10.0),
+            const SizedBox(height: 20.0),
+            const DiscoverSection(),
+            const SizedBox(height: 20.0),
             Row(
               children: [
                 customButton(
                   backgroundColor: const Color(0xFF222222),
                   textColor: const Color.fromARGB(255, 240, 156, 70),
-                  text: 'Write',
+                  text: 'WRITE',
                   onPressed: () {
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const BlogWritingPage()),
+                    );
                   },
-                  icon: Icons.edit_outlined
+                  icon: FontAwesomeIcons.penNib,
                 ),
-                const SizedBox(width: 5.0),
+                const SizedBox(width: 10.0),
                 customButton(
                   backgroundColor: const Color(0xffE28C43),
                   textColor: const Color(0xff131212),
-                  text: 'My Articles',
+                  text: 'MY ARTICLES',
                   onPressed: () {
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MyBlogs()),
+                    );
                   },
                 ),
               ],
