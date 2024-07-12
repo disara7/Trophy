@@ -8,6 +8,8 @@ import 'package:trophy/Components/sport_card.dart';
 import 'sportdetailspage.dart';
 
 class Sports extends StatelessWidget {
+  const Sports({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -25,7 +27,7 @@ class Sports extends StatelessWidget {
           child: BlocBuilder<SportsBloc, SportsState>(
             builder: (context, state) {
               if (state is SportsLoading) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is SportsLoaded) {
                 print('Sports Loaded: ${state.sports.length} sports');
                 return ListView(
@@ -37,7 +39,7 @@ class Sports extends StatelessWidget {
                           .where((sport) => sport.type == 'tournament')
                           .toList(),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     _buildSection(
                       context,
                       'Clubs',
@@ -48,7 +50,7 @@ class Sports extends StatelessWidget {
                   ],
                 );
               } else if (state is SportsError) {
-                return Center(child: Text('Failed to load sports'));
+                return const Center(child: Text('Failed to load sports'));
               }
               return Container(); // This handles any unexpected states
             },
@@ -71,7 +73,7 @@ class Sports extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             sectionTitle,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
             ),

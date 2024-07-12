@@ -20,7 +20,7 @@ Future<HomeState> fetchHomeState() async {
   // }
   try {
     final response = await http.get(
-      Uri.parse('http://13.60.28.40fetch/home'), // Replace with 13.60.28.40
+      Uri.parse('http://172.20.10.2/fetch/home'), // Replace with 13.60.28.40
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer $token',

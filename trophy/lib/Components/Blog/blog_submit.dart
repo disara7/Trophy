@@ -7,7 +7,7 @@ Future<void> submitBlog(String title, String subtitle, String category, QuillCon
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('authToken');
 
-  final url = Uri.parse('http://13.60.28.40/api/addblog'); // Replace with 172.20.10.2
+  final url = Uri.parse('http://172.20.10.2/api/addblog'); // Replace with 172.20.10.2
 
   // Prepare the blog content in JSON format
   final content = jsonEncode(controller.document.toDelta().toJson());

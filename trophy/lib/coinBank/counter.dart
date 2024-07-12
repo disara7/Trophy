@@ -25,7 +25,8 @@ class Counter extends StatelessWidget {
             width: 32,
             height: 32,
           ),
-          const SizedBox(width: 13), // Add some space between coin icon and text
+          const SizedBox(
+              width: 13), // Add some space between coin icon and text
           Text(
             '$count', // Display the count
             style: const TextStyle(

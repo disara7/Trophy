@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/coinBank/counter.dart';
-import 'package:trophy/coinBank/coins.dart'; // Import CoinsPage
+import 'package:trophy/coinBank/coins.dart';
 import 'package:trophy/coinBank/gift.dart'; // Import GiftPage
 import 'package:trophy/coinBank/redeem.dart'; // Import RedeemPage
 import 'package:trophy/coinBank/spin.dart';
@@ -13,22 +14,12 @@ class CoinBank extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.brown,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text('COIN BANK', style: TextStyle(color: Colors.brown)),
+      appBar: CustomAppBar(
+        title: 'COIN BANK',
+        coinCount: 520,
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

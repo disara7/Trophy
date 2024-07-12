@@ -15,7 +15,7 @@ dependencies:
   page_view_dot_indicator: ^2.3.0
   page_view_indicators: ^2.0.0
   rive: ^0.13.5
-  flutter_bloc: ^8.0.1
+  flutter_bloc: ^8.1.6
   equatable: ^2.0.3
   bloc: ^8.1.4
   carousel_slider: ^4.2.1
@@ -28,6 +28,15 @@ dependencies:
   image_picker: ^1.1.2
   flutter_quill_extensions: ^9.5.12
   cached_network_image: ^3.3.1
+
+  meta: ^1.11.0
+
+  dio: ^5.4.3+1
+  google_generative_ai: ^0.4.3
+  lottie: ^3.1.2
+  chat_bubbles: ^1.6.0
+  chat_message_timestamp:
+
 
 dev_dependencies:
   flutter_test:

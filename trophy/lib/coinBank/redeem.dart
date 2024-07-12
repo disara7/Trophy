@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/coinBank/amount_selector.dart';
+import 'package:trophy/coinBank/coinbank.dart';
 import 'package:trophy/coinBank/counter.dart';
-import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/coinBank/RedeemOptionsCarousel.dart';
+import 'package:trophy/navBar/navbar.dart'; // Adjust the path as per your project structure
 
 class RedeemPage extends StatefulWidget {
   const RedeemPage({super.key});
@@ -28,104 +31,100 @@ class _RedeemPageState extends State<RedeemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('REDEEM COINS'),
+      appBar: CustomAppBar(
+        title: 'REDEEM COINS',
+        coinCount: 520,
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: Center(
-        child: Container(
-          width: 350, // Set width as needed
-          padding:
-              const EdgeInsets.all(0.0), // Add padding inside the container
-          child: Stack(
-            children: [
-              Positioned(
-                left: 0,
-                top: 40,
-                child: Image.asset(
-                  'assets/redeemcat.png',
-                  width: 360,
-                  // height: 250, // Adjust image height
-                ),
-              ),
-              Positioned(
-                left: 115,
-                top: 60,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Your existing Stack with image and text
+                Stack(
+                  children: <Widget>[
                     SizedBox(
-                      width: 230, // Set the desired width
-                      child: RichText(
-                        text: const TextSpan(
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
+                      height: 100.0,
+                      child: Image.asset(
+                        'assets/redeemcat.png',
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    ),
+                    Positioned.fill(
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(115, 20, 5, 0),
+                          child: RichText(
+                            textAlign: TextAlign.left,
+                            text: const TextSpan(
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'The effort pays off!\n',
+                                  style: TextStyle(
+                                    color: Colors.orange,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text:
+                                      'It’s about time you make use of the coins you’ve collected. Redeem the coins you have collected at the checkout of the following.',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'The effort pays off!',
-                              style: TextStyle(
-                                color: Colors.orange,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            TextSpan(
-                              text:
-                                  ' It’s about time you make use of the coins you’ve collected. Redeem the coins you have collected at the checkout of the following.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
                   ],
                 ),
-              ),
-              Positioned(
-                left: 0,
-                top: 140,
-                child:
-                    RedeemOptionsCarousel(), // Adjust carousel position as needed
-              ),
-              Positioned(
-                left: 0,
-                top: 350,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      width: 350,
-                      child: Counter(count: 520),
-                    ),
-                    const SizedBox(height: 20), // Adjust space as needed
-                    const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Select Amount to Redeem',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    // AmountSelector(
-                    //   initialAmount: amount,
-                    //   onAmountChanged: _onAmountChanged,
-                    //   onRedeem: _onRedeem,
-                    // ),
-                  ],
+
+                // Your existing RedeemOptionsCarousel widget
+                const RedeemOptionsCarousel(),
+
+                const SizedBox(height: 20),
+
+                // Your existing Counter widget
+                const Counter(count: 520),
+
+                const SizedBox(height: 20),
+
+                // Text widget for 'Select Amount to Redeem'
+                const Text(
+                  'Select Amount to Redeem',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              // Add the new black box here
-              Positioned(
-                left: 0,
-                top: 500, // Adjust the position as needed
-                child: Container(
+
+                const SizedBox(height: 20),
+
+                // Integrate AmountSelector widget here
+                AmountSelector(
+                  initialAmount: amount,
+                  onAmountChanged: _onAmountChanged,
+                  onRedeem: _onRedeem,
+                ),
+
+                const SizedBox(height: 20),
+
+                // Your existing Container with text and image
+                Container(
                   width: 350,
                   decoration: BoxDecoration(
                     color: Colors.black,
@@ -134,10 +133,10 @@ class _RedeemPageState extends State<RedeemPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               'First Orange Text',
                               style: TextStyle(
@@ -159,17 +158,20 @@ class _RedeemPageState extends State<RedeemPage> {
                       ),
                       Image.asset(
                         'assets/cb1.png', // Replace with your image path
-                        width: 50, // Adjust width as needed
-                        height: 50, // Adjust height as needed
+                        width: 50,
+                        height: 50,
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        // Handle navigation item selection
+      }),
     );
   }
 }
