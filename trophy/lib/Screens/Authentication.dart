@@ -102,7 +102,7 @@ class _AuthPageState extends State<AuthPage> {
   Future<void> _login() async {
     try {
       final response = await http.post(
-        Uri.parse('http://172.20.10.2/auth/login'), // Replace with 13.60.28.40
+        Uri.parse('http://13.60.28.40/auth/login'), // Replace with 13.60.28.40
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
