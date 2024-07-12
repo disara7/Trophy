@@ -4,16 +4,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final IconData leadingIcon;
   final VoidCallback onLeadingPressed;
-  final IconData actionIcon;
-  final VoidCallback onActionPressed;
+  final IconData?actionIcon;
+  final VoidCallback?onActionPressed;
 
   const CustomAppBar({
     Key? key,
     required this.title,
     required this.leadingIcon,
     required this.onLeadingPressed,
-    required this.actionIcon,
-    required this.onActionPressed,
+    this.actionIcon,
+    this.onActionPressed,
   }) : super(key: key);
 
   @override

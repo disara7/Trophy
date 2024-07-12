@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/authcheck.dart';
 import 'package:trophy/themes/theme.dart';
 
@@ -18,6 +19,7 @@ class MainApp extends StatelessWidget {
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
       home: AuthCheck(),
+      // home: Blog(),
     );
   }
 }

@@ -7,7 +7,6 @@ import '../../socket/socket_service.dart';
 Future<HomeState> fetchHomeState() async {
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('authToken');
-  print(token);
 
   // Decode the token to get the userId
   // final decodedToken = jsonDecode(utf8.decode(base64Url.decode(base64Url.normalize(token!.split('.')[1]))));
