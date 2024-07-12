@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/Screens/home.dart';
 import 'navbar.dart';
 
@@ -14,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const Home(), // Home page
-    Container(), // Message page
+    const Blog(), // Blog page
     Container(), // Notifications page
     Container(), // Settings page
   ];
