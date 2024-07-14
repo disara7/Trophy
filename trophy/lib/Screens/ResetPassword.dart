@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trophy/navBar/mainscreen.dart';
 
 class ResetPassword extends StatefulWidget {
   final String username;
@@ -44,6 +46,12 @@ class _ResetPasswordState extends State<ResetPassword> {
       if (response.statusCode == 200) {
         // Handle successful password reset
         print('Password reset successful');
+        var data = jsonDecode(response.body);
+
+        // Store the token in SharedPreferences
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('authToken', data['token']);
+
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -52,7 +60,14 @@ class _ResetPasswordState extends State<ResetPassword> {
               content: const Text('Your password has been reset successfully.'),
               actions: [
                 TextButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    // Navigate to MainScreen after dialog dismissal
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MainScreen()),
+                    );
+                  },
                   child: const Text('OK'),
                 ),
               ],

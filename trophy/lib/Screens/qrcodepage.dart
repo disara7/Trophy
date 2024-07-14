@@ -14,7 +14,7 @@ class Qrcodepage extends StatefulWidget {
   final String activitytime;
   final String activityvenue;
 
-  const Qrcodepage({
+  const Qrcodepage({super.key, 
     required this.title,
     required this.description,
     required this.coinCount,
@@ -53,15 +53,19 @@ class _QrcodepageState extends State<Qrcodepage> {
           Navigator.of(context).pop();
         },
       ),
+
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             child: Container(
+
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(12),
               ),
+
               child: _buildQrView(context), // Add the QR scanner view
             ),
           ),
@@ -84,6 +88,7 @@ class _QrcodepageState extends State<Qrcodepage> {
         borderLength: 30,
         borderWidth: 10,
         cutOutSize: scanArea,
+
       ),
     );
   }

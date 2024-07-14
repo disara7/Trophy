@@ -13,8 +13,10 @@ class Activitiesdetailspage extends StatelessWidget {
   final String activitytime;
   final String activityvenue;
 
+
   const Activitiesdetailspage({
     Key? key,
+
     required this.title,
     required this.description,
     required this.coinCount,
@@ -62,7 +64,9 @@ class Activitiesdetailspage extends StatelessWidget {
                           ],
                         ),
                       ),
+
                       const SizedBox(width: 5),
+
                       Stack(
                         clipBehavior: Clip.none,
                         alignment: Alignment.center,
@@ -159,7 +163,9 @@ class Activitiesdetailspage extends StatelessWidget {
                         child: Text(
                           'GOING',
                           style: TextStyle(
-                            color: Color(0xFFF09C46),
+
+                            color: Color(0xffff09c46),
+
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),

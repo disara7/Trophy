@@ -4,7 +4,7 @@ class CustomCard extends StatelessWidget {
   final String imageUrl;
   final String title;
 
-  CustomCard({
+  const CustomCard({super.key, 
     required this.imageUrl,
     required this.title,
   });
@@ -19,7 +19,7 @@ class CustomCard extends StatelessWidget {
           Container(
             width: 160,
             decoration: BoxDecoration(
-              color: Color.fromARGB(248, 245, 225, 210),
+              color: const Color.fromARGB(248, 245, 225, 210),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
@@ -44,15 +44,15 @@ class CustomCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
-                      color: const Color(0xFF222222),
+                      color: Color(0xFF222222),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   GestureDetector(
                     onTap: () {
                       // Handle tap
@@ -64,11 +64,11 @@ class CustomCard extends StatelessWidget {
                         color: const Color(0xFF222222),
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Send Coins',
                           style: TextStyle(
-                            color: Color(0xFFFF09C46),
+                            color: Color(0xffff09c46),
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),

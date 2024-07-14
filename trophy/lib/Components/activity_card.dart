@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:trophy/Screens/activitiesdetailspage.dart';
 
@@ -8,9 +10,9 @@ class CustomCard extends StatelessWidget {
   final int coinCount;
   final String activitiesdetails;
   final String activitiesmainimgUrl;
-  final String activitydate;
   final String activitytime;
   final String activityvenue;
+  final String activitydate;
 
   const CustomCard({super.key, 
     required this.title,
@@ -62,7 +64,7 @@ class CustomCard extends StatelessWidget {
                     style: const TextStyle(height: 1.1, fontSize: 12),
                   ),
 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -88,11 +90,11 @@ class CustomCard extends StatelessWidget {
                         color: const Color(0xFF222222),
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'GOING',
                           style: TextStyle(
-                            color: Color(0xFFFF09C46),
+                            color: Color(0xffff09c46),
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),

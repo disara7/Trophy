@@ -9,7 +9,7 @@ class Hackathondetailspage extends StatelessWidget {
   final String hackathondetails;
   final String hackathonmainimgUrl;
 
-  const Hackathondetailspage({
+  const Hackathondetailspage({super.key, 
     required this.hacktitle,
     required this.hackdescription,
     required this.hackcoinCount,
@@ -46,7 +46,7 @@ class Hackathondetailspage extends StatelessWidget {
                           children: [
                             Text(
                               hacktitle,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -54,7 +54,7 @@ class Hackathondetailspage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Stack(
@@ -62,7 +62,7 @@ class Hackathondetailspage extends StatelessWidget {
                         alignment: Alignment.center,
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                             decoration: BoxDecoration(
                               color: Colors.black,
@@ -75,13 +75,13 @@ class Hackathondetailspage extends StatelessWidget {
                                   padding: const EdgeInsets.only(top: 16),
                                   child: Text(
                                     '$hackcoinCount',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                               ],
                             ),
                           ),
@@ -107,21 +107,21 @@ class Hackathondetailspage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Image.asset(
                   hackathonmainimgUrl,
                   width: double.infinity,
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
                     hackathondetails,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                     textAlign: TextAlign.justify,
                   ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -131,11 +131,11 @@ class Hackathondetailspage extends StatelessWidget {
                       color: const Color(0xFF222222),
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'REGISTER NOW',
                         style: TextStyle(
-                          color: Color(0xFFFF09C46),
+                          color: Color(0xffff09c46),
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),

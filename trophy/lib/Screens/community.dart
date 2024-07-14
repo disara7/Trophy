@@ -3,6 +3,8 @@ import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/Components/member_card.dart'; // Assuming this is the file where CustomCard is defined
 
 class Community extends StatelessWidget {
+  const Community({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class Community extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search...',
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                   filled: true,
                   fillColor: Colors.grey[200],
                   border: OutlineInputBorder(
@@ -32,30 +34,30 @@ class Community extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide:
-                        BorderSide(color: Color.fromARGB(0, 175, 171, 171)),
+                        const BorderSide(color: Color.fromARGB(0, 175, 171, 171)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide(color: Colors.grey),
+                    borderSide: const BorderSide(color: Colors.grey),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
                 child: Container(
                   color: const Color(0xFF222222),
-                  padding: EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(15.0),
                   child: Padding(
                     padding: const EdgeInsets.only(
                         left: 20, right: 20, top: 10, bottom: 10),
                     child: Center(
                       child: Row(
                         children: [
-                          Expanded(
+                          const Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -82,14 +84,14 @@ class Community extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(width: 15),
+                          const SizedBox(width: 15),
                           Image.asset(
                             'assets/Coin.png', // Replace with your image URL
                             width: 50,
                             height: 50,
                           ),
-                          SizedBox(width: 10),
-                          Text(
+                          const SizedBox(width: 10),
+                          const Text(
                             '500',
                             style: TextStyle(
                               color: Colors.white,
@@ -109,7 +111,7 @@ class Community extends StatelessWidget {
             Expanded(
               child: Center(
                 child: ListView(
-                  children: [
+                  children: const [
                     Center(
                       child: Wrap(
                         alignment: WrapAlignment.center,

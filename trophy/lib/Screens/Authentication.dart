@@ -1,11 +1,12 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trophy/navBar/mainscreen.dart';
 import 'package:trophy/themes/color_palette.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'ResetPassword.dart';
+
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -100,8 +101,9 @@ class _AuthPageState extends State<AuthPage> {
   Future<void> _login() async {
     try {
       final response = await http.post(
-        Uri.parse(
-            'http://13.60.28.40/auth/login'), // Replace with your actual server URL
+
+        Uri.parse('http://172.20.10.2/auth/login'), // Replace with 13.60.28.40
+
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -125,7 +127,24 @@ class _AuthPageState extends State<AuthPage> {
           ),
         );
       } else if (response.statusCode == 202) {
-        _showErrorDialog(context, 'Successful', 'You are successfully logged');
+
+
+        var data = jsonDecode(response.body);
+        final token = data['token'];
+
+        if (token != null) {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString('authToken', token);
+        } else {
+          print('Token is null. Cannot save to SharedPreferences.');
+        }
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const MainScreen(),
+          )
+        );
+
       } else {
         // Handle failed login
         print('Failed to login (status code: ${response.statusCode})');

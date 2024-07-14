@@ -1,112 +1,93 @@
 import 'package:flutter/material.dart';
-import 'package:trophy/coinBank/coin_card.dart'; // Import CoinCard widget
-// Import the new styles
-import 'package:trophy/coinBank/counter.dart'; // Import the Counter widget
-import 'package:trophy/coinBank/coins.dart'; // Import CoinsPage
-import 'package:trophy/coinBank/redeem.dart'; // Import RedeemPage
+import 'package:trophy/Components/custom_app_bar.dart';
+import 'package:trophy/coinBank/counter.dart';
+import 'package:trophy/coinBank/coins.dart';
 import 'package:trophy/coinBank/gift.dart'; // Import GiftPage
-import 'package:trophy/coinBank/spin.dart'; // Import SpinPage
+import 'package:trophy/coinBank/redeem.dart'; // Import RedeemPage
+import 'package:trophy/coinBank/spin.dart';
+import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/themes/color_palette.dart'; // Import SpinPage
 
 class CoinBank extends StatelessWidget {
-  const CoinBank({super.key});
+  const CoinBank({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.brown,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text('COIN BANK', style: TextStyle(color: Colors.brown)),
+      appBar: CustomAppBar(
+        title: 'COIN BANK',
+        coinCount: 520,
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(30, 50, 30, 5),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Counter(count: 520), // Use the Counter widget
-            const SizedBox(
-                height: 30), // Add some space between the counter and the grid
+            Counter(count: 520),
+            const SizedBox(height: 20),
             Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10.0,
-                mainAxisSpacing: 90.0,
+              child: ListView(
                 children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height *
-                        0.8, // Adjust as needed
-                    child: CoinCard(
-                      title:
-                          'Take your mind off the workload and engage in different tasks to earn coins.',
-                      buttonText: 'COINS',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const CoinsPage()),
-                        );
-                      },
-                      backgroundImage: 'assets/bg1.png',
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildCardWithBackground(
+                        'assets/bg1.png',
+                        'Take your mind off the workload and engage in different tasks to earn coins.',
+                        'COINS',
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const CoinsPage()),
+                          );
+                        },
+                      ),
+                      _buildCardWithBackground(
+                        'assets/bg2.png',
+                        'Redeem the coins you’ve earned in the form of cash at checkouts.',
+                        'REDEEM',
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RedeemPage()),
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height *
-                        0.4, // Adjust as needed
-                    child: CoinCard(
-                      title:
-                          'Redeem the coins you’ve earned in the form of cash at checkouts.',
-                      buttonText: 'REDEEM',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const RedeemPage()),
-                        );
-                      },
-                      backgroundImage: 'assets/bg2.png',
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height *
-                        0.4, // Adjust as needed
-                    child: CoinCard(
-                      title:
-                          'Use coins as a form of gift to your colleagues to appreciate and support them.',
-                      buttonText: 'GIFT',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const GiftPage()),
-                        );
-                      },
-                      backgroundImage: 'assets/bg3.png',
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height *
-                        0.4, // Adjust as needed
-                    child: CoinCard(
-                      title:
-                          'Let the lucky spinning wheel bring you more coins.',
-                      buttonText: 'SPIN',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const SpinPage()),
-                        );
-                      },
-                      backgroundImage: 'assets/bg4.png',
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildCardWithBackground(
+                        'assets/bg3.png',
+                        'Use coins as a form of gift to your colleagues to appreciate and support them.',
+                        'GIFT',
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const GiftPage()),
+                          );
+                        },
+                      ),
+                      _buildCardWithBackground(
+                        'assets/bg4.png',
+                        'Let the lucky spinning wheel bring you more coins.',
+                        'SPIN',
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SpinPage()),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -114,7 +95,75 @@ class CoinBank extends StatelessWidget {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        // Handle navigation item selection
+      }),
+    );
+  }
+
+  Widget _buildCardWithBackground(String backgroundImage, String text,
+      String buttonText, VoidCallback onPressed) {
+    final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
+      backgroundColor: Palette.appBlack, // Background color
+      foregroundColor: Palette.appOrange, // Text color
+      padding:
+          EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Adjust padding
+      minimumSize: Size(130, 20), // Set minimum width and height
+      textStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold, // Make text bold
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+    );
+
+    return Container(
+      height: 300, // Adjust the height as needed
+      width: 160, // Adjust the width as needed
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        image: DecorationImage(
+          image: AssetImage(backgroundImage),
+          fit: BoxFit.contain,
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {
+            // Handle card tap
+          },
+          borderRadius: BorderRadius.circular(15),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 110),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(
+                    text,
+                    textAlign: TextAlign.center, // Center-align the text
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 11,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 4),
+                ElevatedButton(
+                  onPressed: onPressed,
+                  style: elevatedButtonStyle,
+                  child: Text(buttonText),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
