@@ -6,20 +6,20 @@ import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/themes/button_styles.dart';
 
 class MyAccount extends StatefulWidget {
-  const MyAccount({Key? key}) : super(key: key);
+  const MyAccount({super.key});
 
   @override
   _MyAccountState createState() => _MyAccountState();
 }
 
 class _MyAccountState extends State<MyAccount> {
-  TextEditingController _dobController =
+  final TextEditingController _dobController =
       TextEditingController(text: '1999-07-01');
-  TextEditingController _contactController =
+  final TextEditingController _contactController =
       TextEditingController(text: '0779449333');
-  TextEditingController _addressController =
+  final TextEditingController _addressController =
       TextEditingController(text: 'No.74A, Lewelle road');
-  TextEditingController _nicController =
+  final TextEditingController _nicController =
       TextEditingController(text: '2000000000');
 
   String firstname = 'Firstname';
@@ -59,7 +59,7 @@ class _MyAccountState extends State<MyAccount> {
 
     // Optionally, show a confirmation message
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Changes saved successfully!'),
         duration: Duration(seconds: 2),
       ),
@@ -79,53 +79,53 @@ class _MyAccountState extends State<MyAccount> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            padding: EdgeInsets.all(18),
+            padding: const EdgeInsets.all(18),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 50,
                   backgroundImage: AssetImage(
                       'assets/user.jpeg'), // Make sure the image is in the assets folder and included in pubspec.yaml
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   '$firstname $lastname',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.orange,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
                   position,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 19,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
                   'Since $since',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(41, 255, 153, 0),
+                    color: const Color.fromARGB(41, 255, 153, 0),
                     borderRadius:
                         BorderRadius.circular(12), // Adding border radius
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Personal Details',
                         style: TextStyle(
                           color: Colors.black,
@@ -133,53 +133,53 @@ class _MyAccountState extends State<MyAccount> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextField(
                         controller: _contactController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           labelText: 'Contact Number',
                           suffixIcon: GestureDetector(
                             onTap: () {},
-                            child: Icon(Icons.edit),
+                            child: const Icon(Icons.edit),
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
                         controller: _addressController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           labelText: 'Address',
                           suffixIcon: GestureDetector(
                             onTap: () {},
-                            child: Icon(Icons.edit),
+                            child: const Icon(Icons.edit),
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
                         controller: _nicController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           labelText: 'NIC',
                           suffixIcon: GestureDetector(
                             onTap: () {},
-                            child: Icon(Icons.edit),
+                            child: const Icon(Icons.edit),
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
                         controller: _dobController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           labelText: 'Date of Birth',
                           suffixIcon: GestureDetector(
                             onTap: () {
                               _selectDate(context);
                             },
-                            child: Icon(Icons.calendar_today),
+                            child: const Icon(Icons.calendar_today),
                           ),
                         ),
                         readOnly: true,
@@ -187,13 +187,13 @@ class _MyAccountState extends State<MyAccount> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     _saveChanges();
                   },
                   style: ButtonStyles.elevatedButtonStyle,
-                  child: Text('Save Changes'),
+                  child: const Text('Save Changes'),
                 ),
               ],
             ),
