@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  basic_utils:
+    dependency: transitive
+    description:
+      name: basic_utils
+      sha256: "2064b21d3c41ed7654bc82cc476fd65542e04d60059b74d5eed490a4da08fc6c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.7.0"
   bloc:
     dependency: "direct main"
     description:
@@ -65,6 +73,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+
   cached_network_image:
     dependency: "direct main"
     description:
@@ -89,6 +98,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+
   carousel_slider:
     dependency: "direct main"
     description:
@@ -177,6 +187,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+
   csslib:
     dependency: transitive
     description:
@@ -209,6 +220,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.0"
+
   diff_match_patch:
     dependency: transitive
     description:
@@ -265,6 +277,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.0"
+
   file_selector_linux:
     dependency: transitive
     description:
@@ -297,6 +310,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.9.3+1"
+
   fixnum:
     dependency: transitive
     description:
@@ -845,6 +859,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  mongo_dart:
+    dependency: "direct main"
+    description:
+      name: mongo_dart
+      sha256: b0078dd433ecad7d250abaa6437cb720dd16cbfa9b8cc020460698e0703d7bc9
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.10.3"
+  mongo_dart_query:
+    dependency: transitive
+    description:
+      name: mongo_dart_query
+      sha256: "37d0862b49f0aaef8f66ca81a4e993b0ebdb9d54c3fc16d4779f48e5e6a9e4d6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
   nested:
     dependency: transitive
     description:
@@ -877,6 +907,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  packages_extensions:
+    dependency: transitive
+    description:
+      name: packages_extensions
+      sha256: "268108a92be955e33a58cf6492e289e43ef55a50c89fa64947f032f5cefeb3fc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   page_view_dot_indicator:
     dependency: "direct main"
     description:
@@ -989,6 +1027,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  pointycastle:
+    dependency: transitive
+    description:
+      name: pointycastle
+      sha256: "4be0097fcf3fd3e8449e53730c631200ebc7b88016acecab2b0da2f0149222fe"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.9.1"
   pool:
     dependency: transitive
     description:
@@ -997,6 +1043,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  power_extensions:
+    dependency: transitive
+    description:
+      name: power_extensions
+      sha256: ad0e8b2420090d996fe8b7fd32cdf02b9b924b6d4fc0fb0b559ff6aa5e24d5b0
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.3"
   provider:
     dependency: transitive
     description:
@@ -1013,6 +1067,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+
   quiver:
     dependency: transitive
     description:
@@ -1021,6 +1076,24 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
+
+  qr_code_scanner:
+    dependency: "direct main"
+    description:
+      name: qr_code_scanner
+      sha256: f23b68d893505a424f0bd2e324ebea71ed88465d572d26bb8d2e78a4749591fd
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+  rational:
+    dependency: transitive
+    description:
+      name: rational
+      sha256: cb808fb6f1a839e6fc5f7d8cb3b0a10e1db48b3be102de73938c627f0b636336
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
+
   rive:
     dependency: "direct main"
     description:
@@ -1037,6 +1110,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.9"
+
   rxdart:
     dependency: transitive
     description:
@@ -1101,6 +1175,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+
   shelf:
     dependency: transitive
     description:
@@ -1186,6 +1261,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.0"
+
   sqflite:
     dependency: transitive
     description:
@@ -1202,6 +1278,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.5.4"
+
   stack_trace:
     dependency: transitive
     description:
@@ -1290,6 +1367,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+
   universal_html:
     dependency: transitive
     description:
@@ -1370,6 +1448,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+
   uuid:
     dependency: transitive
     description:
@@ -1434,6 +1513,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "14.2.1"
+  vy_string_utils:
+    dependency: transitive
+    description:
+      name: vy_string_utils
+      sha256: "03f4f2ebba283b32623459fa9c47d5c70e085253c7891f5ef7d4fd539c41c078"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.6"
   watcher:
     dependency: transitive
     description:
