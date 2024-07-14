@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
-import 'package:trophy/coinBank/amount_selector.dart';
 import 'package:trophy/navBar/navbar.dart';
 
 class GiftPage extends StatelessWidget {
@@ -30,8 +29,8 @@ class GiftPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
+              const Padding(
+                padding: EdgeInsets.all(15.0),
                 child: Text(
                   'Use coins as a form of gift to your colleagues to appreciate and support them.',
                 ),

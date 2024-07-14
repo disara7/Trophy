@@ -9,7 +9,7 @@ part 'chat_event.dart';
 part 'chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  ChatBloc() : super(ChatSuccessState(message: [])) {
+  ChatBloc() : super(ChatSuccessState(message: const [])) {
     on<ChatGenerateNewTextMessageEvent>(chatGenerateNewTextMessageEvent);
   }
   List<ChatModel> message = [];
@@ -22,7 +22,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     emit(ChatSuccessState(message: message));
     generating = true;
     String genaratedText = await ChatRepo.chatTextGenerationRepo(message);
-    if (genaratedText.length > 0) {
+    if (genaratedText.isNotEmpty) {
       message.add(ChatModel(
           role: 'model', parts: [ChatPartModel(text: genaratedText)]));
       emit(ChatSuccessState(message: message));
