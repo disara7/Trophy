@@ -9,7 +9,7 @@ void showCongratulationsDialog(
     builder: (BuildContext context) {
       return AlertDialog(
         content: ConstrainedBox(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 300, // Set a maximum width
           ),
           child: Column(
@@ -36,8 +36,8 @@ void showCongratulationsDialog(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text(buttonText),
             style: ButtonStyles.elevatedButtonStyle,
+            child: Text(buttonText),
           ),
         ],
       );

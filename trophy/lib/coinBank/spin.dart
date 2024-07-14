@@ -79,7 +79,6 @@ class _SpinPageState extends State<SpinPage> {
       message = 'You won ${items[index]} coins.';
       buttonText = 'COLLECT';
     }
-    ;
 
     showCongratulationsDialog(context, message, buttonText);
   }
