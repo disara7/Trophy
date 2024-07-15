@@ -52,12 +52,12 @@ class CustomCard extends StatelessWidget {
                       color: Color(0xFF222222),
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     sportdescription,
                     textAlign: TextAlign.left,
 
-                    style: TextStyle(fontSize: 12, height: 1.1),
+                    style: const TextStyle(fontSize: 12, height: 1.1),
 
                   ),
                   const SizedBox(height: 10),

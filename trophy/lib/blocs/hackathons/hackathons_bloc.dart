@@ -23,10 +23,10 @@ class HackathonsBloc extends Bloc<HackathonsEvent, HackathonState> {
               data.map((json) => Hackathon.fromJson(json)).toList();
           emit(HackathonsLoaded(hackathons));
         } else {
-          emit(HackathonsError("No data found"));
+          emit(const HackathonsError("No data found"));
         }
       } else {
-        emit(HackathonsError("Failed to load hackathons"));
+        emit(const HackathonsError("Failed to load hackathons"));
       }
     } catch (e) {
       emit(HackathonsError(e.toString()));

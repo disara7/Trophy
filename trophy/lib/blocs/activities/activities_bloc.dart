@@ -25,10 +25,10 @@ class ActivitiesBloc extends Bloc<ActivitiesEvent, ActivitiesState> {
               .toList(); // Assuming Activity.fromJson is correctly implemented
           emit(ActivitiesLoaded(activities));
         } else {
-          emit(ActivitiesLoadFailure('Data is null or empty'));
+          emit(const ActivitiesLoadFailure('Data is null or empty'));
         }
       } else {
-        emit(ActivitiesLoadFailure('Failed to load activities'));
+        emit(const ActivitiesLoadFailure('Failed to load activities'));
       }
     } catch (e) {
       emit(ActivitiesLoadFailure('Error loading activities: $e'));

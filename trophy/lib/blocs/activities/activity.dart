@@ -11,7 +11,7 @@ class Activity extends Equatable {
   final String activitytime;
   final String activityvenue;
 
-  Activity({
+  const Activity({
     required this.title,
     required this.description,
     required this.imageUrl,

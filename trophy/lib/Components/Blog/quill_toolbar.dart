@@ -5,7 +5,7 @@ import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 class MyQuillToolbar extends StatelessWidget {
   final QuillController controller; // Replace with your controller type
 
-  const MyQuillToolbar({Key? key, required this.controller}) : super(key: key);
+  const MyQuillToolbar({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
