@@ -10,9 +10,7 @@ import 'package:trophy/coinBank/coinbank.dart';
 import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/authcheck.dart';
 
-
 import 'package:trophy/themes/theme.dart';
-
 
 void main() {
   runApp(const MainApp());
@@ -29,10 +27,8 @@ class MainApp extends StatelessWidget {
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
 
-
-      home: AuthCheck(),
+      home: CoinBank(),
       // home: Blog(),
-
     );
   }
 }
