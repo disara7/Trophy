@@ -11,22 +11,25 @@ class MyQuillToolbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return QuillToolbar.simple(
       configurations: QuillSimpleToolbarConfigurations(
-          controller: controller,
-          multiRowsDisplay: true,
-          searchButtonType: SearchButtonType.modern,
-          embedButtons: FlutterQuillEmbeds.toolbarButtons(
-              imageButtonOptions: const QuillToolbarImageButtonOptions()
+        controller: controller,
+        multiRowsDisplay: true,
+        searchButtonType: SearchButtonType.modern,
+        embedButtons: FlutterQuillEmbeds.toolbarButtons(
+          imageButtonOptions: const QuillToolbarImageButtonOptions(),
+        ),
+        buttonOptions: QuillSimpleToolbarButtonOptions(
+          base: QuillToolbarBaseButtonOptions(
+            iconTheme: QuillIconTheme(
+              iconButtonSelectedData: IconButtonData(
+                color: const Color(0xFF222222),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(const Color(0xffE28C43)),
+                ),
+              ),
+            ),
           ),
-          buttonOptions: const QuillSimpleToolbarButtonOptions(
-              base: QuillToolbarBaseButtonOptions(
-                  iconTheme: QuillIconTheme(
-                      iconButtonSelectedData: IconButtonData(
-                        color: Color(0xFF222222),
-                        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Color(0xffE28C43))),
-                      )
-                  )
-              )
-          )
+        ),
       ),
     );
   }
