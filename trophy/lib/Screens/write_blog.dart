@@ -186,7 +186,7 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
                     textColor: const Color(0xFF222222),
                     text: 'SUBMIT',
                     onPressed: () async {
-                      await submitBlog(_titleController.text, _subtitleController.text, _selectedCategory!, _controller);
+                      await submitBlog(_titleController.text, _subtitleController.text, _selectedCategory!, _controller, 'In Review', DateTime.now().toString());
                       await _deleteDraft();
                       _clearData();
                       Navigator.push(

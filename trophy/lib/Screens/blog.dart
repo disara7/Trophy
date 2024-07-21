@@ -20,8 +20,10 @@ class _BlogState extends State<Blog> {
     return Scaffold(
       appBar: CustomAppBar(
             title: "BLOG",
-            leadingIcon: Icons.menu,
-            onLeadingPressed: (){},
+            leadingIcon: Icons.arrow_back_ios,
+            onLeadingPressed: (){
+              Navigator.pop(context);
+            },
             actionIcon: Icons.account_circle,
             onActionPressed: (){}
         ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trophy/Components/activity_button.dart';
 import 'package:trophy/Components/button.dart';
+import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
@@ -114,8 +115,9 @@ class _HomeState extends State<Home> {
                         children: [
                           Column(
                             children: [
+                              const SizedBox(width: 130,),
                               const Text(
-                                'Daily challenge',
+                                'Progress',
                                 style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
@@ -211,7 +213,10 @@ class _HomeState extends State<Home> {
                                 'assets/activity4.png',
                                 iconSize: 27.0,
                                 onPressed: () {
-
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const Blog()),
+                                  );
                                 },
                               ),
                               const SizedBox(width: 5.0),

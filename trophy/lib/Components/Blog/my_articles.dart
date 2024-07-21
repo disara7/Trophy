@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyArticles extends StatefulWidget {
   const MyArticles({super.key});
@@ -10,6 +14,36 @@ class MyArticles extends StatefulWidget {
 
 class _MyArticlesState extends State<MyArticles> {
   final CarouselController _carouselController = CarouselController();
+  List<Article> _articles = [];
+  bool _isLoading = true;
+
+
+  @override
+  void initState() {
+    super.initState();
+    fetchArticles();
+  }
+
+  Future<void> fetchArticles() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('authToken');
+    final response = await http.get(
+      Uri.parse('http://172.20.10.2/api/getblog'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    if (response.statusCode == 200) {
+      final List<dynamic> articleJson = json.decode(response.body);
+      setState(() {
+        _articles = articleJson.map((json) => Article.fromJson(json)).toList();
+        _isLoading = false;
+      });
+    } else {
+      throw Exception('Failed to load articles');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,19 +85,21 @@ class _MyArticlesState extends State<MyArticles> {
               ],
             ),
             const SizedBox(height: 10.0),
-            CarouselSlider(
-              items: [
-                buildArticleCard('Title 1', 'Subtitle 1', 20),
-                buildArticleCard('Title 2', 'Subtitle 2', 30),
-                buildArticleCard('Title 3', 'Subtitle 3', 40),
-              ],
+            _isLoading
+                ? const Center(child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text('No Articles', style: TextStyle(color: Colors.black),),
+                ))
+                : CarouselSlider(
+              items: _articles
+                  .map((article) => buildArticleCard(article.title, article.subtitle, article.views))
+                  .toList(),
               carouselController: _carouselController,
               options: CarouselOptions(
                 height: 200.0,
                 enlargeCenterPage: true,
-                autoPlay: false,
+                viewportFraction: 1,
                 aspectRatio: 16 / 9,
-                autoPlayCurve: Curves.fastOutSlowIn,
                 enableInfiniteScroll: true,
                 initialPage: 0,
                 scrollDirection: Axis.horizontal,
@@ -94,9 +130,9 @@ class _MyArticlesState extends State<MyArticles> {
             RichText(
               text: TextSpan(
                 children: [
-                  const TextSpan(
-                    text: 'Title:',
-                    style: TextStyle(
+                  TextSpan(
+                    text: '$title:',
+                    style: const TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 240, 156, 70)),
@@ -140,6 +176,26 @@ class _MyArticlesState extends State<MyArticles> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Article {
+  final String title;
+  final String subtitle;
+  final int views;
+
+  Article({
+    required this.title,
+    required this.subtitle,
+    required this.views,
+  });
+
+  factory Article.fromJson(Map<String, dynamic> json) {
+    return Article(
+      title: json['title'],
+      subtitle: json['subtitle'],
+      views: json['views'] != null ? json['views'] as int : 0,
     );
   }
 }

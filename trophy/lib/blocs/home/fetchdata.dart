@@ -7,17 +7,6 @@ import '../../socket/socket_service.dart';
 Future<HomeState> fetchHomeState() async {
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('authToken');
-
-  // Decode the token to get the userId
-  // final decodedToken = jsonDecode(utf8.decode(base64Url.decode(base64Url.normalize(token!.split('.')[1]))));
-  // final userId = decodedToken['userId'];
-  // print(userId);
-  //
-  // if (userId != null) {
-  //   await prefs.setString('userId', userId);
-  // } else {
-  //   print('User ID is null in the token.');
-  // }
   try {
     final response = await http.get(
       Uri.parse('http://172.20.10.2/fetch/home'), // Replace with 13.60.28.40

@@ -3,7 +3,7 @@ import 'package:flutter_quill/flutter_quill.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-Future<void> submitBlog(String title, String subtitle, String category, QuillController controller) async {
+Future<void> submitBlog(String title, String subtitle, String category, QuillController controller, String state, String date) async {
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('authToken');
 
@@ -23,6 +23,8 @@ Future<void> submitBlog(String title, String subtitle, String category, QuillCon
       'subtitle': subtitle,
       'category': category,
       'content': content,
+      'state': state,
+      'date': date,
     }),
   );
 

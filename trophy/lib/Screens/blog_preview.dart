@@ -1,11 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_quill/extensions.dart';
 import 'package:flutter_quill/flutter_quill.dart';
-import 'package:flutter_quill_extensions/embeds/widgets/image.dart';
-import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
-import 'package:flutter_quill_extensions/models/config/video/editor/youtube_video_support_mode.dart';
 import 'package:trophy/Components/main_appbar.dart';
+
+import '../Components/Blog/quill_editor.dart';
 
 class BlogPreviewPage extends StatelessWidget {
   final String title;
@@ -22,6 +19,7 @@ class BlogPreviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.readOnly = readOnly;
     return Scaffold(
       appBar: CustomAppBar(
           title: "PREVIEW",
@@ -54,48 +52,7 @@ class BlogPreviewPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Expanded(
-              child: QuillEditor.basic(
-                configurations: QuillEditorConfigurations(
-                  controller: controller,
-                    embedBuilders: [
-                      ...(isWeb()
-                          ? FlutterQuillEmbeds.editorWebBuilders()
-                          : FlutterQuillEmbeds.editorBuilders(
-                        imageEmbedConfigurations: QuillEditorImageEmbedConfigurations(
-                          imageErrorWidgetBuilder: (context, error, stackTrace) {
-                            return Text(
-                              'Error while loading an image: ${error.toString()}',
-                            );
-                          },
-                          imageProviderBuilder: (context, imageUrl) {
-                            if (isAndroid(supportWeb: false) ||
-                                isIOS(supportWeb: false) ||
-                                isWeb()) {
-                              if (isHttpBasedUrl(imageUrl)) {
-                                return CachedNetworkImageProvider(
-                                  imageUrl,
-                                );
-                              }
-                            }
-                            return getImageProviderByImageSource(
-                              imageUrl,
-                              imageProviderBuilder: null,
-                              context: context,
-                              assetsPrefix: QuillSharedExtensionsConfigurations.get(
-                                  context: context)
-                                  .assetsPrefix,
-                            );
-                          },
-                        ),
-                        videoEmbedConfigurations: QuillEditorVideoEmbedConfigurations(
-                          youtubeVideoSupportMode: isDesktop(supportWeb: false)
-                              ? YoutubeVideoSupportMode.customPlayerWithDownloadUrl
-                              : YoutubeVideoSupportMode.iframeView,
-                        ),
-                      )),
-                    ]
-                ),
-              ),
+              child: MyQuillEditor(controller: controller,)
             ),
           ],
         ),

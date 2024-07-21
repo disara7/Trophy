@@ -104,10 +104,9 @@ class _DraftState extends State<Draft> {
               options: CarouselOptions(
                 height: 200.0,
                 enlargeCenterPage: true,
-                autoPlay: false,
+                viewportFraction: 1,
                 aspectRatio: 16 / 9,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enableInfiniteScroll: false,
+                enableInfiniteScroll: true,
                 initialPage: 0,
                 scrollDirection: Axis.horizontal,
               ),
