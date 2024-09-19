@@ -24,7 +24,7 @@ class MyQuillToolbar extends StatelessWidget {
                 color: const Color(0xFF222222),
                 style: ButtonStyle(
                   backgroundColor:
-                      WidgetStateProperty.all(const Color(0xffE28C43)),
+                      MaterialStateProperty.all(const Color(0xffE28C43)),
                 ),
               ),
             ),

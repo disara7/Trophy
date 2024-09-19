@@ -8,8 +8,7 @@ class SportDetailsPage extends StatelessWidget {
   final String sportdetails;
   final String sportmainimgUrl;
 
-  const SportDetailsPage({
-    super.key,
+  const SportDetailsPage({super.key, 
     required this.sportTitle,
     required this.sportCoinCount,
     required this.sportDescription,

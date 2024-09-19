@@ -9,8 +9,7 @@ class CustomHackCard extends StatelessWidget {
   final String hackathondetails;
   final String hackathonmainimgUrl;
 
-  const CustomHackCard({
-    super.key,
+  const CustomHackCard({super.key, 
     required this.hacktitle,
     required this.hackdescription,
     required this.hackimageUrl,

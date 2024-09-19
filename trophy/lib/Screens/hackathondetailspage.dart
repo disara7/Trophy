@@ -9,8 +9,7 @@ class Hackathondetailspage extends StatelessWidget {
   final String hackathondetails;
   final String hackathonmainimgUrl;
 
-  const Hackathondetailspage({
-    super.key,
+  const Hackathondetailspage({super.key, 
     required this.hacktitle,
     required this.hackdescription,
     required this.hackcoinCount,
