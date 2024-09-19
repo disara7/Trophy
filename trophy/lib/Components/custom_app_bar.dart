@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
-    this.coinCount = 0,
+    this.coinCount = 520,
     required this.onBackPressed,
   });
 

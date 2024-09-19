@@ -25,7 +25,7 @@ class _MyAccountState extends State<MyAccount> {
 
   String firstname = 'Firstname';
   String lastname = 'Lastname';
-  String position = 'Position';
+  String position = 'Software Engineer';
   String since = '2014';
 
   DateTime bday = DateTime.now();

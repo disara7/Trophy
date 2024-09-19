@@ -16,7 +16,7 @@ class CoinBank extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'COIN BANK',
-        // coinCount: coinCount,
+        // coinCount: "520",
         onBackPressed: () {
           Navigator.pop(context);
         },
