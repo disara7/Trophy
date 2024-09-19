@@ -8,6 +8,7 @@ import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
 
 import 'package:trophy/Components/custom_app_bar.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -272,6 +273,9 @@ class _HomeState extends State<Home> {
             );
           }
         ),
+        bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+          // Handle navigation item selection
+        }),
         backgroundColor: const Color(0xffFDFEFF),
       ),
     );
