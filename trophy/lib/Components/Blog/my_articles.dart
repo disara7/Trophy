@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_quill/flutter_quill.dart';
+import 'package:flutter_quill/quill_delta.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trophy/Screens/blog_preview.dart';
 import 'package:trophy/constants.dart';
 
 class MyArticles extends StatefulWidget {
@@ -45,6 +50,16 @@ class _MyArticlesState extends State<MyArticles> {
       _isLoading = false;
       throw Exception('Failed to load articles');
     }
+  }
+
+  // Function to load content into QuillController
+  QuillController loadContentToQuillController(String content) {
+    List<dynamic> decodedContent = jsonDecode(content);
+    Delta delta = Delta.fromJson(decodedContent);
+    return QuillController(
+      document: Document.fromDelta(delta),
+      selection: const TextSelection.collapsed(offset: 0),
+    );
   }
 
   @override
@@ -95,7 +110,7 @@ class _MyArticlesState extends State<MyArticles> {
                 : CarouselSlider(
               items: _articles
                   .map((article) =>
-                  buildArticleCard(article.title, article.subtitle, article.views, article.imageUrl))
+                  buildArticleCard(article.title, article.subtitle, article.views, article.imageUrl, article.content))
                   .toList(),
               carouselController: _carouselController,
               options: CarouselOptions(
@@ -114,79 +129,96 @@ class _MyArticlesState extends State<MyArticles> {
     );
   }
 
-  Widget buildArticleCard(String title, String subtitle, int views, String imageUrl) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-        border: Border.all(
-          color: const Color(0xFF222222),
-          width: 1.0,
+  Widget buildArticleCard(String title, String subtitle, int views, String imageUrl, String content) {
+    return GestureDetector(
+      onTap: () {
+        QuillController quillController = loadContentToQuillController(content);
+        bool isNetworkImage = imageUrl.startsWith('http');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BlogPreviewPage(
+              title: title,
+              subtitle: subtitle,
+              controller: quillController,
+              image: isNetworkImage ? imageUrl : File(imageUrl),
+            ),
+          ),
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          border: Border.all(
+            color: const Color(0xFF222222),
+            width: 1.0,
+          ),
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
-                imageUrl.isNotEmpty ? imageUrl : 'https://via.placeholder.com/150',
-                width: double.infinity,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: '$title:',
-                    style: const TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 240, 156, 70)),
-                  ),
-                  TextSpan(
-                    text: ' $subtitle',
-                    style: const TextStyle(
-                        fontSize: 24.0, color: Color(0xFF222222)),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            IntrinsicWidth(
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Color(0x22222222),
-                  borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  imageUrl.isNotEmpty ? imageUrl : 'https://via.placeholder.com/150',
+                  width: double.infinity,
+                  height: 100,
+                  fit: BoxFit.cover,
                 ),
-                padding: const EdgeInsets.symmetric(
-                    vertical: 5.0, horizontal: 10.0),
-                child: Row(
+              ),
+              const SizedBox(height: 16.0),
+              RichText(
+                text: TextSpan(
                   children: [
-                    const Icon(
-                      Icons.remove_red_eye_rounded,
-                      color: Color(0xFF222222),
-                      size: 16.0,
-                    ),
-                    const SizedBox(width: 3.0),
-                    Text(
-                      '$views',
+                    TextSpan(
+                      text: '$title:',
                       style: const TextStyle(
-                        color: Color(0xFF222222),
-                        fontSize: 12.0,
-                      ),
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 240, 156, 70)),
+                    ),
+                    TextSpan(
+                      text: ' $subtitle',
+                      style: const TextStyle(
+                          fontSize: 24.0, color: Color(0xFF222222)),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 10.0),
+              IntrinsicWidth(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0x22222222),
+                    borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 5.0, horizontal: 10.0),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.remove_red_eye_rounded,
+                        color: Color(0xFF222222),
+                        size: 16.0,
+                      ),
+                      const SizedBox(width: 3.0),
+                      Text(
+                        '$views',
+                        style: const TextStyle(
+                          color: Color(0xFF222222),
+                          fontSize: 12.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -198,12 +230,14 @@ class Article {
   final String subtitle;
   final int views;
   final String imageUrl;
+  final String content;
 
   Article({
     required this.title,
     required this.subtitle,
     required this.views,
-    required this.imageUrl
+    required this.imageUrl,
+    required this.content
   });
 
   factory Article.fromJson(Map<String, dynamic> json) {
@@ -211,7 +245,8 @@ class Article {
       title: json['title'],
       subtitle: json['subtitle'],
       views: json['views'] != null ? json['views'] as int : 0,
-      imageUrl: json['imageUrl']
+      imageUrl: json['imageUrl'],
+      content: json['content']
     );
   }
 }
