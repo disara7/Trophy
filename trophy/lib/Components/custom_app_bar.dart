@@ -63,7 +63,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           builder: (context) => const MyAccount()),
                     );
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.account_circle,
                     size: 40.0,
                     color: Colors.black,
@@ -73,6 +73,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ],
+        flexibleSpace: Container(
+          color: Colors.white,
+        ),
       ),
     );
   }

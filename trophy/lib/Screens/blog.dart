@@ -4,6 +4,7 @@ import 'package:trophy/Components/Blog/discover.dart';
 import 'package:trophy/Components/Blog/popular_post.dart';
 import 'package:trophy/Components/button.dart';
 import 'package:trophy/Components/main_appbar.dart';
+import 'package:trophy/Screens/home.dart';
 import 'package:trophy/Screens/my_blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trophy/Screens/write_blog.dart';
@@ -26,7 +27,12 @@ class _BlogState extends State<Blog> {
         title: "BLOG",
         leadingIcon: Icons.arrow_back_ios,
         onLeadingPressed: () {
-          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Home(),
+            ),
+          );
         },
         actionIcon: Icons.account_circle,
         onActionPressed: () {},

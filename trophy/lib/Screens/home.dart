@@ -3,7 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trophy/Components/activity_button.dart';
 import 'package:trophy/Components/button.dart';
+import 'package:trophy/Screens/activities.dart';
 import 'package:trophy/Screens/blog.dart';
+import 'package:trophy/Screens/hackathon.dart';
+import 'package:trophy/Screens/sports.dart';
 import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
@@ -190,7 +193,12 @@ class _HomeState extends State<Home> {
                                 'Activities',
                                 'assets/activity2.png',
                                 onPressed: () {
-
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Activities(),
+                                    ),
+                                  );
                                 },
                               ),
                               const SizedBox(width: 5.0),
@@ -198,7 +206,12 @@ class _HomeState extends State<Home> {
                                 'Hackathons',
                                 'assets/activity3.png',
                                 onPressed: () {
-
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Hackathon(),
+                                    ),
+                                  );
                                 },
                               ),
                             ],
@@ -223,7 +236,12 @@ class _HomeState extends State<Home> {
                                 'Sports',
                                 'assets/activity5.png',
                                 onPressed: () {
-
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const Sports(),
+                                    ),
+                                  );
                                 },
                               ),
                               const SizedBox(width: 5.0),

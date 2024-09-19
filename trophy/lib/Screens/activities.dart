@@ -36,8 +36,8 @@ class Activities extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Engage in the following extracurricular activities to earn coins and climb the Trophy ladder like a champ!',
-                        style: TextStyle(fontSize: 16.0),
-                        textAlign: TextAlign.justify,
+                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400),
+                        textAlign: TextAlign.left,
                       ),
                     ),
                     const SizedBox(height: 20),
