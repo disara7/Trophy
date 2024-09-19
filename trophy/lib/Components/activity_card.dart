@@ -14,7 +14,8 @@ class CustomCard extends StatelessWidget {
   final String activityvenue;
   final String activitydate;
 
-  const CustomCard({super.key, 
+  const CustomCard({
+    super.key,
     required this.title,
     required this.description,
     required this.imageUrl,
@@ -63,7 +64,6 @@ class CustomCard extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(height: 1.1, fontSize: 12),
                   ),
-
                   const SizedBox(height: 10),
                   GestureDetector(
                     onTap: () {
@@ -98,7 +98,6 @@ class CustomCard extends StatelessWidget {
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
-
                         ),
                       ),
                     ),

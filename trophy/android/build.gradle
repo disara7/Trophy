@@ -6,11 +6,10 @@ allprojects {
 }
 
 rootProject.buildDir = '../build'
+
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
-    project.evaluationDependsOn(':app')
+    evaluationDependsOn(':app') // Ensure ':app' is properly included in settings.gradle
 }
 
 tasks.register("clean", Delete) {

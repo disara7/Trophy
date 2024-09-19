@@ -4,7 +4,8 @@ class CustomCard extends StatelessWidget {
   final String imageUrl;
   final String title;
 
-  const CustomCard({super.key, 
+  const CustomCard({
+    super.key,
     required this.imageUrl,
     required this.title,
   });
