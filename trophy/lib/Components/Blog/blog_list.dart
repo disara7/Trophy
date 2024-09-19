@@ -96,7 +96,7 @@ class _PaginatedBlogListState extends State<PaginatedBlogList> {
 
       setState(() {
         // If fewer blogs are returned than the page size, we know we've reached the last page
-        if (newBlogs.isEmpty || newBlogs.length < 10) { // Assuming 10 is the page size
+        if (newBlogs.isEmpty || newBlogs.length < 10) {
           _hasMore = false;
         } else {
           _hasMore = true;
@@ -133,7 +133,7 @@ class _PaginatedBlogListState extends State<PaginatedBlogList> {
         onActionPressed: () {},
       ),
       body: _initialLoading
-          ? const Center(child: CircularProgressIndicator()) // Show loader for the initial data fetch
+          ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
         controller: _scrollController,
         itemCount: _blogs.length + 1,
