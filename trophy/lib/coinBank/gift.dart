@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
+import 'package:trophy/coinBank/counter.dart';
 import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/themes/color_palette.dart';
 
 class GiftPage extends StatelessWidget {
   const GiftPage({super.key});
@@ -29,12 +31,49 @@ class GiftPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Text(
-                  'Use coins as a form of gift to your colleagues to appreciate and support them.',
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min, // Ensures content doesn't take the full vertical space
+                  children: [
+                    const Text(
+                      'Use coins as a form of gift to your colleagues to appreciate and support them.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16.0, color: Colors.black),
+                    ),
+                    const SizedBox(height: 180.0), // Adds some space between the text and counter
+    Container(
+    height: 70,
+    decoration: const BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage('assets/countbg.png'), // Background image
+    fit: BoxFit.cover,
+    ),
+    ),
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+    Image.asset(
+    'assets/Coin.png', // Coin icon
+    width: 32,
+    height: 32,
+    ),
+    const SizedBox(
+    width: 13), // Add some space between coin icon and text
+    Text(
+    '520', // Display the count
+    style: const TextStyle(
+    color: Palette.appWhite,
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+    ),
+    ),
+    ],
+    ),
+    ) // Counter widget placed below the text
+                  ],
                 ),
-              )
+              ),
             ],
           ),
         ),
