@@ -11,7 +11,7 @@ class BlogPreviewPage extends StatelessWidget {
   final String title;
   final String subtitle;
   final QuillController controller;
-  final File? image;
+  final dynamic image;
   final bool readOnly = true;
 
   const BlogPreviewPage({
@@ -42,8 +42,15 @@ class BlogPreviewPage extends StatelessWidget {
               if (image != null)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
-                  child: Image.file(
-                    image!,
+                  child: image is String
+                      ? Image.network(
+                    image,
+                    width: double.infinity,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  )
+                      : Image.file(
+                    image,
                     width: double.infinity,
                     height: 200,
                     fit: BoxFit.cover,
