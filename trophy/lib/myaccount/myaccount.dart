@@ -1,6 +1,7 @@
+import 'dart:convert';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/themes/button_styles.dart';
@@ -14,13 +15,13 @@ class MyAccount extends StatefulWidget {
 
 class _MyAccountState extends State<MyAccount> {
   final TextEditingController _dobController =
-      TextEditingController(text: '1999-07-01');
+  TextEditingController(text: '1999-07-01');
   final TextEditingController _contactController =
-      TextEditingController(text: '0779449333');
+  TextEditingController(text: '0779449333');
   final TextEditingController _addressController =
-      TextEditingController(text: 'No.74A, Lewelle road');
+  TextEditingController(text: 'No.74A, Lewelle road');
   final TextEditingController _nicController =
-      TextEditingController(text: '2000000000');
+  TextEditingController(text: '2000000000');
 
   String firstname = 'Firstname';
   String lastname = 'Lastname';
@@ -28,6 +29,43 @@ class _MyAccountState extends State<MyAccount> {
   String since = '2014';
 
   DateTime bday = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchEmployeeData();
+  }
+
+  Future<void> _fetchEmployeeData() async {
+    try {
+      final response = await http.get(Uri.parse('https://api.trophy.com/employee/66bcd28b32f79a92120f2a43'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          firstname = data['employeeName'].split(' ')[0];
+          lastname = data['employeeName'].split(' ')[1];
+          position = data['position'] ?? 'Position'; // Set default value if position is null
+          since = '2014'; // Assuming this is fixed or fetched from somewhere else
+          _contactController.text = data['contactNumber'] ?? '';
+          _addressController.text = data['address'] ?? '';
+          _nicController.text = data['nic'] ?? '';
+          _dobController.text = data['dob'] ?? '1999-07-01'; // Default date if not present
+          bday = DateTime.parse(data['dob'] ?? '1999-07-01');
+        });
+      } else {
+        throw Exception('Failed to load employee data');
+      }
+    } catch (e) {
+      // Handle error, e.g., show an error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error fetching data: $e'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
+  }
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -45,7 +83,6 @@ class _MyAccountState extends State<MyAccount> {
 
   void _saveChanges() {
     // Implement saving changes logic here
-    // Example: Save updated contact, address, NIC, and DOB
     String updatedContact = _contactController.text;
     String updatedAddress = _addressController.text;
     String updatedNIC = _nicController.text;
@@ -84,9 +121,8 @@ class _MyAccountState extends State<MyAccount> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage(
-                      'assets/user.jpeg'), // Make sure the image is in the assets folder and included in pubspec.yaml
+                  radius: 45,
+                  backgroundImage: AssetImage('assets/user.jpeg'),
                 ),
                 const SizedBox(height: 10),
                 Text(
@@ -97,7 +133,7 @@ class _MyAccountState extends State<MyAccount> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 3),
                 Text(
                   position,
                   style: const TextStyle(
@@ -106,21 +142,20 @@ class _MyAccountState extends State<MyAccount> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 3),
                 Text(
                   'Since $since',
                   style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Container(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(41, 255, 153, 0),
-                    borderRadius:
-                        BorderRadius.circular(12), // Adding border radius
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,7 +222,7 @@ class _MyAccountState extends State<MyAccount> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     _saveChanges();
