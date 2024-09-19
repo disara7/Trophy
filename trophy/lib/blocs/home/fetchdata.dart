@@ -2,7 +2,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../socket/socket_service.dart';
 
 Future<HomeState> fetchHomeState() async {
   final prefs = await SharedPreferences.getInstance();

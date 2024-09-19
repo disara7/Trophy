@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
-import 'package:trophy/coinBank/amount_selector.dart';
 import 'package:trophy/navBar/navbar.dart';
 
 class GiftPage extends StatelessWidget {

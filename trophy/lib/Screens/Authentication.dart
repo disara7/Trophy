@@ -6,7 +6,7 @@ import 'package:trophy/themes/color_palette.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'ResetPassword.dart';
-
+import 'package:trophy/constants.dart';
 
 
 class AuthPage extends StatefulWidget {
@@ -102,7 +102,7 @@ class _AuthPageState extends State<AuthPage> {
   Future<void> _login() async {
     try {
       final response = await http.post(
-        Uri.parse('http://172.20.10.2/auth/login'), // Replace with 13.60.28.40
+        Uri.parse('$baseUrl/auth/login'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

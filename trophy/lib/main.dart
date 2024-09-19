@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/authcheck.dart';
 import 'package:trophy/themes/theme.dart';
 

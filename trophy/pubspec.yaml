@@ -36,6 +36,9 @@ dependencies:
   lottie: ^3.1.2
   chat_bubbles: ^1.6.0
   chat_message_timestamp:
+  http_parser: ^4.0.2
+  image: ^4.2.0
+  flutter_image_compress: ^2.3.0
 
 
 dev_dependencies:

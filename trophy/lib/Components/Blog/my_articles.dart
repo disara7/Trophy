@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trophy/constants.dart';
 
 class MyArticles extends StatefulWidget {
   const MyArticles({super.key});
@@ -28,7 +29,7 @@ class _MyArticlesState extends State<MyArticles> {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('authToken');
     final response = await http.get(
-      Uri.parse('http://172.20.10.2/api/getblog'),
+      Uri.parse('$baseUrl/api/getblog'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer $token',
@@ -41,6 +42,7 @@ class _MyArticlesState extends State<MyArticles> {
         _isLoading = false;
       });
     } else {
+      _isLoading = false;
       throw Exception('Failed to load articles');
     }
   }
@@ -85,18 +87,19 @@ class _MyArticlesState extends State<MyArticles> {
               ],
             ),
             const SizedBox(height: 10.0),
-            _isLoading
-                ? const Center(child: Padding(
+            _articles.isEmpty
+                ?  const Center(child: Padding(
                   padding: EdgeInsets.all(20),
-                  child: Text('No Articles', style: TextStyle(color: Colors.black),),
-                ))
+                  child: Text('No Articles Found', style: TextStyle(color: Colors.grey),),
+                  ))
                 : CarouselSlider(
               items: _articles
-                  .map((article) => buildArticleCard(article.title, article.subtitle, article.views))
+                  .map((article) =>
+                  buildArticleCard(article.title, article.subtitle, article.views, article.imageUrl))
                   .toList(),
               carouselController: _carouselController,
               options: CarouselOptions(
-                height: 200.0,
+                height: 300.0,
                 enlargeCenterPage: true,
                 viewportFraction: 1,
                 aspectRatio: 16 / 9,
@@ -111,7 +114,7 @@ class _MyArticlesState extends State<MyArticles> {
     );
   }
 
-  Widget buildArticleCard(String title, String subtitle, int views) {
+  Widget buildArticleCard(String title, String subtitle, int views, String imageUrl) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -127,6 +130,16 @@ class _MyArticlesState extends State<MyArticles> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(
+                imageUrl.isNotEmpty ? imageUrl : 'https://via.placeholder.com/150',
+                width: double.infinity,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(height: 16.0),
             RichText(
               text: TextSpan(
                 children: [
@@ -184,11 +197,13 @@ class Article {
   final String title;
   final String subtitle;
   final int views;
+  final String imageUrl;
 
   Article({
     required this.title,
     required this.subtitle,
     required this.views,
+    required this.imageUrl
   });
 
   factory Article.fromJson(Map<String, dynamic> json) {
@@ -196,6 +211,7 @@ class Article {
       title: json['title'],
       subtitle: json['subtitle'],
       views: json['views'] != null ? json['views'] as int : 0,
+      imageUrl: json['imageUrl']
     );
   }
 }

@@ -21,7 +21,6 @@ class _HomeState extends State<Home> {
   Future<void> _deleteToken() async {
     final prefs = await _prefs;
     await prefs.remove('authToken');
-    // Optionally: Consider showing a snackbar or dialog to inform the user
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Authentication token deleted'),

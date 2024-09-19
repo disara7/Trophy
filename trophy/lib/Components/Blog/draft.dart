@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +21,12 @@ class _DraftState extends State<Draft> {
     super.initState();
     _loadDrafts();
   }
+  Future<void> _deleteDraft(String draftKey) async {
+    print(draftKey);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(draftKey);
+    _loadDrafts();
+  }
 
   Future<void> _loadDrafts() async {
     final prefs = await SharedPreferences.getInstance();
@@ -31,6 +38,8 @@ class _DraftState extends State<Draft> {
         'title': jsonDecode(draftJson!)['title'],
         'subtitle': jsonDecode(draftJson)['subtitle'],
         'draftJson': draftJson,
+        'imagePath': jsonDecode(draftJson)['imagePath'],
+        'id': jsonDecode(draftJson)['id']
       };
     }).toList();
 
@@ -97,12 +106,14 @@ class _DraftState extends State<Draft> {
                     draft['articleNo']!,
                     draft['title']!,
                     draft['subtitle']!,
+                    draft['imagePath']!,
+                    draft['id']!
                   ),
                 );
               }).toList(),
               carouselController: _carouselController,
               options: CarouselOptions(
-                height: 200.0,
+                height: 300,
                 enlargeCenterPage: true,
                 viewportFraction: 1,
                 aspectRatio: 16 / 9,
@@ -117,7 +128,7 @@ class _DraftState extends State<Draft> {
     );
   }
 
-  Widget buildArticleCard(String articleNo, String title, String subtitle) {
+  Widget buildArticleCard(String articleNo, String title, String subtitle, String imagePath, String id) {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -137,12 +148,40 @@ class _DraftState extends State<Draft> {
                   style: const TextStyle(
                       color: Color.fromARGB(255, 240, 156, 70), fontSize: 20),
                 ),
-                const Icon(
-                  Icons.edit_outlined,
-                  color: Color(0xFF222222),
-                  size: 24.0,
-                ),
+                Row(
+                  children: [
+                      const Icon(
+                        Icons.edit_outlined,
+                        color: Color(0xFF222222),
+                        size: 24.0,
+                      ),
+                      const SizedBox(width: 10),
+                      ElevatedButton(
+                        onPressed: () => _deleteDraft(id),
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          padding: const EdgeInsets.all(16),
+                          backgroundColor: const Color.fromARGB(255, 240, 156, 70),
+                        ),
+                        child: const Icon(
+                          Icons.delete_forever_outlined,
+                          color: Color(0xFF222222),
+                          size: 26.0,
+                        ),
+                      )
+                  ],
+                )
               ],
+            ),
+            const SizedBox(height: 16.0),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.file(
+                File(imagePath),
+                width: double.infinity,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(height: 10.0),
             RichText(

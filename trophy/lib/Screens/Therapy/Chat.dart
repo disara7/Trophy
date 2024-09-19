@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:trophy/blocs/therapy/chat/chat_bloc.dart';
 import 'package:trophy/models/chat_model.dart';
-import 'package:chat_bubbles/chat_bubbles.dart';
 import '../../themes/color_palette.dart';
 
 class Chat extends StatefulWidget {

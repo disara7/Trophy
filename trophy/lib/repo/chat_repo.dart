@@ -3,7 +3,6 @@ import 'package:trophy/utils/constants.dart';
 import '../models/chat_model.dart';
 import 'package:dio/dio.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
-import '../utils/constants.dart';
 
 class ChatRepo {
   static Future<String> chatTextGenerationRepo(
