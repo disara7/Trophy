@@ -7,6 +7,7 @@ import 'package:trophy/Components/Blog/blog_submit.dart';
 import 'package:trophy/Components/Blog/draft_save.dart';
 import 'package:trophy/Components/Blog/quill_editor.dart';
 import 'package:trophy/Components/Blog/quill_toolbar.dart';
+import 'package:trophy/Components/Blog/submit_complete.dart';
 import 'package:trophy/Components/Blog/textfeild.dart';
 import 'package:trophy/Components/button.dart';
 import 'package:trophy/Components/main_appbar.dart';
@@ -238,7 +239,7 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const MyBlogs(),
+                          builder: (context) => const SubmitComplete(),
                         ),
                       );
                     },

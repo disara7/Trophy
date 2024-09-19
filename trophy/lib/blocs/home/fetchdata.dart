@@ -18,12 +18,10 @@ Future<HomeState> fetchHomeState() async {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      await Future.delayed(const Duration(seconds: 10));
-      fetchHomeState();
       return HomeState(
         coins: data['coins'],
-        dailyChallenge: data['dailyChallenge'],
-        completedChallenges: data['completedChallenges'],
+        dailyChallenge: data['targetPoint'],
+        completedChallenges: data['progressPoint'],
         level: data['level'],
       );
 
@@ -35,7 +33,7 @@ Future<HomeState> fetchHomeState() async {
     // Return a default HomeState object in case of an error
     return const HomeState(
       coins: 0,
-      dailyChallenge: 10,
+      dailyChallenge: 100,
       completedChallenges: 0,
       level: 0,
     );
