@@ -26,10 +26,10 @@ class SportsBloc extends Bloc<SportsEvent, SportsState> {
               .toList(); // Assuming Sport.fromJson is correctly implemented
           emit(SportsLoaded(activities));
         } else {
-          emit(SportsError("No data found"));
+          emit(const SportsError("No data found"));
         }
       } else {
-        emit(SportsError("Failed to load sports"));
+        emit(const SportsError("Failed to load sports"));
       }
     } catch (e) {
       emit(SportsError(e.toString()));

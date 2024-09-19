@@ -9,7 +9,7 @@ class Sport extends Equatable {
   final String sportdetails;
   final String sportmainimgUrl;
 
-  Sport(
+  const Sport(
       {required this.sporttitle,
       required this.sportdescription,
       required this.sportimageUrl,

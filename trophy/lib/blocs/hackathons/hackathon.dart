@@ -8,7 +8,7 @@ class Hackathon extends Equatable {
   final String hackathondetails;
   final String hackathonmainimgUrl;
 
-  Hackathon({
+  const Hackathon({
     required this.hacktitle,
     required this.hackdescription,
     required this.hackimageUrl,

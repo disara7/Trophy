@@ -4,6 +4,8 @@ import 'package:trophy/navBar/mainscreen.dart';
 import 'package:trophy/splash/intro.dart';
 
 class AuthCheck extends StatefulWidget {
+  const AuthCheck({super.key});
+
   @override
   _AuthCheckState createState() => _AuthCheckState();
 }

@@ -59,12 +59,12 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
   }
 
   Future<String> _saveDraft() async {
-    final _currentDraftKey = 'blogDraft${DateTime.now().toString()}';
-    final draft = BlogDraft.fromState(_titleController.text, _subtitleController.text, _selectedCategory!, _controller, _currentDraftKey);
+    final currentDraftKey = 'blogDraft${DateTime.now().toString()}';
+    final draft = BlogDraft.fromState(_titleController.text, _subtitleController.text, _selectedCategory!, _controller, currentDraftKey);
     final draftJson = jsonEncode(draft);
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_currentDraftKey, draftJson);
-    return _currentDraftKey;
+    await prefs.setString(currentDraftKey, draftJson);
+    return currentDraftKey;
   }
 
   Future<void> _deleteDraft() async {

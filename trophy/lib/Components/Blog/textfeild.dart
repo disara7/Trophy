@@ -6,11 +6,11 @@ class MyTextField extends StatelessWidget {
   final int maxLength;
 
   const MyTextField({
-    Key? key,
+    super.key,
     required this.labelText,
     required this.controller,
     this.maxLength = 255, // Default to no limit
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

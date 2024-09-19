@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart'; // for kIsWeb
+// for kIsWeb
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
 import 'dart:io'; // Add this import for Platform
@@ -62,7 +62,7 @@ class _QrcodepageState extends State<Qrcodepage> {
             child: Container(
 
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(12),
               ),
 

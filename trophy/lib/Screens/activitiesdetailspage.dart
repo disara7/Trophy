@@ -15,7 +15,7 @@ class Activitiesdetailspage extends StatelessWidget {
 
 
   const Activitiesdetailspage({
-    Key? key,
+    super.key,
 
     required this.title,
     required this.description,
@@ -25,7 +25,7 @@ class Activitiesdetailspage extends StatelessWidget {
     required this.activitydate,
     required this.activitytime,
     required this.activityvenue,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
