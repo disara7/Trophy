@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:trophy/utils/constants.dart';
+// import 'package:trophy/utils/constants.dart';
 import '../models/chat_model.dart';
 import 'package:dio/dio.dart';
 
@@ -10,7 +10,7 @@ class ChatRepo {
     try {
       Dio dio = Dio();
       final response = await dio.post(
-          "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apikey",
+          "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDHXT5IvvEHTYq0p-LYpWfVlCe8e6OXrOU",
           data: {
             "contents": [
               {
