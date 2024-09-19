@@ -6,7 +6,8 @@ import 'package:trophy/Components/button.dart';
 import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
-import 'package:trophy/Components/main_appbar.dart';
+
+import 'package:trophy/Components/custom_app_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -37,11 +38,13 @@ class _HomeState extends State<Home> {
       ],
       child: Scaffold(
         appBar: CustomAppBar(
-            title: "HOME",
-            leadingIcon: Icons.menu,
-            onLeadingPressed: (){},
-            actionIcon: Icons.account_circle,
-            onActionPressed: _deleteToken
+          title: "HOME",
+          coinCount: 520,
+          leadingIcon: Icons.menu, // Use menu icon for the home page
+          onLeadingPressed: () {
+            // Handle the menu press action
+            Scaffold.of(context).openDrawer(); // Example: open a drawer
+          },
         ),
         body: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
