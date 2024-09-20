@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Leaderboard/ladder.dart';
 import 'package:trophy/Screens/home.dart';
 
 import 'package:trophy/coinBank/coinbank.dart';
@@ -26,7 +27,7 @@ class MainApp extends StatelessWidget {
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
 
-      home: const Home(),
+      home: const Ladder(),
       // home: Blog(),
     );
   }
