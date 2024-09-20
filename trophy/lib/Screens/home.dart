@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trophy/Components/activity_button.dart';
 import 'package:trophy/Components/button.dart';
+import 'package:trophy/Leaderboard/ladder.dart';
+import 'package:trophy/Screens/Therapy/therapy_home.dart';
 import 'package:trophy/Screens/activities.dart';
 import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/Screens/hackathon.dart';
@@ -11,6 +13,8 @@ import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
 import 'package:trophy/Components/main_appbar.dart';
+import 'package:trophy/coinBank/coinbank.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -249,6 +253,12 @@ class _HomeState extends State<Home> {
                                 'Therapy',
                                 'assets/activity6.png',
                                 onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CategoryPage(), // Navigate to CoinBankPage
+                                    ),
+                                  );
 
                                 },
                               ),
@@ -271,16 +281,28 @@ class _HomeState extends State<Home> {
                           textColor: const Color(0xff131212),
                           text: 'COIN BANK',
                           onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CoinBank(), // Navigate to CoinBankPage
+                              ),
+                            );
 
                           },
                         ),
                         const SizedBox(width: 20.0),
                         trophyButton(
+                          context, // Pass the BuildContext here
                           const Color(0xff131212),
                           const Color(0xffE28C43),
                           'TROPHY LADDER',
                               () {
-
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Ladder(), // Navigate to Ladder page
+                              ),
+                            );
                           },
                         ),
                       ],
@@ -291,6 +313,9 @@ class _HomeState extends State<Home> {
             );
           }
         ),
+        bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+          // Handle navigation item selection
+        }),
         backgroundColor: const Color(0xffFDFEFF),
       ),
     );

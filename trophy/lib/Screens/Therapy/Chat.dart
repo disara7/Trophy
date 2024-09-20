@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:trophy/blocs/therapy/chat/chat_bloc.dart';
@@ -8,7 +6,7 @@ import 'package:trophy/models/chat_model.dart';
 import '../../themes/color_palette.dart';
 
 class Chat extends StatefulWidget {
-  const Chat({Key? key}) : super(key: key);
+  const Chat({super.key});
 
   @override
   State<Chat> createState() => _ChatState();
@@ -32,7 +30,7 @@ class _ChatState extends State<Chat> {
                 case ChatSuccessState:
                   List<ChatModel> message = (state as ChatSuccessState).message;
                   return Container(
-                    decoration: BoxDecoration(color: Colors.white),
+                    decoration: const BoxDecoration(color: Colors.white),
                     child: Column(
                       children: [
                         Container(
@@ -51,10 +49,10 @@ class _ChatState extends State<Chat> {
                                         child: Image.asset(
                                             'assets/cat_avatar.png'),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
-                                      Text(
+                                      const Text(
                                         "Julian",
                                         style: TextStyle(fontSize: 16),
                                       )
@@ -71,7 +69,7 @@ class _ChatState extends State<Chat> {
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
-                                      icon: Icon(Icons.arrow_back_ios),
+                                      icon: const Icon(Icons.arrow_back_ios),
                                     ),
                                   ),
                                 ],
@@ -92,13 +90,13 @@ class _ChatState extends State<Chat> {
                                           maxWidth: (MediaQuery.sizeOf(context)
                                                   .width -
                                               80)),
-                                      margin: EdgeInsets.only(
+                                      margin: const EdgeInsets.only(
                                           bottom: 15, right: 13, left: 13),
-                                      padding: EdgeInsets.all(16),
+                                      padding: const EdgeInsets.all(16),
                                       decoration: BoxDecoration(
                                           color: message[index].role == "user"
                                               ? Palette.appOrange
-                                              : Color(0xfff6f6f6),
+                                              : const Color(0xfff6f6f6),
                                           borderRadius:
                                               BorderRadius.circular(20),
                                           boxShadow: [
@@ -107,7 +105,7 @@ class _ChatState extends State<Chat> {
                                                   Colors.grey.withOpacity(0.2),
                                               spreadRadius: 1,
                                               blurRadius: 5,
-                                              offset: Offset(0, 0),
+                                              offset: const Offset(0, 0),
                                             ),
                                           ]),
                                       child: Column(
@@ -169,11 +167,11 @@ class _ChatState extends State<Chat> {
                                   );
                                 })),
                         if (chatBloc.generating)
-                          Container(
+                          SizedBox(
                               width: 300,
                               child: Lottie.asset('assets/Chat_loader.json')),
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           color: Palette.appWhite,
                           child: Row(
                             children: [
@@ -183,24 +181,24 @@ class _ChatState extends State<Chat> {
                                   child: TextField(
                                     controller: textEditingController,
                                     decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.symmetric(
+                                      contentPadding: const EdgeInsets.symmetric(
                                           vertical: 10, horizontal: 20),
                                       border: OutlineInputBorder(
                                         borderRadius:
                                             BorderRadius.circular(100),
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                             width: 0, style: BorderStyle.none),
                                       ),
                                       hintText: 'Ask me anything...',
                                       hintStyle: TextStyle(
                                           color: Colors.black.withOpacity(0.3)),
                                       filled: true,
-                                      fillColor: Color(0xfff3f3f3),
+                                      fillColor: const Color(0xfff3f3f3),
                                     ),
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 12),
+                              const SizedBox(width: 12),
                               InkWell(
                                 onTap: () {
                                   if (textEditingController.text.isNotEmpty) {
@@ -211,7 +209,7 @@ class _ChatState extends State<Chat> {
                                             inputMessage: text));
                                   }
                                 },
-                                child: CircleAvatar(
+                                child: const CircleAvatar(
                                   radius: 25,
                                   backgroundColor: Palette.appOrange,
                                   child: Center(
@@ -230,7 +228,7 @@ class _ChatState extends State<Chat> {
                     ),
                   );
                 default:
-                  return SizedBox();
+                  return const SizedBox();
               }
             },
           ),

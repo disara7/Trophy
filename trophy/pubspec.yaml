@@ -40,6 +40,8 @@ dependencies:
   image: ^4.2.0
   flutter_image_compress: ^2.3.0
 
+  mongo_dart: ^0.10.3
+  qr_code_scanner: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +49,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   bloc_test: ^9.0.0
   mocktail: ^1.0.0
+dependency_overrides:
+  intl: ^0.18.1
 
 flutter:
   uses-material-design: true
@@ -61,3 +65,6 @@ flutter:
     - assets/julian.png
     - assets/Hack.png
     - assets/complete.png
+    - assets/Hackathon/
+    - assets/Sport/
+    - assets/Leaderboard/

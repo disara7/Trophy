@@ -16,11 +16,14 @@ class SpinPage extends StatefulWidget {
 }
 
 class _SpinPageState extends State<SpinPage> {
+
+  int coinCount = 520; // Initialize coinCount
+
   final items = <String>[
     '50 Coins Treasure',
     '10',
     'SPIN x1',
-    '2x ',
+    '20',
     'TRY AGAIN',
     '30',
     'SPIN x1',
@@ -69,6 +72,8 @@ class _SpinPageState extends State<SpinPage> {
 
   void _showCongratulations(int index) {
     String message, buttonText;
+    int earnedCoins = 0;
+
     if (items[index] == 'TRY AGAIN') {
       message = 'Oops! Try again.';
       buttonText = 'TRY AGAIN';
@@ -76,12 +81,20 @@ class _SpinPageState extends State<SpinPage> {
       message = 'You won a spinning chance.';
       buttonText = 'SPIN AGAIN';
     } else {
+      earnedCoins = int.parse(items[index]);
       message = 'You won ${items[index]} coins.';
       buttonText = 'COLLECT';
     }
-    ;
+
+
 
     showCongratulationsDialog(context, message, buttonText);
+
+    if (earnedCoins > 0) {
+      setState(() {
+        coinCount += earnedCoins; // Update the coinCount
+      });
+    }
   }
 
   @override
@@ -89,7 +102,7 @@ class _SpinPageState extends State<SpinPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'SPIN',
-        coinCount: 520,
+        coinCount: coinCount,
         onBackPressed: () {
           Navigator.pop(context);
         },

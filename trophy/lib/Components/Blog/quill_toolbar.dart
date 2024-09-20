@@ -7,7 +7,7 @@ import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 class MyQuillToolbar extends StatelessWidget {
   final QuillController controller;
 
-  const MyQuillToolbar({Key? key, required this.controller}) : super(key: key);
+  const MyQuillToolbar({super.key, required this.controller});
 
 
   @override
@@ -18,19 +18,15 @@ class MyQuillToolbar extends StatelessWidget {
           multiRowsDisplay: true,
           searchButtonType: SearchButtonType.modern,
           embedButtons: FlutterQuillEmbeds.toolbarButtons(
-              imageButtonOptions: const QuillToolbarImageButtonOptions()
-          ),
+              imageButtonOptions: const QuillToolbarImageButtonOptions()),
           buttonOptions: const QuillSimpleToolbarButtonOptions(
               base: QuillToolbarBaseButtonOptions(
                   iconTheme: QuillIconTheme(
                       iconButtonSelectedData: IconButtonData(
-                        color: Color(0xFF222222),
-                        style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(Color(0xffE28C43))),
-                      )
-                  )
-              )
-          )
-      ),
+            color: Color(0xFF222222),
+            style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(Color(0xffE28C43))),
+          ))))),
     );
   }
 }

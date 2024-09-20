@@ -8,7 +8,7 @@ import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 class MyQuillEditor extends StatelessWidget {
   final QuillController controller;
 
-  const MyQuillEditor({Key? key, required this.controller}) : super(key: key);
+  const MyQuillEditor({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

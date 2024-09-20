@@ -1,33 +1,71 @@
+import 'dart:convert';
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/themes/button_styles.dart';
 
 class MyAccount extends StatefulWidget {
-  const MyAccount({Key? key}) : super(key: key);
+  const MyAccount({super.key});
 
   @override
   _MyAccountState createState() => _MyAccountState();
 }
 
 class _MyAccountState extends State<MyAccount> {
-  TextEditingController _dobController =
-      TextEditingController(text: '1999-07-01');
-  TextEditingController _contactController =
-      TextEditingController(text: '0779449333');
-  TextEditingController _addressController =
-      TextEditingController(text: 'No.74A, Lewelle road');
-  TextEditingController _nicController =
-      TextEditingController(text: '2000000000');
+  final TextEditingController _dobController =
+  TextEditingController(text: '1999-07-01');
+  final TextEditingController _contactController =
+  TextEditingController(text: '0779449333');
+  final TextEditingController _addressController =
+  TextEditingController(text: 'No.74A, Lewelle road');
+  final TextEditingController _nicController =
+  TextEditingController(text: '2000000000');
 
   String firstname = 'Firstname';
   String lastname = 'Lastname';
-  String position = 'Position';
+  String position = 'Software Engineer';
   String since = '2014';
 
   DateTime bday = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchEmployeeData();
+  }
+
+  Future<void> _fetchEmployeeData() async {
+    try {
+      final response = await http.get(Uri.parse('https://api.trophy.com/employee/66bcd28b32f79a92120f2a43'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          firstname = data['employeeName'].split(' ')[0];
+          lastname = data['employeeName'].split(' ')[1];
+          position = data['position'] ?? 'Position'; // Set default value if position is null
+          since = '2014'; // Assuming this is fixed or fetched from somewhere else
+          _contactController.text = data['contactNumber'] ?? '';
+          _addressController.text = data['address'] ?? '';
+          _nicController.text = data['nic'] ?? '';
+          _dobController.text = data['dob'] ?? '1999-07-01'; // Default date if not present
+          bday = DateTime.parse(data['dob'] ?? '1999-07-01');
+        });
+      } else {
+        throw Exception('Failed to load employee data');
+      }
+    } catch (e) {
+      // Handle error, e.g., show an error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error fetching data: $e'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
+  }
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -45,7 +83,6 @@ class _MyAccountState extends State<MyAccount> {
 
   void _saveChanges() {
     // Implement saving changes logic here
-    // Example: Save updated contact, address, NIC, and DOB
     String updatedContact = _contactController.text;
     String updatedAddress = _addressController.text;
     String updatedNIC = _nicController.text;
@@ -59,7 +96,7 @@ class _MyAccountState extends State<MyAccount> {
 
     // Optionally, show a confirmation message
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Changes saved successfully!'),
         duration: Duration(seconds: 2),
       ),
@@ -79,53 +116,51 @@ class _MyAccountState extends State<MyAccount> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            padding: EdgeInsets.all(18),
+            padding: const EdgeInsets.all(18),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage(
-                      'assets/user.jpeg'), // Make sure the image is in the assets folder and included in pubspec.yaml
+                const CircleAvatar(
+                  radius: 45,
+                  backgroundImage: AssetImage('assets/user.jpeg'),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   '$firstname $lastname',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.orange,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 3),
                 Text(
                   position,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 19,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 3),
                 Text(
                   'Since $since',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(41, 255, 153, 0),
-                    borderRadius:
-                        BorderRadius.circular(12), // Adding border radius
+                    color: const Color.fromARGB(41, 255, 153, 0),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Personal Details',
                         style: TextStyle(
                           color: Colors.black,
@@ -133,53 +168,53 @@ class _MyAccountState extends State<MyAccount> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextField(
                         controller: _contactController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           labelText: 'Contact Number',
                           suffixIcon: GestureDetector(
                             onTap: () {},
-                            child: Icon(Icons.edit),
+                            child: const Icon(Icons.edit),
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
                         controller: _addressController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           labelText: 'Address',
                           suffixIcon: GestureDetector(
                             onTap: () {},
-                            child: Icon(Icons.edit),
+                            child: const Icon(Icons.edit),
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
                         controller: _nicController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           labelText: 'NIC',
                           suffixIcon: GestureDetector(
                             onTap: () {},
-                            child: Icon(Icons.edit),
+                            child: const Icon(Icons.edit),
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       TextField(
                         controller: _dobController,
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           labelText: 'Date of Birth',
                           suffixIcon: GestureDetector(
                             onTap: () {
                               _selectDate(context);
                             },
-                            child: Icon(Icons.calendar_today),
+                            child: const Icon(Icons.calendar_today),
                           ),
                         ),
                         readOnly: true,
@@ -187,13 +222,13 @@ class _MyAccountState extends State<MyAccount> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     _saveChanges();
                   },
                   style: ButtonStyles.elevatedButtonStyle,
-                  child: Text('Save Changes'),
+                  child: const Text('Save Changes'),
                 ),
               ],
             ),

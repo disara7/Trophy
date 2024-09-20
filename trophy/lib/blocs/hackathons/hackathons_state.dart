@@ -1,28 +1,11 @@
 import 'package:equatable/equatable.dart';
-
-class Hackathon {
-  final String hacktitle;
-  final String hackdescription;
-  final String hackimageUrl;
-  final int hackcoinCount;
-  final String hackathondetails;
-  final String hackathonmainimgUrl;
-
-  Hackathon({
-    required this.hacktitle,
-    required this.hackdescription,
-    required this.hackimageUrl,
-    required this.hackcoinCount,
-    required this.hackathondetails,
-    required this.hackathonmainimgUrl,
-  });
-}
+import 'hackathon.dart';
 
 abstract class HackathonState extends Equatable {
   const HackathonState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class HackathonsInitial extends HackathonState {}
@@ -35,7 +18,14 @@ class HackathonsLoaded extends HackathonState {
   const HackathonsLoaded(this.hackathons);
 
   @override
-  List<Object> get props => [hackathons];
+  List<Object?> get props => [hackathons];
 }
 
-class HackathonsError extends HackathonState {}
+class HackathonsLoadFailure extends HackathonState {
+  final String error;
+
+  const HackathonsLoadFailure(this.error);
+
+  @override
+  List<Object?> get props => [error];
+}

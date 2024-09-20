@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/Screens/qrcodepage.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class Activitiesdetailspage extends StatelessWidget {
   final String title;
@@ -12,7 +13,10 @@ class Activitiesdetailspage extends StatelessWidget {
   final String activitytime;
   final String activityvenue;
 
-  const Activitiesdetailspage({super.key, 
+
+  const Activitiesdetailspage({
+    super.key,
+
     required this.title,
     required this.description,
     required this.coinCount,
@@ -60,9 +64,9 @@ class Activitiesdetailspage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        width: 5,
-                      ),
+
+                      const SizedBox(width: 5),
+
                       Stack(
                         clipBehavior: Clip.none,
                         alignment: Alignment.center,
@@ -159,7 +163,9 @@ class Activitiesdetailspage extends StatelessWidget {
                         child: Text(
                           'GOING',
                           style: TextStyle(
+
                             color: Color(0xffff09c46),
+
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),

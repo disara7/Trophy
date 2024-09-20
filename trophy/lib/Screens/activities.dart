@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/blocs/activities/activities_bloc.dart';
 import 'package:trophy/blocs/activities/activities_event.dart';
 import 'package:trophy/blocs/activities/activities_state.dart';
 import 'package:trophy/Components/activity_card.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
 
 class Activities extends StatelessWidget {
   const Activities({super.key});
@@ -28,8 +28,6 @@ class Activities extends StatelessWidget {
               if (state is ActivitiesLoading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is ActivitiesLoaded) {
-                print(
-                    'Activities Loaded: ${state.activities.length} activities');
                 return ListView(
                   children: [
                     const Padding(
@@ -44,7 +42,6 @@ class Activities extends StatelessWidget {
                     Wrap(
                       alignment: WrapAlignment.spaceEvenly,
                       children: state.activities.map((activity) {
-                        print('Activity: ${activity.title}');
                         return CustomCard(
                           title: activity.title,
                           description: activity.description,
@@ -54,16 +51,16 @@ class Activities extends StatelessWidget {
                           activitiesmainimgUrl: activity.activitiesmainimgUrl,
                           activitydate: activity.activitydate,
                           activitytime: activity.activitytime,
-                          activityvenue: activity.activityvenue
+                          activityvenue: activity.activityvenue,
                         );
                       }).toList(),
                     ),
                   ],
                 );
-              } else if (state is ActivitiesError) {
-                return const Center(child: Text('Failed to load activities'));
+              } else if (state is ActivitiesLoadFailure) {
+                return Center(child: Text(state.error));
               }
-              return Container(); // This handles any unexpected states
+              return Container();
             },
           ),
         ),
