@@ -13,7 +13,8 @@ class RedeemPage extends StatefulWidget {
 }
 
 class _RedeemPageState extends State<RedeemPage> {
-  int amount = 0;
+  int coinCount = 520; // Current coin count
+  int amount = 0; // Amount selected to redeem
 
   void _onAmountChanged(int newAmount) {
     setState(() {
@@ -21,9 +22,15 @@ class _RedeemPageState extends State<RedeemPage> {
     });
   }
 
-  void _onRedeem() {
-    // Add your redeem action here
-    print('Redeem $amount coins');
+  void _onRedeem(int redeemedAmount) {
+    setState(() {
+      coinCount -= redeemedAmount;
+      if (coinCount < 0) {
+        coinCount = 0; // Prevent negative coin count
+      }
+    });
+    // Optionally add further redeem logic here
+    print('Redeem $redeemedAmount coins');
   }
 
   @override
@@ -31,7 +38,7 @@ class _RedeemPageState extends State<RedeemPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'REDEEM COINS',
-        coinCount: 520,
+        coinCount: coinCount, // Pass updated coin count
         onBackPressed: () {
           Navigator.pop(context);
         },
@@ -76,7 +83,7 @@ class _RedeemPageState extends State<RedeemPage> {
                                 ),
                                 TextSpan(
                                   text:
-                                      'It’s about time you make use of the coins you’ve collected. Redeem the coins you have collected at the checkout of the following.',
+                                  'It’s about time you make use of the coins you’ve collected. Redeem the coins you have collected at the checkout of the following.',
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.normal,
@@ -97,7 +104,7 @@ class _RedeemPageState extends State<RedeemPage> {
                 const SizedBox(height: 20),
 
                 // Your existing Counter widget
-                const Counter(count: 520),
+                Counter(count: coinCount), // Update coin count here
 
                 const SizedBox(height: 20),
 
@@ -116,16 +123,17 @@ class _RedeemPageState extends State<RedeemPage> {
                 AmountSelector(
                   initialAmount: amount,
                   onAmountChanged: _onAmountChanged,
-                  onRedeem: _onRedeem,
+                  onRedeem: _onRedeem, // Pass redeem function
                 ),
-
-                const SizedBox(height: 20),
 
                 // Your existing Container with text and image
                 Container(
                   width: 350,
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    image: DecorationImage(
+                      image: AssetImage('assets/countbg.png'), // Set the background image
+                      fit: BoxFit.contain, // Adjust as needed (cover, contain, etc.)
+                    ),
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   padding: const EdgeInsets.all(16.0),
@@ -136,16 +144,16 @@ class _RedeemPageState extends State<RedeemPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'First Orange Text',
+                              'COLLECT MORE!',
                               style: TextStyle(
                                 color: Colors.orange,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 8),
+                            SizedBox(height: 2),
                             Text(
-                              'Second Orange Text',
+                              'Find ways to collect more coins',
                               style: TextStyle(
                                 color: Colors.orange,
                                 fontSize: 14,
@@ -156,8 +164,8 @@ class _RedeemPageState extends State<RedeemPage> {
                       ),
                       Image.asset(
                         'assets/cb1.png', // Replace with your image path
-                        width: 50,
-                        height: 50,
+                        width: 100,
+                        height: 100,
                       ),
                     ],
                   ),

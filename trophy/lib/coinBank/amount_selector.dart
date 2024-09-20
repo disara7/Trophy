@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AmountSelector extends StatefulWidget {
   final int initialAmount;
   final Function(int) onAmountChanged;
-  final VoidCallback onRedeem;
+  final Function(int) onRedeem; // Accept an int for the selected amount
 
   const AmountSelector({
     super.key,
@@ -55,7 +55,7 @@ class _AmountSelectorState extends State<AmountSelector> {
             children: [
               Image.asset(
                 'assets/Coin.png',
-                width: 30, // Adjust the size of the coin image as needed
+                width: 30,
                 height: 30,
               ),
               const SizedBox(width: 5),
@@ -71,9 +71,7 @@ class _AmountSelectorState extends State<AmountSelector> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(
-                  width:
-                      10), // Add some spacing between the amount and the arrows
+              const SizedBox(width: 10),
               IconButton(
                 icon: const Icon(Icons.arrow_drop_up, size: 40),
                 onPressed: _increaseAmount,
@@ -81,17 +79,16 @@ class _AmountSelectorState extends State<AmountSelector> {
             ],
           ),
         ),
-        const SizedBox(
-            width:
-                10), // Add some spacing between the amount selector and the button
+        const SizedBox(width: 10),
         ElevatedButton(
-          onPressed: widget.onRedeem,
+          onPressed: () {
+            widget.onRedeem(amount); // Pass the selected amount
+          },
           style: ElevatedButton.styleFrom(
             foregroundColor: Colors.black,
-            backgroundColor: Colors.orange, // Text color
+            backgroundColor: Colors.orange,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                  8), // Adjust the corner radius as needed
+              borderRadius: BorderRadius.circular(8),
             ),
           ),
           child: const Text(
