@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Leaderboard/ladder.dart';
 
 Widget customButton({
   required Color backgroundColor,
@@ -42,6 +43,7 @@ Widget customButton({
 
 
 Widget trophyButton(
+    BuildContext context, // Pass context as a parameter
     Color backgroundColor,
     Color textColor,
     String text,
@@ -49,7 +51,12 @@ Widget trophyButton(
     ) {
   return Expanded(
     child: ElevatedButton(
-      onPressed: onPressed,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Ladder()), // Navigate to Ladder
+        );
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
         padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
@@ -83,6 +90,7 @@ Widget trophyButton(
     ),
   );
 }
+
 
 
 Widget discoverBtn({

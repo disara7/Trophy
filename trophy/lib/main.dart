@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
 
-      home: const Ladder(),
+      home: const Home(),
       // home: Blog(),
     );
   }

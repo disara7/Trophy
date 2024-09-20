@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trophy/Components/activity_button.dart';
 import 'package:trophy/Components/button.dart';
+import 'package:trophy/Leaderboard/ladder.dart';
 import 'package:trophy/Screens/Therapy/therapy_home.dart';
 import 'package:trophy/Screens/activities.dart';
 import 'package:trophy/Screens/blog.dart';
@@ -300,13 +301,21 @@ class _HomeState extends State<Home> {
                         ),
                         const SizedBox(width: 20.0),
                         trophyButton(
+                          context, // Pass the BuildContext here
                           const Color(0xff131212),
                           const Color(0xffE28C43),
                           'TROPHY LADDER',
                               () {
-
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Ladder(), // Navigate to Ladder page
+                              ),
+                            );
                           },
                         ),
+
+
                       ],
                     ),
                   ),
