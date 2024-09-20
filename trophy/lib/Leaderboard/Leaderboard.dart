@@ -57,7 +57,7 @@ class _LeaderboardState extends State<Leaderboard> {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'LEADER BOARD',
+        title: 'LEADERBOARD',
         coinCount: 520,
         onBackPressed: () {
           Navigator.pop(context);
@@ -74,7 +74,112 @@ class _LeaderboardState extends State<Leaderboard> {
                 Column(
                   children: [
                     // First Image
-                    Image.asset('assets/Leaderboard/rankbg.png', height: 220),
+                    Stack(
+                      children: [
+                        // Background image
+                        Image.asset(
+                          'assets/Leaderboard/rankbg.png',
+                          height: 220,
+                          fit: BoxFit.cover,
+                        ),
+                        // Overlaying Row
+                        Positioned(
+                          bottom: 65, // Adjust as needed to position the row
+                          left: 0,
+                          right: 0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              // First item
+                              Column(
+                                children: [
+                                  SizedBox(height: 20),
+                                  CircleAvatar(
+                                    radius: 30,
+                                    backgroundImage: AssetImage('assets/profile_icon1.png'), // Replace with actual profile picture
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'JOHN',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold, // Make the text bold
+                                      color: Colors.black, // Set the text color to orange
+                                    ),
+                                  )
+                                  ,
+                                  Row(
+                                    children: [
+                                      Image.asset('assets/Coin.png', width: 20, height: 20),
+                                      SizedBox(width: 5),
+                                      Text('450', style: TextStyle(
+                                        fontWeight: FontWeight.bold,)),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width: 1),
+                              // Second item
+                              Column(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 35,
+                                    backgroundImage: AssetImage('assets/profile_icon2.png'), // Replace with actual profile picture
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'JANE',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold, // Make the text bold
+                                      color: Colors.orange, // Set the text color to orange
+                                    ),
+                                  ),
+
+                                  Row(
+                                    children: [
+                                      Image.asset('assets/Coin.png', width: 20, height: 20),
+                                      SizedBox(width: 5),
+                                      Text('800', style: TextStyle(
+                                        fontWeight: FontWeight.bold,color: Colors.orange)),
+
+                                    ],
+                                  ),
+                                  SizedBox(height: 20),
+
+                                ],
+                              ),
+                              SizedBox(width: 1),
+                              // Third item
+                              Column(
+                                children: [
+                                  SizedBox(height: 20),
+                                  CircleAvatar(
+                                    radius: 30,
+                                    backgroundImage: AssetImage('assets/profile_icon3.png'), // Replace with actual profile picture
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'ALICE',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold, // Make the text bold
+                                      color: Colors.black, // Set the text color to orange
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Image.asset('assets/Coin.png', width: 20, height: 20),
+                                      SizedBox(width: 5),
+                                      Text('300', style: TextStyle(
+                                        fontWeight: FontWeight.bold,)),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+
                     SizedBox(height: 10),
 
                     // Second Image with overlay of number, profile picture, name, coin, and coin count
@@ -223,56 +328,72 @@ class _LeaderboardState extends State<Leaderboard> {
 
 
                 // "YOUR BADGES" aligned to the left
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                    'YOUR BADGES',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Palette.appBlack, // Use your defined color palette
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                SizedBox(height: 10),
-
-                // Image carousel
                 Stack(
-                  alignment: Alignment.center,
                   children: [
-                    SizedBox(
-                      height: 110,
-                      child: PageView.builder(
-                        controller: _pageController,
-                        itemCount: carouselImagePaths.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: Image.asset(
-                              carouselImagePaths[index],
-                              fit: BoxFit.contain,
+                    // Background image
+                    Image.asset(
+                      'assets/Leaderboard/badgesbg.png',
+                      fit: BoxFit.contain,
+                      width: double.infinity, // Make it cover the width of the container
+                      height: 200, // Set the height to match the carousel height
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(height: 25),
+                        Align(
+                          alignment: Alignment.center,
+                          child: const Text(
+                            'YOUR BADGES',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Palette.appBlack, // Use your defined color palette
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                    Positioned(
-                      left: 5,
-                      child: IconButton(
-                        icon: Icon(Icons.arrow_left, color: Colors.black),
-                        onPressed: _previousPage,
-                      ),
-                    ),
-                    Positioned(
-                      right: 5,
-                      child: IconButton(
-                        icon: Icon(Icons.arrow_right, color: Colors.black),
-                        onPressed: _nextPage,
-                      ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        // Image carousel
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SizedBox(
+                              height: 110,
+                              child: PageView.builder(
+                                controller: _pageController,
+                                itemCount: carouselImagePaths.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                    child: Image.asset(
+                                      carouselImagePaths[index],
+                                      fit: BoxFit.contain,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              left: 5,
+                              child: IconButton(
+                                icon: Icon(Icons.arrow_left, color: Colors.black),
+                                onPressed: _previousPage,
+                              ),
+                            ),
+                            Positioned(
+                              right: 5,
+                              child: IconButton(
+                                icon: Icon(Icons.arrow_right, color: Colors.black),
+                                onPressed: _nextPage,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 )
+
 
               ],
             ),
