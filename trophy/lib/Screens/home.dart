@@ -3,10 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trophy/Components/activity_button.dart';
 import 'package:trophy/Components/button.dart';
+import 'package:trophy/Screens/Therapy/therapy_home.dart';
+import 'package:trophy/Screens/activities.dart';
+import 'package:trophy/Screens/blog.dart';
+import 'package:trophy/Screens/hackathon.dart';
+import 'package:trophy/Screens/sports.dart';
 import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
-import 'package:trophy/Components/main_appbar.dart';
+
+import 'package:trophy/Components/custom_app_bar.dart';
+import 'package:trophy/coinBank/coinbank.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -37,11 +45,13 @@ class _HomeState extends State<Home> {
       ],
       child: Scaffold(
         appBar: CustomAppBar(
-            title: "HOME",
-            leadingIcon: Icons.menu,
-            onLeadingPressed: (){},
-            actionIcon: Icons.account_circle,
-            onActionPressed: _deleteToken
+          title: "HOME",
+          coinCount: 520,
+          leadingIcon: Icons.menu, // Use menu icon for the home page
+          onLeadingPressed: () {
+            // Handle the menu press action
+            Scaffold.of(context).openDrawer(); // Example: open a drawer
+          },
         ),
         body: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
@@ -189,6 +199,12 @@ class _HomeState extends State<Home> {
                                 'Activities',
                                 'assets/activity2.png',
                                 onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Activities(), // Navigate to CoinBankPage
+                                    ),
+                                  );
 
                                 },
                               ),
@@ -197,6 +213,12 @@ class _HomeState extends State<Home> {
                                 'Hackathons',
                                 'assets/activity3.png',
                                 onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Hackathon(), // Navigate to CoinBankPage
+                                    ),
+                                  );
 
                                 },
                               ),
@@ -211,6 +233,12 @@ class _HomeState extends State<Home> {
                                 'assets/activity4.png',
                                 iconSize: 27.0,
                                 onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Blog(), // Navigate to CoinBankPage
+                                    ),
+                                  );
 
                                 },
                               ),
@@ -219,6 +247,12 @@ class _HomeState extends State<Home> {
                                 'Sports',
                                 'assets/activity5.png',
                                 onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Sports(), // Navigate to CoinBankPage
+                                    ),
+                                  );
 
                                 },
                               ),
@@ -227,6 +261,12 @@ class _HomeState extends State<Home> {
                                 'Therapy',
                                 'assets/activity6.png',
                                 onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CategoryPage(), // Navigate to CoinBankPage
+                                    ),
+                                  );
 
                                 },
                               ),
@@ -249,6 +289,12 @@ class _HomeState extends State<Home> {
                           textColor: const Color(0xff131212),
                           text: 'COIN BANK',
                           onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CoinBank(), // Navigate to CoinBankPage
+                              ),
+                            );
 
                           },
                         ),
@@ -269,6 +315,9 @@ class _HomeState extends State<Home> {
             );
           }
         ),
+        bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+          // Handle navigation item selection
+        }),
         backgroundColor: const Color(0xffFDFEFF),
       ),
     );

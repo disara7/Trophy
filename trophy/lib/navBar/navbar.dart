@@ -3,7 +3,7 @@ import 'package:rive/rive.dart';
 import 'package:trophy/navBar/nav_item_model.dart';
 import 'dart:async';
 
-const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);
+const Color navbarBgColor = Color.fromARGB(255, 223, 219, 220);
 
 class BottomNavBar extends StatefulWidget {
   final Function(int) onItemSelected;

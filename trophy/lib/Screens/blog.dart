@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:trophy/Components/Blog/discover.dart';
 import 'package:trophy/Components/Blog/popular_post.dart';
 import 'package:trophy/Components/button.dart';
-import 'package:trophy/Components/main_appbar.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
+
 import 'package:trophy/Screens/my_blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trophy/Screens/write_blog.dart';
+import 'package:trophy/navBar/navbar.dart';
 
 class Blog extends StatefulWidget {
   const Blog({super.key});
@@ -19,12 +21,12 @@ class _BlogState extends State<Blog> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-            title: "BLOG",
-            leadingIcon: Icons.menu,
-            onLeadingPressed: (){},
-            actionIcon: Icons.account_circle,
-            onActionPressed: (){}
-        ),
+        title: 'BLOG',
+        // coinCount: "520",
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 16.0, right: 16.0),
@@ -77,6 +79,9 @@ class _BlogState extends State<Blog> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        // Handle navigation item selection
+      }),
     );
   }
 }
