@@ -25,7 +25,6 @@ class ActivitiesLoadFailure extends ActivitiesState {
   final String error;
 
   const ActivitiesLoadFailure(this.error);
-
   @override
   List<Object?> get props => [error];
 }
