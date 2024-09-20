@@ -29,6 +29,5 @@ void main() {
       ],
     );
 
-    // You can add more tests for other events like UpdateDailyChallenge, UpdateCompletedChallenges, and UpdateLevel here.
   });
 }
