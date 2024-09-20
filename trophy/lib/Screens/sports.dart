@@ -50,7 +50,7 @@ class Sports extends StatelessWidget {
                     ),
                   ],
                 );
-              } else if (state is SportsError) {
+              } else if (state is SportsLoadFailure) {
                 return const Center(child: Text('Failed to load sports'));
               }
               return Container(); // This handles any unexpected states

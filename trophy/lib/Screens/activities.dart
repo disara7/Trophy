@@ -51,7 +51,7 @@ class Activities extends StatelessWidget {
                           activitiesmainimgUrl: activity.activitiesmainimgUrl,
                           activitydate: activity.activitydate,
                           activitytime: activity.activitytime,
-                          activityvenue: activity.activityvenue
+                          activityvenue: activity.activityvenue,
                         );
                       }).toList(),
                     ),
@@ -60,7 +60,7 @@ class Activities extends StatelessWidget {
               } else if (state is ActivitiesLoadFailure) {
                 return Center(child: Text(state.error));
               }
-              return Container(); // This handles any unexpected states
+              return Container();
             },
           ),
         ),

@@ -5,7 +5,7 @@ abstract class HackathonState extends Equatable {
   const HackathonState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class HackathonsInitial extends HackathonState {}
@@ -18,14 +18,14 @@ class HackathonsLoaded extends HackathonState {
   const HackathonsLoaded(this.hackathons);
 
   @override
-  List<Object> get props => [hackathons];
+  List<Object?> get props => [hackathons];
 }
 
-class HackathonsError extends HackathonState {
-  final String message;
+class HackathonsLoadFailure extends HackathonState {
+  final String error;
 
-  const HackathonsError(this.message);
+  const HackathonsLoadFailure(this.error);
 
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [error];
 }

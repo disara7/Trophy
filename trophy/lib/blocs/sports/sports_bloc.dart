@@ -16,7 +16,7 @@ class SportsBloc extends Bloc<SportsEvent, SportsState> {
 
     try {
       final response =
-          await http.get(Uri.parse('http://13.51.177.135/spo/Sports'));
+          await http.get(Uri.parse('http://192.168.1.4/api/Sports'));
       if (response.statusCode == 200) {
         final List<dynamic>? data =
             jsonDecode(response.body); // Ensure data is nullable
@@ -26,13 +26,13 @@ class SportsBloc extends Bloc<SportsEvent, SportsState> {
               .toList(); // Assuming Sport.fromJson is correctly implemented
           emit(SportsLoaded(activities));
         } else {
-          emit(const SportsError("No data found"));
+          emit(const SportsLoadFailure("No data found"));
         }
       } else {
-        emit(const SportsError("Failed to load sports"));
+        emit(const SportsLoadFailure("Failed to load sports"));
       }
     } catch (e) {
-      emit(SportsError(e.toString()));
+      emit(SportsLoadFailure(e.toString()));
     }
   }
 }
