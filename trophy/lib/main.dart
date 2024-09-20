@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Screens/Therapy/therapy_home.dart';
 
 import 'package:trophy/coinBank/coinbank.dart';
 
@@ -25,7 +26,12 @@ class MainApp extends StatelessWidget {
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
 
-      home: const CoinBank(),
+      home: StreamBuilder<Object>(
+        stream: null,
+        builder: (context, snapshot) {
+          return const CategoryPage();
+        }
+      ),
       // home: Blog(),
     );
   }
