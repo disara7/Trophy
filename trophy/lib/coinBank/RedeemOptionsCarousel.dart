@@ -23,7 +23,7 @@ class RedeemOptionsCarousel extends StatelessWidget {
         'description': 'Access to recreational facilities.',
       },
       {
-        'image': 'assets/Sport.png',
+        'image': 'assets/sport.png',
         'title': 'SPORTS',
         'description': 'Redeem for sports activities.',
       },
