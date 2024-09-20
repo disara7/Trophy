@@ -13,7 +13,7 @@ import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
 
-import 'package:trophy/Components/custom_app_bar.dart';
+import 'package:trophy/Components/main_appbar.dart';
 import 'package:trophy/coinBank/coinbank.dart';
 import 'package:trophy/navBar/navbar.dart';
 
@@ -29,7 +29,6 @@ class _HomeState extends State<Home> {
   Future<void> _deleteToken() async {
     final prefs = await _prefs;
     await prefs.remove('authToken');
-    // Optionally: Consider showing a snackbar or dialog to inform the user
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Authentication token deleted'),
@@ -45,14 +44,12 @@ class _HomeState extends State<Home> {
         ),
       ],
       child: Scaffold(
-        appBar: CustomAppBar(
-          title: "HOME",
-          coinCount: 520,
-          leadingIcon: Icons.menu, // Use menu icon for the home page
-          onLeadingPressed: () {
-            // Handle the menu press action
-            Scaffold.of(context).openDrawer(); // Example: open a drawer
-          },
+        appBar:  CustomAppBar(
+            title: "HOME",
+            leadingIcon: Icons.menu,
+            onLeadingPressed: (){},
+            actionIcon: Icons.account_circle,
+            onActionPressed: _deleteToken
         ),
         body: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
@@ -309,13 +306,11 @@ class _HomeState extends State<Home> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Ladder(), // Navigate to Ladder page
+                                builder: (context) => const Ladder(), // Navigate to Ladder page
                               ),
                             );
                           },
                         ),
-
-
                       ],
                     ),
                   ),
