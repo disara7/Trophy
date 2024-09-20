@@ -4,13 +4,19 @@ import 'package:trophy/myaccount/myaccount.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final int coinCount;
-  final VoidCallback onBackPressed;
+  final VoidCallback? onBackPressed;
+  final IconData? leadingIcon; // Leading icon parameter
+  final VoidCallback? onLeadingPressed; // Leading icon press handler
+  final VoidCallback? onActionPressed;
 
   const CustomAppBar({
     super.key,
     required this.title,
     this.coinCount = 520,
-    required this.onBackPressed,
+    this.onBackPressed,
+    this.leadingIcon, // Add leadingIcon
+    this.onLeadingPressed, // Add onLeadingPressed
+    this.onActionPressed,
   });
 
   @override
@@ -19,9 +25,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.only(left: 15, right: 15),
       child: AppBar(
         backgroundColor: Colors.white,
+        // Use leadingIcon and onLeadingPressed if provided, otherwise use back arrow
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: onBackPressed,
+          icon: Icon(leadingIcon ?? Icons.arrow_back_ios, color: Colors.black),
+          onPressed: onLeadingPressed ?? onBackPressed ?? () {
+            Navigator.pop(context); // Default back behavior if not provided
+          },
         ),
         centerTitle: true,
         title: Center(
@@ -60,7 +69,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const MyAccount()),
+                        builder: (context) => const MyAccount(),
+                      ),
                     );
                   },
                   child: const Icon(
@@ -73,6 +83,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ],
+        flexibleSpace: Container(
+          color: Colors.white,
+        ),
       ),
     );
   }

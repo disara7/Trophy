@@ -15,7 +15,7 @@ class HackathonsBloc extends Bloc<HackathonsEvent, HackathonState> {
     emit(HackathonsLoading());
     try {
       final response =
-          await http.get(Uri.parse('http://13.51.177.135/hack/Hackathons'));
+          await http.get(Uri.parse('http://192.168.1.4/api/Hackathons'));
       if (response.statusCode == 200) {
         final List<dynamic>? data = jsonDecode(response.body);
         if (data != null) {
@@ -23,13 +23,13 @@ class HackathonsBloc extends Bloc<HackathonsEvent, HackathonState> {
               data.map((json) => Hackathon.fromJson(json)).toList();
           emit(HackathonsLoaded(hackathons));
         } else {
-          emit(const HackathonsError("No data found"));
+          emit(const HackathonsLoadFailure("No data found"));
         }
       } else {
-        emit(const HackathonsError("Failed to load hackathons"));
+        emit(const HackathonsLoadFailure("Failed to load hackathons"));
       }
     } catch (e) {
-      emit(HackathonsError(e.toString()));
+      emit(HackathonsLoadFailure(e.toString()));
     }
   }
 }

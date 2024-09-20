@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,11 +7,13 @@ import 'package:trophy/Components/Blog/blog_submit.dart';
 import 'package:trophy/Components/Blog/draft_save.dart';
 import 'package:trophy/Components/Blog/quill_editor.dart';
 import 'package:trophy/Components/Blog/quill_toolbar.dart';
+import 'package:trophy/Components/Blog/submit_complete.dart';
 import 'package:trophy/Components/Blog/textfeild.dart';
 import 'package:trophy/Components/button.dart';
 import 'package:trophy/Components/main_appbar.dart';
 import 'package:trophy/Screens/blog_preview.dart';
 import 'package:trophy/Screens/my_blog.dart';
+import 'package:image_picker/image_picker.dart';
 
 const filepath = "../Components/Blog/Assets";
 
@@ -30,6 +33,8 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
   final TextEditingController _subtitleController = TextEditingController();
   String? _selectedCategory;
   String? _currentDraftKey;
+  File? _image;
+  final picker = ImagePicker();
 
   @override
   void initState() {
@@ -43,6 +48,12 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
       _titleController.text = draft.title;
       _subtitleController.text = draft.subtitle;
       _selectedCategory = draft.category;
+
+      if (draft.imagePath != null && draft.imagePath!.isNotEmpty) {
+        _image = File(draft.imagePath!);
+      } else {
+        _image = null;
+      }
       _controller = QuillController(
         document: Document.fromJson(jsonDecode(draft.content)),
         selection: const TextSelection.collapsed(offset: 0),
@@ -56,15 +67,35 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
     _subtitleController.clear();
     _selectedCategory = null;
     _controller = QuillController.basic();
+    setState(() {
+      _image = null;
+    });
+  }
+
+  Future<void> _getImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      }
+    });
   }
 
   Future<String> _saveDraft() async {
-    final currentDraftKey = 'blogDraft${DateTime.now().toString()}';
-    final draft = BlogDraft.fromState(_titleController.text, _subtitleController.text, _selectedCategory!, _controller, currentDraftKey);
-    final draftJson = jsonEncode(draft);
+    final draftKey = _currentDraftKey ?? 'blogDraft${DateTime.now().toString()}';
+    final draft = BlogDraft.fromState(
+      _titleController.text,
+      _subtitleController.text,
+      _selectedCategory!,
+      _controller,
+      draftKey,
+      _image?.path,
+    );
+    final draftJson = jsonEncode(draft.toJson());
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(currentDraftKey, draftJson);
-    return currentDraftKey;
+    await prefs.setString(draftKey, draftJson);
+    return draftKey;
   }
 
   Future<void> _deleteDraft() async {
@@ -73,8 +104,6 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
       await prefs.remove(_currentDraftKey!);
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +124,7 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
                 title: _titleController.text,
                 subtitle: _subtitleController.text,
                 controller: _controller,
+                image: _image,
               ),
             ),
           );
@@ -140,13 +170,30 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
                   });
                 },
               ),
+              const SizedBox(height: 20.0),
+              Row(
+                children: [
+                  customButton(
+                    backgroundColor: const Color.fromARGB(255, 197, 197, 197),
+                    textColor: const Color(0xFF222222),
+                    text: 'Pick Banner Image',
+                    onPressed:() async {
+                      _getImage();
+                    }
+                  ),
+                ],
+              ),
               const SizedBox(height: 10.0),
+              if (_image != null) ...[
+                Image.file(_image!),
+                const SizedBox(height: 20.0),
+              ],
               Container(
-                decoration: const BoxDecoration(
-                  color: Color(0x22222222),
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(16.0), topLeft: Radius.circular(16.0)),
-                ),
-                child: MyQuillToolbar(controller: _controller)
+                  decoration: const BoxDecoration(
+                    color: Color(0x22222222),
+                    borderRadius: BorderRadius.only(topRight: Radius.circular(16.0), topLeft: Radius.circular(16.0)),
+                  ),
+                  child: MyQuillToolbar(controller: _controller)
               ),
               Container(
                 height: 600,
@@ -158,8 +205,8 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: MyQuillEditor(controller: _controller,)
+                    padding: const EdgeInsets.all(16.0),
+                    child: MyQuillEditor(controller: _controller,)
                 ),
               ),
               const SizedBox(height: 10.0),
@@ -186,13 +233,13 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
                     textColor: const Color(0xFF222222),
                     text: 'SUBMIT',
                     onPressed: () async {
-                      await submitBlog(_titleController.text, _subtitleController.text, _selectedCategory!, _controller);
+                      await submitBlog(title: _titleController.text, subtitle:  _subtitleController.text, category: _selectedCategory!, controller: _controller, state: 'In Review', date: DateTime.now().toString(), image:  _image);
                       await _deleteDraft();
                       _clearData();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const MyBlogs(),
+                          builder: (context) => const SubmitComplete(),
                         ),
                       );
                     },

@@ -15,7 +15,7 @@ class ActivitiesBloc extends Bloc<ActivitiesEvent, ActivitiesState> {
     emit(ActivitiesLoading());
     try {
       final response =
-          await http.get(Uri.parse('http://13.51.177.135/act/Activities'));
+          await http.get(Uri.parse('http://192.168.1.4/api/Activities'));
       if (response.statusCode == 200) {
         final List<dynamic>? data =
             jsonDecode(response.body); // Ensure data is nullable
