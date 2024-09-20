@@ -26,7 +26,6 @@ class Ladder extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'TROPHY LADDER',
-        coinCount: 520,
         onBackPressed: () {
           Navigator.pop(context);
         },
@@ -72,9 +71,6 @@ class Ladder extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
-        // Handle navigation item selection
-      }),
     );
   }
 }

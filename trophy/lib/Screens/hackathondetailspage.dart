@@ -22,7 +22,6 @@ class Hackathondetailspage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Hackathons',
-        coinCount: 500,
         onBackPressed: () {
           Navigator.of(context).pop();
         },

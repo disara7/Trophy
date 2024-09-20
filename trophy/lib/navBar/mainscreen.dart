@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trophy/Screens/blog.dart';
+import 'package:trophy/Screens/community.dart';
 import 'package:trophy/Screens/home.dart';
+import 'package:trophy/Components/custom_drawer.dart';
 import 'navbar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -12,13 +14,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final List<Widget> _screens = [
-    const Home(), // Home page
-    const Blog(), // Blog page
-    Container(), // Notifications page
-    Container(), // Settings page
-  ];
+  void _openDrawer() {
+    _scaffoldKey.currentState?.openDrawer();
+  }
 
   void _onItemSelected(int index) {
     setState(() {
@@ -29,7 +29,17 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currentIndex],
+      key: _scaffoldKey,
+      body: IndexedStack(
+        index: _currentIndex,
+        children: [
+          Home(openDrawer: _openDrawer),
+          Community(openDrawer: _openDrawer),
+          Container(),
+          Container(),
+        ],
+      ),
+      drawer: CustomDrawer(),
       bottomNavigationBar: BottomNavBar(onItemSelected: _onItemSelected),
     );
   }

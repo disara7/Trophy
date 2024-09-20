@@ -102,7 +102,6 @@ class _SpinPageState extends State<SpinPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'SPIN',
-        coinCount: coinCount,
         onBackPressed: () {
           Navigator.pop(context);
         },

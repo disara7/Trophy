@@ -108,7 +108,7 @@ class _BlogWritingPageState extends State<BlogWritingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: BlogAppBar(
         title: "BLOG",
         leadingIcon: Icons.arrow_back_ios,
         onLeadingPressed: () {

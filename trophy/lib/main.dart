@@ -17,8 +17,7 @@ class MainApp extends StatelessWidget {
       theme: TrophyTheme.lightTheme,
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
-      home: AuthCheck(),
-      // home: Blog(),
+      home: const AuthCheck(),
     );
   }
 }

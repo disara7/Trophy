@@ -58,7 +58,6 @@ class _LeaderboardState extends State<Leaderboard> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'LEADERBOARD',
-        coinCount: 520,
         onBackPressed: () {
           Navigator.pop(context);
         },

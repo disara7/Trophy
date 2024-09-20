@@ -12,7 +12,6 @@ class GiftPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'SEND COINS',
-        coinCount: 520,
         onBackPressed: () {
           Navigator.pop(context);
         },

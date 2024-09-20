@@ -38,7 +38,6 @@ class _RedeemPageState extends State<RedeemPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'REDEEM COINS',
-        coinCount: coinCount, // Pass updated coin count
         onBackPressed: () {
           Navigator.pop(context);
         },
