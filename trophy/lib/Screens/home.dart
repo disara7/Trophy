@@ -12,7 +12,6 @@ import 'package:trophy/Screens/sports.dart';
 import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
-
 import 'package:trophy/Components/main_appbar.dart';
 import 'package:trophy/coinBank/coinbank.dart';
 import 'package:trophy/navBar/navbar.dart';
@@ -44,7 +43,7 @@ class _HomeState extends State<Home> {
         ),
       ],
       child: Scaffold(
-        appBar:  CustomAppBar(
+        appBar: CustomAppBar(
             title: "HOME",
             leadingIcon: Icons.menu,
             onLeadingPressed: (){},
@@ -122,8 +121,9 @@ class _HomeState extends State<Home> {
                         children: [
                           Column(
                             children: [
+                              const SizedBox(width: 130,),
                               const Text(
-                                'Daily challenge',
+                                'Progress',
                                 style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
@@ -200,10 +200,9 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Activities(), // Navigate to CoinBankPage
+                                      builder: (context) => const Activities(),
                                     ),
                                   );
-
                                 },
                               ),
                               const SizedBox(width: 5.0),
@@ -214,10 +213,9 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Hackathon(), // Navigate to CoinBankPage
+                                      builder: (context) => const Hackathon(),
                                     ),
                                   );
-
                                 },
                               ),
                             ],
@@ -233,11 +231,8 @@ class _HomeState extends State<Home> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Blog(), // Navigate to CoinBankPage
-                                    ),
+                                    MaterialPageRoute(builder: (context) => const Blog()),
                                   );
-
                                 },
                               ),
                               const SizedBox(width: 5.0),
@@ -248,10 +243,9 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Sports(), // Navigate to CoinBankPage
+                                      builder: (context) => const Sports(),
                                     ),
                                   );
-
                                 },
                               ),
                               const SizedBox(width: 5.0),

@@ -1,11 +1,14 @@
+// import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class MyQuillToolbar extends StatelessWidget {
-  final QuillController controller; // Replace with your controller type
+  final QuillController controller;
 
   const MyQuillToolbar({super.key, required this.controller});
+
 
   @override
   Widget build(BuildContext context) {

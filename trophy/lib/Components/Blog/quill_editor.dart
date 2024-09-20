@@ -4,7 +4,6 @@ import 'package:flutter_quill/extensions.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill_extensions/embeds/widgets/image.dart';
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
-import 'package:flutter_quill_extensions/models/config/video/editor/youtube_video_support_mode.dart';
 
 class MyQuillEditor extends StatelessWidget {
   final QuillController controller;
@@ -51,11 +50,6 @@ class MyQuillEditor extends StatelessWidget {
                       .assetsPrefix,
                 );
               },
-            ),
-            videoEmbedConfigurations: QuillEditorVideoEmbedConfigurations(
-              youtubeVideoSupportMode: isDesktop(supportWeb: false)
-                  ? YoutubeVideoSupportMode.customPlayerWithDownloadUrl
-                  : YoutubeVideoSupportMode.iframeView,
             ),
           )),
         ],

@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:trophy/constants.dart';
 import 'dart:convert';
 import 'state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,20 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<HomeState> fetchHomeState() async {
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('authToken');
-
-  // Decode the token to get the userId
-  // final decodedToken = jsonDecode(utf8.decode(base64Url.decode(base64Url.normalize(token!.split('.')[1]))));
-  // final userId = decodedToken['userId'];
-  // print(userId);
-  //
-  // if (userId != null) {
-  //   await prefs.setString('userId', userId);
-  // } else {
-  //   print('User ID is null in the token.');
-  // }
   try {
     final response = await http.get(
-      Uri.parse('http://172.20.10.2/fetch/home'), // Replace with 13.60.28.40
+      Uri.parse('$baseUrl/fetch/home'), // Replace with 13.60.28.40
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer $token',
@@ -28,12 +18,10 @@ Future<HomeState> fetchHomeState() async {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      await Future.delayed(const Duration(seconds: 10));
-      fetchHomeState();
       return HomeState(
         coins: data['coins'],
-        dailyChallenge: data['dailyChallenge'],
-        completedChallenges: data['completedChallenges'],
+        dailyChallenge: data['targetPoint'],
+        completedChallenges: data['progressPoint'],
         level: data['level'],
       );
 
@@ -45,7 +33,7 @@ Future<HomeState> fetchHomeState() async {
     // Return a default HomeState object in case of an error
     return const HomeState(
       coins: 0,
-      dailyChallenge: 10,
+      dailyChallenge: 100,
       completedChallenges: 0,
       level: 0,
     );

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Components/Blog/blog_list.dart';
 import 'package:trophy/Components/Blog/discover.dart';
 import 'package:trophy/Components/Blog/popular_post.dart';
 import 'package:trophy/Components/button.dart';
-import 'package:trophy/Components/custom_app_bar.dart';
-
+import 'package:trophy/Components/main_appbar.dart';
+import 'package:trophy/Screens/home.dart';
 import 'package:trophy/Screens/my_blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trophy/Screens/write_blog.dart';
-import 'package:trophy/navBar/navbar.dart';
+
 
 class Blog extends StatefulWidget {
   const Blog({super.key});
@@ -17,34 +18,47 @@ class Blog extends StatefulWidget {
 }
 
 class _BlogState extends State<Blog> {
+  final ApiService apiService = ApiService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'BLOG',
-        // coinCount: "520",
-        onBackPressed: () {
-          Navigator.pop(context);
+        title: "BLOG",
+        leadingIcon: Icons.arrow_back_ios,
+        onLeadingPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Home(),
+            ),
+          );
         },
+        actionIcon: Icons.account_circle,
+        onActionPressed: () {},
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
                 'BLOG POST',
-                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Color(0xFF222222)),
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF222222),
+                ),
               ),
               const Text(
-                  "Exhale by writing it away!",
-                  style: TextStyle(fontSize: 16, color: Color(0xFF222222)),
+                "Exhale by writing it away!",
+                style: TextStyle(fontSize: 16, color: Color(0xFF222222)),
               ),
               const SizedBox(height: 20.0),
               const PopularPostCard(),
               const SizedBox(height: 20.0),
-              const DiscoverSection(),
+              DiscoverSection(apiService: apiService),
               const SizedBox(height: 20.0),
               Row(
                 children: [
@@ -55,7 +69,9 @@ class _BlogState extends State<Blog> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const BlogWritingPage(draftJson: '',)),
+                        MaterialPageRoute(
+                          builder: (context) => const BlogWritingPage(draftJson: ''),
+                        ),
                       );
                     },
                     icon: FontAwesomeIcons.penNib,
@@ -79,9 +95,6 @@ class _BlogState extends State<Blog> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
-        // Handle navigation item selection
-      }),
     );
   }
 }
