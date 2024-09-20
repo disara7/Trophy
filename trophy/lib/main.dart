@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Screens/Authentication.dart';
 import 'package:trophy/Screens/Therapy/therapy_home.dart';
 
 import 'package:trophy/coinBank/coinbank.dart';
@@ -29,7 +30,7 @@ class MainApp extends StatelessWidget {
       home: StreamBuilder<Object>(
         stream: null,
         builder: (context, snapshot) {
-          return const CategoryPage();
+          return const AuthPage();
         }
       ),
       // home: Blog(),
