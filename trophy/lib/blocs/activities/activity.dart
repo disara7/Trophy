@@ -10,6 +10,7 @@ class Activity extends Equatable {
   final String activitydate;
   final String activitytime;
   final String activityvenue;
+  final String id;
 
   const Activity({
     required this.title,
@@ -21,10 +22,12 @@ class Activity extends Equatable {
     required this.activitydate,
     required this.activitytime,
     required this.activityvenue,
+    required this.id
   });
 
   factory Activity.fromJson(Map<String, dynamic> json) {
     return Activity(
+      id: json['_id'] ?? '',
       title: json['title'] ?? '',
       description: json['description'] ?? '',
       imageUrl: json['imageUrl'] ?? '',

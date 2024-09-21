@@ -4,6 +4,7 @@ import 'package:trophy/Screens/qrcodepage.dart';
 import 'package:trophy/navBar/navbar.dart';
 
 class Activitiesdetailspage extends StatelessWidget {
+  final String id;
   final String title;
   final String description;
   final int coinCount;
@@ -16,7 +17,7 @@ class Activitiesdetailspage extends StatelessWidget {
 
   const Activitiesdetailspage({
     super.key,
-
+    required this.id,
     required this.title,
     required this.description,
     required this.coinCount,
@@ -117,6 +118,11 @@ class Activitiesdetailspage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
+                activitiesmainimgUrl.startsWith("https") ?
+                Image.network(
+                  activitiesmainimgUrl,
+                  width: double.infinity,
+                ) :
                 Image.asset(
                   activitiesmainimgUrl,
                   width: double.infinity,
@@ -139,6 +145,7 @@ class Activitiesdetailspage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Qrcodepage(
+                            id: id,
                             title: title,
                             description: description,
                             coinCount: coinCount,

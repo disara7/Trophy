@@ -5,6 +5,7 @@ import 'package:trophy/blocs/activities/activities_event.dart';
 import 'package:trophy/blocs/activities/activities_state.dart';
 import 'package:trophy/Components/activity_card.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
+import 'package:trophy/navBar/mainscreen.dart';
 
 class Activities extends StatelessWidget {
   const Activities({super.key});
@@ -17,7 +18,12 @@ class Activities extends StatelessWidget {
         appBar: CustomAppBar(
           title: 'ACTIVITIES',
           onBackPressed: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MainScreen(),
+              ),
+            );
           },
         ),
         body: Padding(
@@ -42,6 +48,7 @@ class Activities extends StatelessWidget {
                       alignment: WrapAlignment.spaceEvenly,
                       children: state.activities.map((activity) {
                         return CustomCard(
+                          id: activity.id,
                           title: activity.title,
                           description: activity.description,
                           imageUrl: activity.imageUrl,

@@ -286,7 +286,7 @@ class _HomeState extends State<Home> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const CoinBank(), // Navigate to CoinBankPage
+                                builder: (context) => const CoinBank(),
                               ),
                             );
 
@@ -302,7 +302,7 @@ class _HomeState extends State<Home> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Ladder(), // Navigate to Ladder page
+                                builder: (context) => const Ladder(),
                               ),
                             );
                           },
@@ -315,9 +315,6 @@ class _HomeState extends State<Home> {
             );
           }
         ),
-        // bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
-        //   // Handle navigation item selection
-        // }),
         backgroundColor: const Color(0xffFDFEFF),
       ),
     );

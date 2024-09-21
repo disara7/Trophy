@@ -17,7 +17,7 @@ class Community extends StatefulWidget {
 
 class _CommunityState extends State<Community> {
   List<dynamic> members = [];
-  int coinCount = 0;
+  int coinCount = 100;
 
   @override
   void initState() {

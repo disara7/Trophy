@@ -29,7 +29,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-  int coinCount = 0;
+  int coinCount = 100;
   String imageUrl = '';
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'activities_event.dart';
 import 'activities_state.dart';
 import 'activity.dart';
@@ -14,15 +15,25 @@ class ActivitiesBloc extends Bloc<ActivitiesEvent, ActivitiesState> {
       LoadActivities event, Emitter<ActivitiesState> emit) async {
     emit(ActivitiesLoading());
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('authToken');
+
+      final headers = {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      };
       final response =
-          await http.get(Uri.parse('http://192.168.1.4/api/Activities'));
+          await http.get(
+              Uri.parse('http://192.168.1.4/api/getActivities'),
+              headers: headers
+          );
       if (response.statusCode == 200) {
         final List<dynamic>? data =
-            jsonDecode(response.body); // Ensure data is nullable
+            jsonDecode(response.body);
         if (data != null) {
           final List<Activity> activities = data
               .map((json) => Activity.fromJson(json))
-              .toList(); // Assuming Activity.fromJson is correctly implemented
+              .toList();
           emit(ActivitiesLoaded(activities));
         } else {
           emit(const ActivitiesLoadFailure('Data is null or empty'));

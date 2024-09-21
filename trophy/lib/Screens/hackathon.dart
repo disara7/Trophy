@@ -36,7 +36,7 @@ class Hackathon extends StatelessWidget {
                       child: Text(
                         'Participate in Hackathons to earn coins. You are free to choose hackathons that interest you out of the variety given below.',
                         style: TextStyle(fontSize: 16.0),
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.left,
                       ),
                     ),
                     const SizedBox(height: 20),

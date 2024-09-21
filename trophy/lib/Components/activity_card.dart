@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:trophy/Screens/activitiesdetailspage.dart';
 
 class CustomCard extends StatelessWidget {
+  final String id;
   final String title;
   final String description;
   final String imageUrl;
@@ -24,6 +25,7 @@ class CustomCard extends StatelessWidget {
     required this.activitydate,
     required this.activitytime,
     required this.activityvenue,
+    required this.id,
   });
 
   @override
@@ -44,6 +46,12 @@ class CustomCard extends StatelessWidget {
                   top: 40, bottom: 20, left: 12, right: 12),
               child: Column(
                 children: [
+                  imageUrl.startsWith("https") ?
+                  Image.network(
+                    imageUrl,
+                    width: 80,
+                    height: 80,
+                  ) :
                   Image.asset(
                     imageUrl,
                     width: 80,
@@ -71,6 +79,7 @@ class CustomCard extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Activitiesdetailspage(
+                            id: id,
                             title: title,
                             description: description,
                             coinCount: coinCount,

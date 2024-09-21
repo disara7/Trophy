@@ -166,7 +166,7 @@ class _PopularPostCardState extends State<PopularPostCard> {
                 child: Image.network(
                   imageUrl.isNotEmpty ? imageUrl : 'https://via.placeholder.com/150',
                   width: double.infinity,
-                  height: 100,
+                  height: 120,
                   fit: BoxFit.cover,
                 ),
               ),
