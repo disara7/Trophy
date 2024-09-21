@@ -1,28 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trophy/myaccount/myaccount.dart';
 
-import '../Components/custom_app_bar.dart';
-import '../navBar/navbar.dart';
+import '../Components/main_appbar.dart';
+
 
 class NotificationPage extends StatefulWidget {
-  const NotificationPage({super.key});
+  final VoidCallback openDrawer;
+  const NotificationPage({super.key, required this.openDrawer});
 
   @override
   State<NotificationPage> createState() => _NotificationPageState();
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  final _prefs = SharedPreferences.getInstance();
-  Future<void> _deleteToken() async {
-    final prefs = await _prefs;
-    await prefs.remove('authToken');
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Authentication token deleted'),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +20,19 @@ class _NotificationPageState extends State<NotificationPage> {
     double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       appBar: CustomAppBar(
-          title: "NOTIFICATIONS",
+          title: "HOME",
           leadingIcon: Icons.menu,
-          onLeadingPressed: (){},
-          onActionPressed: _deleteToken
+          onLeadingPressed: widget.openDrawer,
+          actionIcon: Icons.account_circle,
+          onActionPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MyAccount(),
+              ),
+            );
+          }
       ),
-
       body: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
         clipBehavior: Clip.none,
@@ -60,10 +57,6 @@ class _NotificationPageState extends State<NotificationPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
-
-      }),
-
     );
   }
 }

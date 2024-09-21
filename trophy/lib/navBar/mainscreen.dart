@@ -35,8 +35,8 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           Home(openDrawer: _openDrawer),
           Community(openDrawer: _openDrawer),
-          Container(),
-          Container(),
+          NotificationPage(openDrawer: _openDrawer),
+          Settings(openDrawer: _openDrawer),
         ],
       ),
       drawer: CustomDrawer(),

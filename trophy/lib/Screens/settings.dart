@@ -1,10 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../Components/custom_app_bar.dart';
+import 'package:trophy/myaccount/myaccount.dart';
+import '../Components/main_appbar.dart';
 
 class Settings extends StatefulWidget {
+  final VoidCallback openDrawer;
+  const Settings({super.key, required this.openDrawer});
+
   @override
   _SettingsState createState() => _SettingsState();
 }
@@ -12,24 +14,23 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   bool isDarkMode = false;
   bool notificationsEnabled = true;
-  final _prefs = SharedPreferences.getInstance();
-  Future<void> _deleteToken() async {
-    final prefs = await _prefs;
-    await prefs.remove('authToken');
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Authentication token deleted'),
-      ),
-    );
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          title: "SETTINGS",
+          title: "HOME",
           leadingIcon: Icons.menu,
-          onLeadingPressed: (){},
-          onActionPressed: _deleteToken
+          onLeadingPressed: widget.openDrawer,
+          actionIcon: Icons.account_circle,
+          onActionPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MyAccount(),
+              ),
+            );
+          }
       ),
       body: ListView(
         padding: EdgeInsets.all(16.0),
