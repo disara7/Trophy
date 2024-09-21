@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/Screens/community.dart';
 import 'package:trophy/Screens/home.dart';
 import 'package:trophy/Components/custom_drawer.dart';
+import 'package:trophy/Screens/notoficationPage.dart';
+import 'package:trophy/Screens/settings.dart';
 import 'navbar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -35,8 +36,8 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           Home(openDrawer: _openDrawer),
           Community(openDrawer: _openDrawer),
-          Container(),
-          Container(),
+          NotificationPage(openDrawer: _openDrawer),
+          Settings(openDrawer: _openDrawer),
         ],
       ),
       drawer: CustomDrawer(),
