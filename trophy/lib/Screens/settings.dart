@@ -19,7 +19,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          title: "HOME",
+          title: "SETTINGS",
           leadingIcon: Icons.menu,
           onLeadingPressed: widget.openDrawer,
           actionIcon: Icons.account_circle,

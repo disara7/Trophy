@@ -20,7 +20,7 @@ class _NotificationPageState extends State<NotificationPage> {
     double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       appBar: CustomAppBar(
-          title: "HOME",
+          title: "NOTIFICATIONS",
           leadingIcon: Icons.menu,
           onLeadingPressed: widget.openDrawer,
           actionIcon: Icons.account_circle,
