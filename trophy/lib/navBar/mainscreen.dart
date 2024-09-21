@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/Screens/home.dart';
 import 'package:trophy/Screens/notoficationPage.dart';
+import 'package:trophy/Screens/settings.dart';
 import 'navbar.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
     const Home(), // Home page
     const Blog(), // Blog page
     const NotificationPage(), // Notifications page
-    Container(), // Settings page
+    Settings(), // Settings page
   ];
 
   void _onItemSelected(int index) {
