@@ -1,9 +1,6 @@
 import 'dart:developer';
-
 import '../models/chat_model.dart';
 import 'package:dio/dio.dart';
-
-import 'package:google_generative_ai/google_generative_ai.dart';
 
 class ChatRepo {
   static Future<String> chatTextGenerationRepo(

@@ -254,7 +254,6 @@ packages:
     description:
       name: dart_style
       sha256: "99e066ce75c89d6b29903d788a7bb9369cf754f7b24bf70bf4b6d6d6b26853b9"
-
       url: "https://pub.dev"
     source: hosted
     version: "2.3.6"
@@ -407,15 +406,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-  flutter_dotenv:
-    dependency: "direct main"
-    description:
-      name: flutter_dotenv
-      sha256: "9357883bdd153ab78cbf9ffa07656e336b8bbb2b5a3ca596b0b27e119f7c7d77"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.1.0"
-
   flutter_fortune_wheel:
     dependency: "direct main"
     description:
@@ -617,17 +607,7 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_quill
-
-      sha256: "7c37e0761e7101809af8e7994d6aef58519cb8035aa307be66867c710d64abf0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.6.0"
-  flutter_quill_delta_from_html:
-    dependency: transitive
-    description:
-      name: flutter_quill_delta_from_html
-      sha256: "3cddb27325e005459fd2bbd6af4d813525d5b2bcb6e9828ab2b449f70eaf1147"
-
+      sha256: "31e0a0895a1de19fb27641647f6b53e260699ec6b44e9818a2a1807bc9b3cc66"
       url: "https://pub.dev"
     source: hosted
     version: "9.5.7"
@@ -638,7 +618,7 @@ packages:
       sha256: "6cdc0419398171c7e04835e65db06adceaf130a5e7a69a07c09946cc58acadf2"
       url: "https://pub.dev"
     source: hosted
-    version: "9.5.12"
+    version: "9.6.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -689,7 +669,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.0"
-
   glob:
     dependency: transitive
     description:
@@ -738,7 +717,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
-
   http:
     dependency: "direct main"
     description:
@@ -842,7 +820,7 @@ packages:
       sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.19.0"
+    version: "0.18.1"
   io:
     dependency: transitive
     description:
@@ -1007,10 +985,10 @@ packages:
     dependency: transitive
     description:
       name: mongo_dart_query
-      sha256: "7a0f3981c3d1df467040e5654696cb0bfde6ec6db86ba313118fb3e873cee657"
+      sha256: "37d0862b49f0aaef8f66ca81a4e993b0ebdb9d54c3fc16d4779f48e5e6a9e4d6"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.2"
+    version: "5.0.1"
   nested:
     dependency: transitive
     description:
@@ -1087,11 +1065,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_android
-
-      sha256: "30c5aa827a6ae95ce2853cdc5fe3971daaac00f6f081c419c013f7f57bff2f5e"
+      sha256: "6f01f8e37ec30b07bc424b4deabac37cacb1bc7e2e515ad74486039918a37eb7"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.7"
+    version: "2.2.10"
   path_provider_foundation:
     dependency: transitive
     description:
@@ -1148,7 +1125,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.5"
-
   platform:
     dependency: transitive
     description:
@@ -1237,7 +1213,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.13"
-
   rive_common:
     dependency: transitive
     description:
@@ -1683,7 +1658,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.6"
-
   watcher:
     dependency: transitive
     description:
@@ -1732,7 +1706,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.5"
-
   xdg_directories:
     dependency: transitive
     description:
@@ -1769,10 +1742,10 @@ packages:
     dependency: "direct main"
     description:
       name: youtube_player_flutter
-      sha256: b670314008a9abd051f01f82df754d76fd1366340f03f4f8ff86fc3d6b03080c
+      sha256: "30f84e2f7063c56e536f507e37c1e803546842707cf58e5b5a71253b9ff9b455"
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.3"
+    version: "9.0.4"
 sdks:
   dart: ">=3.4.0 <4.0.0"
   flutter: ">=3.22.0"

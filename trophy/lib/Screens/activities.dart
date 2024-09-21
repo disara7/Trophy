@@ -16,7 +16,6 @@ class Activities extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'ACTIVITIES',
-          coinCount: 500,
           onBackPressed: () {
             Navigator.of(context).pop();
           },

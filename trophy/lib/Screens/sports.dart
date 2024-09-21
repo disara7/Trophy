@@ -18,7 +18,6 @@ class Sports extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'SPORTS',
-          coinCount: 500,
           onBackPressed: () {
             Navigator.of(context).pop();
           },

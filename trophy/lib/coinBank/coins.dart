@@ -11,7 +11,6 @@ class CoinsPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'COINS',
-        coinCount: 520,
         onBackPressed: () {
           Navigator.pop(context);
         },

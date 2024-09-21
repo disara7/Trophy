@@ -15,26 +15,18 @@ import 'package:trophy/blocs/home/state.dart';
 import 'package:trophy/Components/main_appbar.dart';
 import 'package:trophy/blocs/therapy/category/category_bloc.dart';
 import 'package:trophy/coinBank/coinbank.dart';
-import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/myaccount/myaccount.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final VoidCallback openDrawer;
+  const Home({super.key, required this.openDrawer});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  final _prefs = SharedPreferences.getInstance();
-  Future<void> _deleteToken() async {
-    final prefs = await _prefs;
-    await prefs.remove('authToken');
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Authentication token deleted'),
-      ),
-    );
-  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -47,9 +39,16 @@ class _HomeState extends State<Home> {
         appBar: CustomAppBar(
             title: "HOME",
             leadingIcon: Icons.menu,
-            onLeadingPressed: (){},
+            onLeadingPressed: widget.openDrawer,
             actionIcon: Icons.account_circle,
-            onActionPressed: _deleteToken
+            onActionPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MyAccount(),
+                ),
+              );
+            }
         ),
         body: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
@@ -258,13 +257,13 @@ class _HomeState extends State<Home> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => BlocProvider(
-                                            create: (context) => CategoryBloc(),
-                                            child: CategoryPage(),
-                                      ), // Navigate to CoinBankPage
+                                        create: (context) => CategoryBloc(),
+                                        child: const CategoryPage(),
+                                      ),
                                     ),
                                   );
-
                                 },
+
                               ),
                             ],
                           ),
@@ -288,7 +287,7 @@ class _HomeState extends State<Home> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => CoinBank(), // Navigate to CoinBankPage
+                                builder: (context) => const CoinBank(), // Navigate to CoinBankPage
                               ),
                             );
 
@@ -317,9 +316,9 @@ class _HomeState extends State<Home> {
             );
           }
         ),
-        bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
-          // Handle navigation item selection
-        }),
+        // bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
+        //   // Handle navigation item selection
+        // }),
         backgroundColor: const Color(0xffFDFEFF),
       ),
     );

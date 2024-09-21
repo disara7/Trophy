@@ -48,7 +48,6 @@ class _QrcodepageState extends State<Qrcodepage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Activities',
-        coinCount: 500,
         onBackPressed: () {
           Navigator.of(context).pop();
         },

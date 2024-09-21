@@ -17,8 +17,8 @@ class MyQuillToolbar extends StatelessWidget {
           controller: controller,
           multiRowsDisplay: true,
           searchButtonType: SearchButtonType.modern,
-          embedButtons: FlutterQuillEmbeds.toolbarButtons(
-              imageButtonOptions: const QuillToolbarImageButtonOptions()),
+          // embedButtons: FlutterQuillEmbeds.toolbarButtons(
+          //     imageButtonOptions: const QuillToolbarImageButtonOptions()),
           buttonOptions: const QuillSimpleToolbarButtonOptions(
               base: QuillToolbarBaseButtonOptions(
                   iconTheme: QuillIconTheme(

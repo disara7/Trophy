@@ -1,10 +1,17 @@
 import 'dart:convert';
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
-import 'package:trophy/navBar/navbar.dart';
+import 'package:trophy/constants.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:trophy/themes/button_styles.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
+
 
 class MyAccount extends StatefulWidget {
   const MyAccount({super.key});
@@ -23,10 +30,11 @@ class _MyAccountState extends State<MyAccount> {
   final TextEditingController _nicController =
   TextEditingController(text: '2000000000');
 
-  String firstname = 'Firstname';
-  String lastname = 'Lastname';
+  String employeeName = 'Employee Name';
   String position = 'Software Engineer';
   String since = '2014';
+  String imageUrl = '';
+
 
   DateTime bday = DateTime.now();
 
@@ -36,36 +44,119 @@ class _MyAccountState extends State<MyAccount> {
     _fetchEmployeeData();
   }
 
+  File? _imageFile;
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+      });
+      _uploadImage(_imageFile!);
+    }
+  }
+
+  Future<void> _uploadImage(File image) async {
+    final compressedImage = await _compressImage(image);
+
+    if (compressedImage != null) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('authToken');
+
+      var request = http.MultipartRequest('POST', Uri.parse('$baseUrl/api/uploadProfile'));
+
+      request.headers.addAll({
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      });
+
+      request.files.add(await http.MultipartFile.fromPath('image', compressedImage.path));
+
+      var response = await request.send();
+
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Image uploaded successfully')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Image upload failed')),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Image compression failed')),
+      );
+    }
+  }
+
+
+  Future<XFile?> _compressImage(File image) async {
+    try {
+      final dir = await getTemporaryDirectory();
+      final targetPath = path.join(dir.absolute.path, "compressed_${path.basename(image.path)}");
+
+      var compressedImage = await FlutterImageCompress.compressAndGetFile(
+        image.absolute.path,
+        targetPath,
+        quality: 50,
+      );
+
+      return compressedImage;
+    } catch (e) {
+      print("Image compression error: $e");
+      return null;
+    }
+  }
+
   Future<void> _fetchEmployeeData() async {
     try {
-      final response = await http.get(Uri.parse('https://api.trophy.com/employee/66bcd28b32f79a92120f2a43'));
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('authToken');
+
+      final headers = {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      };
+
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/fetchMyData'),
+        headers: headers,
+      );
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
-          firstname = data['employeeName'].split(' ')[0];
-          lastname = data['employeeName'].split(' ')[1];
-          position = data['position'] ?? 'Position'; // Set default value if position is null
-          since = '2014'; // Assuming this is fixed or fetched from somewhere else
-          _contactController.text = data['contactNumber'] ?? '';
+          employeeName = data['employeeName'] ?? 'Employee Name';
+          position = data['position'] ?? 'Software Engineer';
+          since = '2014';
+          _contactController.text = data['phoneNumber'] ?? '';
           _addressController.text = data['address'] ?? '';
-          _nicController.text = data['nic'] ?? '';
-          _dobController.text = data['dob'] ?? '1999-07-01'; // Default date if not present
-          bday = DateTime.parse(data['dob'] ?? '1999-07-01');
+          _nicController.text = data['NIC'] ?? '';
+          _dobController.text = data['bday'] ?? '1999-07-01';
+          _dobController.text = DateTime.parse(data['bday'] ?? '1999-07-01')
+              .toLocal()
+              .toIso8601String()
+              .split('T')[0];
+
+          bday = DateTime.parse(data['bday'] ?? '1999-07-01').toLocal();
+          imageUrl = data['profileUrl'] ?? '';
+          print("imageUrl");
         });
       } else {
         throw Exception('Failed to load employee data');
       }
     } catch (e) {
-      // Handle error, e.g., show an error message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error fetching data: $e'),
-          duration: Duration(seconds: 3),
+          duration: const Duration(seconds: 3),
         ),
       );
     }
   }
+
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -81,26 +172,52 @@ class _MyAccountState extends State<MyAccount> {
     }
   }
 
-  void _saveChanges() {
-    // Implement saving changes logic here
+  void _saveChanges() async {
     String updatedContact = _contactController.text;
     String updatedAddress = _addressController.text;
     String updatedNIC = _nicController.text;
     String updatedDOB = _dobController.text;
 
-    // Print or save these values as per your application's requirements
-    print('Updated Contact Number: $updatedContact');
-    print('Updated Address: $updatedAddress');
-    print('Updated NIC: $updatedNIC');
-    print('Updated Date of Birth: $updatedDOB');
+    final body = json.encode({
+      'phoneNumber': updatedContact,
+      'address': updatedAddress,
+      'NIC': updatedNIC,
+      'bday': updatedDOB,
+    });
 
-    // Optionally, show a confirmation message
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Changes saved successfully!'),
-        duration: Duration(seconds: 2),
-      ),
-    );
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('authToken');
+
+      final headers = {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      };
+
+      final response = await http.post(
+        Uri.parse('$baseUrl/api/updateMyData'),
+        headers: headers,
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Changes saved successfully!'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      } else {
+        throw Exception('Failed to update data');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error saving changes: $e'),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    }
   }
 
   @override
@@ -108,7 +225,6 @@ class _MyAccountState extends State<MyAccount> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'MY ACCOUNT',
-        coinCount: 520,
         onBackPressed: () {
           Navigator.pop(context);
         },
@@ -120,13 +236,46 @@ class _MyAccountState extends State<MyAccount> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircleAvatar(
-                  radius: 45,
-                  backgroundImage: AssetImage('assets/user.jpeg'),
+                Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 45,
+                      backgroundColor: const Color(0xFF222222),
+                      backgroundImage: imageUrl.startsWith('https')
+                          ? NetworkImage(imageUrl)
+                          : null,
+                      child: imageUrl.startsWith('https')
+                          ? null // No icon if there is a valid image
+                          : const Icon(
+                        Icons.person,
+                        size: 40,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: GestureDetector(
+                        onTap: _pickImage,
+                        child: Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: const BoxDecoration(
+                            color: Colors.orange,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.camera_alt,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  '$firstname $lastname',
+                  employeeName,
                   style: const TextStyle(
                     color: Colors.orange,
                     fontSize: 24,
@@ -235,9 +384,6 @@ class _MyAccountState extends State<MyAccount> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
-        // Handle navigation item selection
-      }),
     );
   }
 }
