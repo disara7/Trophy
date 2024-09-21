@@ -94,9 +94,6 @@ class CoinBank extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(onItemSelected: (index) {
-        // Handle navigation item selection
-      }),
     );
   }
 

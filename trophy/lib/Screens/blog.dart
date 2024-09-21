@@ -4,10 +4,10 @@ import 'package:trophy/Components/Blog/discover.dart';
 import 'package:trophy/Components/Blog/popular_post.dart';
 import 'package:trophy/Components/button.dart';
 import 'package:trophy/Components/main_appbar.dart';
-import 'package:trophy/Screens/home.dart';
 import 'package:trophy/Screens/my_blog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trophy/Screens/write_blog.dart';
+import 'package:trophy/navBar/mainscreen.dart';
 
 
 class Blog extends StatefulWidget {
@@ -30,7 +30,7 @@ class _BlogState extends State<Blog> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const Home(),
+              builder: (context) => const MainScreen(),
             ),
           );
         },

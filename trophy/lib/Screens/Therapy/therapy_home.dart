@@ -16,7 +16,6 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'THERAPY',
-        coinCount: 500,
         onBackPressed: () {
           Navigator.of(context).pop();
         },

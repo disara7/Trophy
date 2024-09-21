@@ -1,23 +1,101 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'package:trophy/constants.dart';
 import 'package:trophy/myaccount/myaccount.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
-  final int coinCount;
   final VoidCallback? onBackPressed;
-  final IconData? leadingIcon; // Leading icon parameter
-  final VoidCallback? onLeadingPressed; // Leading icon press handler
+  final IconData? leadingIcon;
+  final VoidCallback? onLeadingPressed;
   final VoidCallback? onActionPressed;
 
   const CustomAppBar({
     super.key,
     required this.title,
-    this.coinCount = 520,
     this.onBackPressed,
-    this.leadingIcon, // Add leadingIcon
-    this.onLeadingPressed, // Add onLeadingPressed
+    this.leadingIcon,
+    this.onLeadingPressed,
     this.onActionPressed,
   });
+
+  @override
+  _CustomAppBarState createState() => _CustomAppBarState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+  int coinCount = 0;
+  String imageUrl = '';
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCoinCount();
+    _fetchEmployeeData();
+  }
+
+  Future<void> fetchCoinCount() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('authToken');
+
+    final headers = {
+      'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json',
+    };
+
+    final response = await http.get(
+      Uri.parse('$baseUrl/api/coin'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      setState(() {
+        coinCount = data['coinCount'];
+      });
+    } else {
+      print(response);
+      throw Exception('Failed to load coin count');
+    }
+  }
+
+  Future<void> _fetchEmployeeData() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('authToken');
+
+      final headers = {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      };
+
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/fetchMyData'),
+        headers: headers,
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          imageUrl = data['profileUrl'] ?? '';
+        });
+      } else {
+        throw Exception('Failed to load employee data');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error fetching data: $e'),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +103,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.only(left: 15, right: 15),
       child: AppBar(
         backgroundColor: Colors.white,
-        // Use leadingIcon and onLeadingPressed if provided, otherwise use back arrow
         leading: IconButton(
-          icon: Icon(leadingIcon ?? Icons.arrow_back_ios, color: Colors.black),
-          onPressed: onLeadingPressed ?? onBackPressed ?? () {
-            Navigator.pop(context); // Default back behavior if not provided
+          icon: Icon(widget.leadingIcon ?? Icons.arrow_back_ios, color: Colors.black),
+          onPressed: widget.onLeadingPressed ?? widget.onBackPressed ?? () {
+            Navigator.pop(context);
           },
         ),
         centerTitle: true,
         title: Center(
           child: Text(
-            title,
+            widget.title,
             style: const TextStyle(fontSize: 20, color: Colors.black),
             textAlign: TextAlign.center,
           ),
@@ -73,10 +150,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     );
                   },
-                  child: const Icon(
-                    Icons.account_circle,
-                    size: 40.0,
-                    color: Colors.black,
+                  child: CircleAvatar(
+                    radius: 18,
+                    backgroundColor: const Color(0xFF222222),
+                    backgroundImage: imageUrl.startsWith('https')
+                        ? NetworkImage(imageUrl)
+                        : null,
+                    child: imageUrl.startsWith('https')
+                        ? null // No icon if there is a valid image
+                        : const Icon(
+                      Icons.person,
+                      size: 30,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
@@ -89,7 +175,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

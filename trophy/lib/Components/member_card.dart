@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class CustomCard extends StatelessWidget {
   final String imageUrl;
   final String title;
+  final VoidCallback onTap;
 
-  const CustomCard({super.key, 
-    required this.imageUrl,
+  const CustomCard({
+    super.key,
+    String? imageUrl,
     required this.title,
-  });
+    required this.onTap,
+  }) : imageUrl = imageUrl ?? '';
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +26,7 @@ class CustomCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 20, bottom: 20, left: 20, right: 20),
+              padding: const EdgeInsets.all(15),
               child: Column(
                 children: [
                   Container(
@@ -32,15 +34,21 @@ class CustomCard extends StatelessWidget {
                     height: 120,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
+                      color: const Color(0xFF222222),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(
-                          15), // match the container's border radius
-                      child: Image.asset(
+                      borderRadius: BorderRadius.circular(15),
+                      child: imageUrl.isNotEmpty
+                          ? Image.asset(
                         imageUrl,
-
-                        fit: BoxFit
-                            .cover, // ensure the image covers the entire space
+                        fit: BoxFit.cover,
+                      )
+                          : const Center(
+                        child: Icon(
+                          Icons.person,
+                          size: 80,
+                          color: Color.fromARGB(255, 240, 156, 70),
+                        ),
                       ),
                     ),
                   ),
@@ -54,11 +62,9 @@ class CustomCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   GestureDetector(
-                    onTap: () {
-                      // Handle tap
-                    },
+                    onTap: onTap, // Use the onTap callback
                     child: Container(
-                      width: 120,
+                      width: 130,
                       height: 30,
                       decoration: BoxDecoration(
                         color: const Color(0xFF222222),
