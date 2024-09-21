@@ -12,8 +12,8 @@ import 'package:trophy/Screens/sports.dart';
 import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
-
-import 'package:trophy/Components/custom_app_bar.dart';
+import 'package:trophy/Components/main_appbar.dart';
+import 'package:trophy/blocs/therapy/category/category_bloc.dart';
 import 'package:trophy/coinBank/coinbank.dart';
 import 'package:trophy/navBar/navbar.dart';
 
@@ -29,7 +29,6 @@ class _HomeState extends State<Home> {
   Future<void> _deleteToken() async {
     final prefs = await _prefs;
     await prefs.remove('authToken');
-    // Optionally: Consider showing a snackbar or dialog to inform the user
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Authentication token deleted'),
@@ -46,13 +45,11 @@ class _HomeState extends State<Home> {
       ],
       child: Scaffold(
         appBar: CustomAppBar(
-          title: "HOME",
-          coinCount: 520,
-          leadingIcon: Icons.menu, // Use menu icon for the home page
-          onLeadingPressed: () {
-            // Handle the menu press action
-            Scaffold.of(context).openDrawer(); // Example: open a drawer
-          },
+            title: "HOME",
+            leadingIcon: Icons.menu,
+            onLeadingPressed: (){},
+            actionIcon: Icons.account_circle,
+            onActionPressed: _deleteToken
         ),
         body: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
@@ -125,8 +122,9 @@ class _HomeState extends State<Home> {
                         children: [
                           Column(
                             children: [
+                              const SizedBox(width: 130,),
                               const Text(
-                                'Daily challenge',
+                                'Progress',
                                 style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
@@ -203,10 +201,9 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Activities(), // Navigate to CoinBankPage
+                                      builder: (context) => const Activities(),
                                     ),
                                   );
-
                                 },
                               ),
                               const SizedBox(width: 5.0),
@@ -217,10 +214,9 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Hackathon(), // Navigate to CoinBankPage
+                                      builder: (context) => const Hackathon(),
                                     ),
                                   );
-
                                 },
                               ),
                             ],
@@ -236,11 +232,8 @@ class _HomeState extends State<Home> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Blog(), // Navigate to CoinBankPage
-                                    ),
+                                    MaterialPageRoute(builder: (context) => const Blog()),
                                   );
-
                                 },
                               ),
                               const SizedBox(width: 5.0),
@@ -251,10 +244,9 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Sports(), // Navigate to CoinBankPage
+                                      builder: (context) => const Sports(),
                                     ),
                                   );
-
                                 },
                               ),
                               const SizedBox(width: 5.0),
@@ -265,7 +257,10 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => CategoryPage(), // Navigate to CoinBankPage
+                                      builder: (context) => BlocProvider(
+                                            create: (context) => CategoryBloc(),
+                                            child: CategoryPage(),
+                                      ), // Navigate to CoinBankPage
                                     ),
                                   );
 
@@ -309,13 +304,11 @@ class _HomeState extends State<Home> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Ladder(), // Navigate to Ladder page
+                                builder: (context) => const Ladder(), // Navigate to Ladder page
                               ),
                             );
                           },
                         ),
-
-
                       ],
                     ),
                   ),

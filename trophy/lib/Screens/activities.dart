@@ -34,8 +34,8 @@ class Activities extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         'Engage in the following extracurricular activities to earn coins and climb the Trophy ladder like a champ!',
-                        style: TextStyle(fontSize: 16.0),
-                        textAlign: TextAlign.justify,
+                        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400),
+                        textAlign: TextAlign.left,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -51,7 +51,7 @@ class Activities extends StatelessWidget {
                           activitiesmainimgUrl: activity.activitiesmainimgUrl,
                           activitydate: activity.activitydate,
                           activitytime: activity.activitytime,
-                          activityvenue: activity.activityvenue
+                          activityvenue: activity.activityvenue,
                         );
                       }).toList(),
                     ),
@@ -60,7 +60,7 @@ class Activities extends StatelessWidget {
               } else if (state is ActivitiesLoadFailure) {
                 return Center(child: Text(state.error));
               }
-              return Container(); // This handles any unexpected states
+              return Container();
             },
           ),
         ),

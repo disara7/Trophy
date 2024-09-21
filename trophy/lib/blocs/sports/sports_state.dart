@@ -5,7 +5,7 @@ abstract class SportsState extends Equatable {
   const SportsState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class SportsInitial extends SportsState {}
@@ -18,14 +18,14 @@ class SportsLoaded extends SportsState {
   const SportsLoaded(this.sports);
 
   @override
-  List<Object> get props => [sports];
+  List<Object?> get props => [sports];
 }
 
-class SportsError extends SportsState {
-  final String message;
+class SportsLoadFailure extends SportsState {
+  final String error;
 
-  const SportsError(this.message);
+  const SportsLoadFailure(this.error);
 
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [error];
 }

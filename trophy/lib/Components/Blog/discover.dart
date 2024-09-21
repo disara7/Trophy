@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Components/Blog/blog_list.dart';
 import 'package:trophy/Components/button.dart';
 
 class DiscoverSection extends StatelessWidget {
-  const DiscoverSection({super.key});
+  final ApiService apiService;
+
+  const DiscoverSection({Key? key, required this.apiService}) : super(key: key);
+
+  void openPaginatedBlogList(BuildContext context, String category) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PaginatedBlogList(
+          fetchBlogs: apiService.fetchBlogs,
+          category: category,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +43,13 @@ class DiscoverSection extends StatelessWidget {
                     discoverBtn(
                       optionText: 'NEWS',
                       countText: '28',
-                      onPressed: () {},
+                      onPressed: () => openPaginatedBlogList(context, 'NEWS'),
                     ),
                     const SizedBox(width: 5.0),
                     discoverBtn(
                       optionText: 'Marketing',
                       countText: '18',
-                      onPressed: () {},
+                      onPressed: () => openPaginatedBlogList(context, 'Marketing'),
                     ),
                   ],
                 ),
@@ -43,13 +58,13 @@ class DiscoverSection extends StatelessWidget {
                     discoverBtn(
                       optionText: 'Strategy',
                       countText: '7',
-                      onPressed: () {},
+                      onPressed: () => openPaginatedBlogList(context, 'Strategy'),
                     ),
                     const SizedBox(width: 5.0),
                     discoverBtn(
                       optionText: 'Automation',
                       countText: '4',
-                      onPressed: () {},
+                      onPressed: () => openPaginatedBlogList(context, 'Automation'),
                     ),
                   ],
                 ),
@@ -58,13 +73,13 @@ class DiscoverSection extends StatelessWidget {
                     discoverBtn(
                       optionText: 'Other',
                       countText: '14',
-                      onPressed: () {},
+                      onPressed: () => openPaginatedBlogList(context, 'Other'),
                     ),
                     const SizedBox(width: 5.0),
                     discoverBtn(
                       optionText: 'All',
                       countText: '40',
-                      onPressed: () {},
+                      onPressed: () => openPaginatedBlogList(context, 'All'),
                     ),
                   ],
                 ),

@@ -18,13 +18,11 @@ class GiftPage extends StatelessWidget {
         },
       ),
       body: Center(
-
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Stack(
             children: [
               // Your background image or decoration
-
               Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(

@@ -4,6 +4,7 @@ import 'package:trophy/Components/Blog/draft.dart';
 import 'package:trophy/Components/Blog/my_articles.dart';
 import 'package:trophy/Components/button.dart';
 import 'package:trophy/Components/main_appbar.dart';
+import 'package:trophy/Screens/blog.dart';
 import 'package:trophy/Screens/write_blog.dart';
 
 class MyBlogs extends StatefulWidget {
@@ -21,7 +22,12 @@ class _MyBlogsState extends State<MyBlogs> {
           title: "BLOG",
           leadingIcon: Icons.arrow_back_ios,
           onLeadingPressed: (){
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Blog(),
+              ),
+            );
             },
           actionIcon: Icons.account_circle,
           onActionPressed: (){}

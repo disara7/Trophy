@@ -59,7 +59,7 @@ class Hackathon extends StatelessWidget {
                     ),
                   ],
                 );
-              } else if (state is HackathonsError) {
+              } else if (state is HackathonsLoadFailure) {
                 return const Center(child: Text('Failed to load hackathons'));
               }
               return Container(); // This handles any unexpected states
