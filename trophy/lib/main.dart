@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trophy/Screens/Therapy/therapy_home.dart';
@@ -27,6 +28,7 @@ class MainApp extends StatelessWidget {
       theme: TrophyTheme.lightTheme,
       darkTheme: TrophyTheme.darkTheme,
       themeMode: ThemeMode.light,
+
       home: BlocProvider(
         create: (context) => CategoryBloc(),
         child: CategoryPage(),

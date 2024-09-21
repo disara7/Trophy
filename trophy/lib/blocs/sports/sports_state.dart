@@ -1,29 +1,11 @@
 import 'package:equatable/equatable.dart';
-
-class Sport {
-  final String sporttitle;
-  final String sportdescription;
-  final String sportimageUrl;
-  final int sportcoinCount;
-  final String type;
-  final String sportdetails;
-  final String sportmainimgUrl;
-
-  Sport(
-      {required this.sporttitle,
-      required this.sportdescription,
-      required this.sportimageUrl,
-      required this.sportcoinCount,
-      required this.type,
-      required this.sportdetails,
-      required this.sportmainimgUrl});
-}
+import 'sport.dart';
 
 abstract class SportsState extends Equatable {
   const SportsState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class SportsInitial extends SportsState {}
@@ -36,7 +18,14 @@ class SportsLoaded extends SportsState {
   const SportsLoaded(this.sports);
 
   @override
-  List<Object> get props => [sports];
+  List<Object?> get props => [sports];
 }
 
-class SportsError extends SportsState {}
+class SportsLoadFailure extends SportsState {
+  final String error;
+
+  const SportsLoadFailure(this.error);
+
+  @override
+  List<Object?> get props => [error];
+}

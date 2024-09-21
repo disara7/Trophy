@@ -3,7 +3,7 @@ import 'package:rive/rive.dart';
 import 'package:trophy/navBar/nav_item_model.dart';
 import 'dart:async';
 
-const Color navbarBgColor = Color.fromARGB(255, 222, 217, 217);
+const Color navbarBgColor = Color.fromARGB(255, 223, 219, 220);
 
 class BottomNavBar extends StatefulWidget {
   final Function(int) onItemSelected;
@@ -16,8 +16,6 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int selectNavIndex = 0;
-
-  List<String> pages = const ["HOME", "MESSAGE", "NOTIFICATIONS", "SETTINGS"];
 
   void animateTheIcon(int index) {
     for (var i = 0; i < bottomNavs.length; i++) {
@@ -51,6 +49,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+
 
     return SafeArea(
       child: Container(
@@ -103,6 +102,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
                                 stateMachineName: riveIcon.stateMachineName,
                                 index: index);
                           },
+
+
                         ),
                       ),
                     ],

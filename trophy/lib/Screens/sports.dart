@@ -6,6 +6,7 @@ import 'package:trophy/blocs/sports/sports_state.dart';
 import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/Components/sport_card.dart';
 import 'sportdetailspage.dart';
+import 'package:trophy/blocs/sports/sport.dart';
 
 class Sports extends StatelessWidget {
   const Sports({super.key});
@@ -49,7 +50,7 @@ class Sports extends StatelessWidget {
                     ),
                   ],
                 );
-              } else if (state is SportsError) {
+              } else if (state is SportsLoadFailure) {
                 return const Center(child: Text('Failed to load sports'));
               }
               return Container(); // This handles any unexpected states

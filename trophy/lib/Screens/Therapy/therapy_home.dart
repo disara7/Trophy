@@ -58,7 +58,7 @@ class CategoryPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Chat()),
+                        MaterialPageRoute(builder: (context) => const Chat()),
                       );
                     },
                     style: ElevatedButton.styleFrom(

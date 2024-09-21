@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trophy/Components/custom_app_bar.dart';
 import 'package:trophy/coinBank/counter.dart';
 import 'package:trophy/coinBank/coins.dart';
 import 'package:trophy/coinBank/gift.dart'; // Import GiftPage
@@ -8,35 +9,24 @@ import 'package:trophy/navBar/navbar.dart';
 import 'package:trophy/themes/color_palette.dart'; // Import SpinPage
 
 class CoinBank extends StatelessWidget {
-  const CoinBank({Key? key}) : super(key: key);
+  const CoinBank({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.brown,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text('COIN BANK', style: TextStyle(color: Colors.brown)),
+      appBar: CustomAppBar(
+        title: 'COIN BANK',
+        // coinCount: "520",
+        onBackPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Counter(count: 520),
-            const SizedBox(height: 20),
+            const Counter(count: 520),
             Expanded(
               child: ListView(
                 children: [
@@ -63,7 +53,7 @@ class CoinBank extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RedeemPage()),
+                                builder: (context) => const RedeemPage()),
                           );
                         },
                       ),
@@ -116,9 +106,9 @@ class CoinBank extends StatelessWidget {
       backgroundColor: Palette.appBlack, // Background color
       foregroundColor: Palette.appOrange, // Text color
       padding:
-          EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Adjust padding
-      minimumSize: Size(130, 20), // Set minimum width and height
-      textStyle: TextStyle(
+          const EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Adjust padding
+      minimumSize: const Size(130, 20), // Set minimum width and height
+      textStyle: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold, // Make text bold
       ),
@@ -128,9 +118,9 @@ class CoinBank extends StatelessWidget {
     );
 
     return Container(
-      height: 300, // Adjust the height as needed
+      height: 270, // Adjust the height as needed
       width: 160, // Adjust the width as needed
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
@@ -149,20 +139,20 @@ class CoinBank extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 110),
+                const SizedBox(height: 110),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
                     text,
                     textAlign: TextAlign.center, // Center-align the text
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 11,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 ElevatedButton(
                   onPressed: onPressed,
                   style: elevatedButtonStyle,
