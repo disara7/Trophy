@@ -5,7 +5,7 @@ import 'state.dart';
 import '../../socket/socket_service.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(const HomeState(coins: 0, dailyChallenge: 10, completedChallenges: 0, level: 0)) {
+  HomeBloc() : super(const HomeState(coins: 0, dailyChallenge: 1000, completedChallenges: 0, level: 0)) {
     on<LoadHomeData>((event, emit) async {
       try {
         final homeState = await fetchHomeState(); // Fetch data from backend

@@ -160,7 +160,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         ? null // No icon if there is a valid image
                         : const Icon(
                       Icons.person,
-                      size: 40,
+                      size: 30,
                       color: Colors.white,
                     ),
                   ),
