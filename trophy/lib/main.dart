@@ -1,4 +1,6 @@
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:trophy/authcheck.dart';
 import 'package:trophy/themes/theme.dart';
 
