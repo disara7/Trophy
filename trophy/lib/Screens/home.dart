@@ -13,6 +13,7 @@ import 'package:trophy/blocs/home/bloc.dart';
 import 'package:trophy/blocs/home/event.dart';
 import 'package:trophy/blocs/home/state.dart';
 import 'package:trophy/Components/main_appbar.dart';
+import 'package:trophy/blocs/therapy/category/category_bloc.dart';
 import 'package:trophy/coinBank/coinbank.dart';
 import 'package:trophy/navBar/navbar.dart';
 
@@ -256,7 +257,10 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => CategoryPage(), // Navigate to CoinBankPage
+                                      builder: (context) => BlocProvider(
+                                            create: (context) => CategoryBloc(),
+                                            child: CategoryPage(),
+                                      ), // Navigate to CoinBankPage
                                     ),
                                   );
 
