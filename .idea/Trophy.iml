@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/trophy/build/windows/x64/plugins/super_native_extensions/cargokit_build/tool/build" />
       <excludeFolder url="file://$MODULE_DIR$/trophy/build/windows/x64/plugins/super_native_extensions/cargokit_build/tool/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/trophy/build/windows/x64/plugins/super_native_extensions/cargokit_build/tool/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/trophy/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/trophy/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/trophy/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

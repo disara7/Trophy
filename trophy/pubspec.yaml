@@ -28,6 +28,15 @@ dependencies:
   image_picker: ^1.1.2
   flutter_quill_extensions: ^9.5.12
   cached_network_image: ^3.3.1
+#  google_maps_flutter: ^2.7.0
+#  geolocator: 12.0.0
+#  geocoding: ^3.0.0
+#  flutter_geofire: ^2.0.3
+#  flutter_polyline_points: ^2.1.0
+#  location: ^7.0.0
+#  smooth_star_rating_nsafe: ^1.0.0+1
+#  animated_text_kit: ^4.2.2
+
 
   meta: ^1.11.0
 
@@ -42,13 +51,15 @@ dependencies:
 
   mongo_dart: ^0.10.3
   qr_code_scanner: ^1.0.0
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.4
+  mockito: ^5.4.4
+  youtube_player_flutter: ^9.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-  bloc_test: ^9.0.0
-  mocktail: ^1.0.0
 dependency_overrides:
   intl: ^0.18.1
 
