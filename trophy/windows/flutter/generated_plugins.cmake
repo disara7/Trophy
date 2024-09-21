@@ -6,6 +6,9 @@ list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_windows
   gal
   irondash_engine_context
+
+  geolocator_windows
+
   rive_common
   super_native_extensions
   url_launcher_windows
