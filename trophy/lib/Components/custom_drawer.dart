@@ -17,6 +17,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
   final _prefs = SharedPreferences.getInstance();
 
   String imageUrl = '';
+  String name = '';
 
   @override
   void initState() {
@@ -53,6 +54,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         final data = json.decode(response.body);
         setState(() {
           imageUrl = data['profileUrl'] ?? '';
+          name = data['employeeName'] ?? '';
         });
       } else {
         throw Exception('Failed to load employee data');
@@ -91,9 +93,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                "Navindu",
-                style: TextStyle(
+              Text(
+                name,
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),

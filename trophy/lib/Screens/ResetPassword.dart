@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trophy/constants.dart';
 import 'package:trophy/navBar/mainscreen.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -33,7 +34,7 @@ class _ResetPasswordState extends State<ResetPassword> {
       // Pass username and new password to backend
       final String newPassword = _newPasswordController.text;
       final response = await http.post(
-        Uri.parse('http://13.60.28.40/auth/change-password'),
+        Uri.parse('$baseUrl/auth/change-password'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

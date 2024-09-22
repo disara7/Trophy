@@ -177,6 +177,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.1"
+  checked_yaml:
+    dependency: transitive
+    description:
+      name: checked_yaml
+      sha256: feb6bed21949061731a7a75fc5d2aa727cf160b91af9a3e464c5e3a32e28b5ff
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
+  cli_util:
+    dependency: transitive
+    description:
+      name: cli_util
+      sha256: c05b7406fdabc7a49a3929d4af76bcaccbbffcbcdcf185b082e1ae07da323d19
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.1"
   clock:
     dependency: transitive
     description:
@@ -574,6 +590,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  flutter_launcher_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_launcher_icons
+      sha256: a38f2f1b3c373d42bf08bd17d60e20d3c73abce7727607b4d085ec7d5acaa294
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.14.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -985,10 +1009,10 @@ packages:
     dependency: transitive
     description:
       name: mongo_dart_query
-      sha256: "37d0862b49f0aaef8f66ca81a4e993b0ebdb9d54c3fc16d4779f48e5e6a9e4d6"
+      sha256: "7a0f3981c3d1df467040e5654696cb0bfde6ec6db86ba313118fb3e873cee657"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.1"
+    version: "5.0.2"
   nested:
     dependency: transitive
     description:
